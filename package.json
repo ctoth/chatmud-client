@@ -1,0 +1,21 @@
+{
+  "name": "chatmud-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"electron ./app",
+    "build": "parcel build ./js/main.js -d ./app --target=browser"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.8.4"
+  },
+  "dependencies": {
+    "eventemitter3": "^3.0.1",
+    "sono": "^2.1.5"
+  }
+}
