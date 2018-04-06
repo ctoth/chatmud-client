@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"electron ./app",
+    "start": "electron ./app",
     "build": "parcel build ./js/main.js -d ./app --target=browser"
   },
   "keywords": [],
@@ -15,7 +15,13 @@
     "electron": "^1.8.4"
   },
   "dependencies": {
+    "agk-soundobject": "0.0.0",
+    "agk-tts": "0.0.0",
+    "combokeys": "^3.0.0",
     "eventemitter3": "^3.0.1",
-    "sono": "^2.1.5"
+    "run": "^1.4.0",
+    "shortcuts": "^0.5.7",
+    "sono": "^2.1.5",
+    "start": "^5.1.0"
   }
 }

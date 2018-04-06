@@ -1,3 +1,4 @@
+'use strict';
 var settings
 
 if(window&&window.process&&window.process.type) {

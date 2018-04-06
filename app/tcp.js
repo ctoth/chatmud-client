@@ -21,7 +21,12 @@ class TCPConnection extends EventEmitter {
 	
 	handleData(data) {
 		console.log("TCP stream: " + data);
-		this.emit("data", data);
+		let string = data.toString();
+		let arr = string.split("\r\n");
+		for (let i of arr) {
+		this.emit("data", i);
+		}
+		
 	}
 	
 	send(string) {

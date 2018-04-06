@@ -2,6 +2,9 @@
 const CMOutput = require("./cmoutput");
 const Inserts = require("./inserts.json");
 const InsertFactory = require("./insertfactory");
+const ChannelHistory = require("./channelhistory");
+const ChannelInterface = require("./channelinterface");
+const SoundPlayer = require("./soundplayer");
 
 class ChatMud {
 	constructor(connection) {
@@ -10,6 +13,9 @@ class ChatMud {
 		this.output = new CMOutput(document.getElementById("cm-output"));
 		this.connection = connection;
 		this.inserts = new Array();
+		this.history = new ChannelHistory();
+		this.historyInterface = new ChannelInterface(this.history);
+		this.soundPlayer = new SoundPlayer();
 		this.setupEvents();
 		this.setupInserts();
 	}
@@ -40,7 +46,7 @@ class ChatMud {
 		handleData(data) {
 			console.log("Received data: " + data);
 			for (let insert of this.inserts) {
-				data = insert.act(data);
+				data = insert.act(data, this);
 			}
 			
 			this.output.add(data);

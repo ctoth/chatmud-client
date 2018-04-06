@@ -12,6 +12,7 @@ class ChatMud {
 		this.inserts = new Array();
 		this.setupEvents();
 		this.setupInserts();
+		
 	}
 	
 	setupEvents() {
@@ -40,7 +41,7 @@ class ChatMud {
 		handleData(data) {
 			console.log("Received data: " + data);
 			for (let insert of this.inserts) {
-				data = insert.act(data);
+				data = insert.act(data, this);
 			}
 			
 			this.output.add(data);

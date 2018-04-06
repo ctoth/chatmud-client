@@ -1,7 +1,10 @@
+'use strict';
 const ChatMud = require("./chatmud.js");
 const TCPConnection = require("./tcp.js");
-// import ChatMud from "./chatmud";
-// import TCPConnection from "./tcp";
+const SoundPlayer = require("./soundplayer");
+
+
+
 // addEventListener("DOMContentLoaded", () => {
 	console.log("Starting connection...");
 const connection = new TCPConnection();

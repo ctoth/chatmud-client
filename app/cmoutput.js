@@ -1,7 +1,8 @@
+'use strict';
 class CMOutput {
 	constructor(domNode) {
 		this.domNode = domNode;
-		this.maxLines = 2;
+		this.maxLines = 100;
 	}
 	
 	add(string) {
