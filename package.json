@@ -19,6 +19,7 @@
     "agk-tts": "0.0.0",
     "combokeys": "^3.0.0",
     "eventemitter3": "^3.0.1",
+    "random-int": "^1.0.0",
     "run": "^1.4.0",
     "shortcuts": "^0.5.7",
     "sono": "^2.1.5",

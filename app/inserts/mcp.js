@@ -55,6 +55,15 @@ class MCP {
 			case "channel_message":
 			this.handleChannelMessage(args);
 			break;
+			case "channel_social":
+			this.handleChannelSocial(args);
+			break;
+			case "social":
+			this.handleSocial(args);
+			break;
+			default:
+			this.handlePlay(command, args);
+			break;
 		}
 		
 	}
@@ -65,6 +74,21 @@ class MCP {
 		this.instance.soundPlayer.play(args[0], "channels");
 	}
 	
+	handleChannelSocial(args) {
+		console.log(JSON.stringify(args));
+		this.instance.history.addMessage(args[0], args[0]+ + ": " + args[3]);
+		this.instance.output.add(args[0]+": "+args[3]);
+		this.instance.soundPlayer.playSocial(args[2], args[5]);
+		this.instance.soundPlayer.play(args[0], "channels");
+	}
+	
+	handleSocial(args) {
+		this.instance.soundPlayer.playSocial(args[0], args[2]);
+	}
+	
+	handlePlay(command, args) {
+		this.instance.soundPlayer.play(args[0], command);
+	}
 	
 }
 

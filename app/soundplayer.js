@@ -1,4 +1,6 @@
 const {Howl, Howler} = require("howler");
+const soundops = require("./soundops");
+const rng = require("random-int");
 
 class SoundPlayer {
 	constructor() {
@@ -12,6 +14,19 @@ class SoundPlayer {
 			mFile = this.loadSound(file, folder);
 		}
 		mFile.sound.play();
+	}
+	
+	playSocial(name, gender) {
+		let socials = soundops.findSoundsInFolder("socials");
+		let foundSocials = soundops.findFilenames(name + " " + gender, socials);
+		if (foundSocials.length == 0) {
+			foundSocials = soundops.findFilenames(name, socials);
+		}
+		let filename = foundSocials[rng(0, foundSocials.length-1)].toString();
+		filename = filename.slice(0, filename.length-4);
+		this.play(filename, "socials");
+		
+		
 	}
 	
 	searchSounds(file, folder) {
