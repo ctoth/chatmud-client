@@ -46,7 +46,7 @@ class MCP {
 	
 	executeMCP(command, args, key) {
 		switch (command) {
-			case "authorization_key":
+			case "authentication_key":
 			this.key = args[0];
 			break;
 			case "my_name":
@@ -61,6 +61,26 @@ class MCP {
 			case "social":
 			this.handleSocial(args);
 			break;
+
+			case "watched_player_connect":
+			this.handleConnect(args);
+			break
+			case "watched_player_reconnect":
+			this.handlePlayerReconnect(args);
+			break;
+			case "watched_player_disconnect":
+			this.handlePlayerDisconnect(args);
+			break;
+			case "teleport_out":
+			this.handlePlayerTeleportOut(args);
+			break;
+			case "teleport_in":
+			this.handlePlayerTeleportIn(args);
+			break;
+			case "tell_message":
+			this.handleTell(args);
+			break;
+			
 			default:
 			this.handlePlay(command, args);
 			break;
@@ -88,6 +108,35 @@ class MCP {
 	
 	handlePlay(command, args) {
 		this.instance.soundPlayer.play(args[0], command);
+	}
+	
+	handlePlayerConnect(args) {
+		this.instance.soundPlayer.play("enter");
+		this.instance.output.add(args[0] + " connected");
+	}
+	
+	handlePlayerReconnect(args) {
+		this.instance.soundPlayer.play("reconnect");
+		this.instance.output.add(args[0] + " reconnected");
+	}
+	
+	handlePlayerDisconnect(args) {
+		this.instance.soundPlayer.play("leave");
+		this.instance.output.add(args[0] + " disconnected");
+	}
+	
+	handlePlayerTeleportOut(args) {
+		this.instance.soundPlayer.play("teleport%20out", "misc");
+	}
+	
+	handlePlayerTeleportIn(args) {
+		this.instance.soundPlayer.play("teleport%20in", "misc");
+	}
+	
+	handleTell(args) {
+		console.log("Parsed tell: " + args);
+		this.instance.soundPlayer.play("tell");
+		this.instance.output.add(args[0]+ " " + args[1] + " " + args[2]);
 	}
 	
 }
