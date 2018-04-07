@@ -1,13 +1,17 @@
+'use strict';
+
 class WebTTS {
 	constructor() {
-		this.synth = window.speechSynthesis;
+		this.interface = null;
 	}
 	
-	act(string) {
-		const utterThis = new SpeechSynthesisUtterance(string);
-		this.synth.speak(utterThis);
+	act(string, instance) {
+		this.instance = instance;
+		this.instance.tts.speak(string);
 		return string;
 	}
+	
+
 	
 }
 

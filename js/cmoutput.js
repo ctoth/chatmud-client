@@ -1,10 +1,13 @@
+'use strict';
 class CMOutput {
-	constructor(domNode) {
+	constructor(domNode, instance) {
+		this.instance = instance;
 		this.domNode = domNode;
-		this.maxLines = 2;
+		this.maxLines = 100;
 	}
 	
 	add(string) {
+		this.instance.tts.speak(string);
 		let paragraph = document.createElement("p");
 		let text = document.createTextNode(string);
 		paragraph.appendChild(text);
@@ -15,7 +18,7 @@ class CMOutput {
 	
 	checkScreen() {
 		if (this.domNode.childNodes.length > this.maxLines) {
-			this.domNode.removeChild(this.domNode.firstChild);
+			// this.domNode.removeChild(this.domNode.firstChild);
 		}
 		
 	}

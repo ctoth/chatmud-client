@@ -1,11 +1,13 @@
 'use strict';
 class CMOutput {
-	constructor(domNode) {
+	constructor(domNode, instance) {
+		this.instance = instance;
 		this.domNode = domNode;
 		this.maxLines = 100;
 	}
 	
 	add(string) {
+		this.instance.tts.speak(string);
 		let paragraph = document.createElement("p");
 		let text = document.createTextNode(string);
 		paragraph.appendChild(text);

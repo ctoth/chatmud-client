@@ -21,11 +21,7 @@ class MCP {
 	parse(string) {
 		console.log("Parsing " + string);
 		let s1 = string.slice(3, string.length);
-		s1 = s1.trim();
 		let command = s1.slice(0, s1.indexOf(" "));
-		
-		command = command.trim();
-		console.log("Command: " + command);
 		s1 = s1.slice(command.length+1, s1.length);
 		let key = s1.slice(s1.indexOf("-|-"), s1.length);
 		s1 = s1.slice(0, s1.indexOf("-|-"));
@@ -67,7 +63,7 @@ class MCP {
 			break;
 
 			case "watched_player_connect":
-			this.handlePlayerConnect(args);
+			this.handleConnect(args);
 			break
 			case "watched_player_reconnect":
 			this.handlePlayerReconnect(args);
@@ -84,9 +80,7 @@ class MCP {
 			case "tell_message":
 			this.handleTell(args);
 			break;
-			case "edit":
-			this.handleEdit(args);
-			break;
+			
 			default:
 			this.handlePlay(command, args);
 			break;
@@ -143,12 +137,6 @@ class MCP {
 		console.log("Parsed tell: " + args);
 		this.instance.soundPlayer.play("tell");
 		this.instance.output.add(args[0]+ " " + args[1] + " " + args[2]);
-	}
-	
-	handleEdit(args) {
-			let args2 = args[0].split(" ");
-		this.instance.programmer.setObject(args2[3]);
-		this.instance.programmer.setEnableHelper(true);
 	}
 	
 }
