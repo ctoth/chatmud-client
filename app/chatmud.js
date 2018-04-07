@@ -5,6 +5,7 @@ const InsertFactory = require("./insertfactory");
 const ChannelHistory = require("./channelhistory");
 const ChannelInterface = require("./channelinterface");
 const SoundPlayer = require("./soundplayer");
+const Programmer = require("./programmer");
 
 class ChatMud {
 	constructor(connection) {
@@ -16,6 +17,7 @@ class ChatMud {
 		this.history = new ChannelHistory();
 		this.historyInterface = new ChannelInterface(this.history);
 		this.soundPlayer = new SoundPlayer();
+		this.programmer = new Programmer();
 		this.setupEvents();
 		this.setupInserts();
 	}

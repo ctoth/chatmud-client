@@ -16,7 +16,7 @@ class CMOutput {
 	
 	checkScreen() {
 		if (this.domNode.childNodes.length > this.maxLines) {
-			this.domNode.removeChild(this.domNode.firstChild);
+			// this.domNode.removeChild(this.domNode.firstChild);
 		}
 		
 	}

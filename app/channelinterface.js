@@ -65,10 +65,10 @@ class ChannelInterface {
 	}
 	
 	setupKeys() {
-		this.shortcuts.bind("command+left", () => this.previousChannel());
-		this.shortcuts.bind("command+right", () => this.nextChannel());
-		this.shortcuts.bind("command+up", () => this.previousMessage());
-		this.shortcuts.bind("command+down", () => this.nextMessage());
+		this.shortcuts.bind("alt+left", () => this.previousChannel());
+		this.shortcuts.bind("alt+right", () => this.nextChannel());
+		this.shortcuts.bind("alt+up", () => this.previousMessage());
+		this.shortcuts.bind("alt+down", () => this.nextMessage());
 	}
 	
 }
