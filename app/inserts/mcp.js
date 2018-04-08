@@ -26,9 +26,14 @@ class MCP {
 		
 		command = command.trim();
 		console.log("Command: " + command);
-		s1 = s1.slice(command.length+1, s1.length);
-		let key = s1.slice(s1.indexOf("-|-"), s1.length);
-		s1 = s1.slice(0, s1.indexOf("-|-"));
+		s1 = s1.slice(command.length, s1.length);
+		let key = null;
+		if (s1.includes("-|-")) {
+		key = s1.slice(s1.indexOf("-|-"), s1.length);
+				s1 = s1.slice(0, s1.indexOf("-|-"));
+		}
+		
+
 		let s2 = s1.split("|");
 		for (let i=0;i<s2.length;i++) {
 			s2[i] = s2[i].trim();
@@ -146,9 +151,10 @@ class MCP {
 	
 	handleEdit(args) {
 			let args2 = args[0].split(" ");
-			let verb = args2[1].split(":")[1];
-			let object = args2[4].split(":")[0];
-		this.instance.programmer.setObject(object + ":" + verb);
+			// console.log("Split args: " + JSON.stringify(args2));
+			// let verb = args2[1].split(":")[1];
+			// let object = args2[4].split(":")[0];
+		this.instance.programmer.setObject(args2[args2.length-1]);
 		this.instance.programmer.setEnableHelper(true);
 	}
 	

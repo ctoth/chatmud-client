@@ -40,6 +40,7 @@ class Programmer {
 	}
 	
 	setObject(obj) {
+		console.log("Object set to " + this.object);
 		this.object = obj;
 	}
 	
