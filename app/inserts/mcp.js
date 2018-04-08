@@ -48,7 +48,7 @@ class MCP {
 	}
 	
 	initMCP() {
-		this.instance.connection.send("#$#register_client Unnamed");
+		this.instance.connection.send("#$#register_client Chatmud Official Client (Alpha)");
 		this.instance.connection.send("#$#client_supports authkeys");
 	}
 	
