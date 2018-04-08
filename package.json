@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./app",
-    "build": "parcel build ./js/main.js -d ./app --target=browser"
+    "build": "parcel build ./js/main.js -d ./app --target=electron"
   },
   "keywords": [],
   "author": "",

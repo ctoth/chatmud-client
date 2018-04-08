@@ -7,6 +7,7 @@ const ChannelInterface = require("./channelinterface");
 const SoundPlayer = require("./soundplayer");
 const Programmer = require("./programmer");
 const TTS = require("./tts");
+
 class ChatMud {
 	constructor(connection) {
 		console.log("Constructing handler");
@@ -18,7 +19,7 @@ class ChatMud {
 		this.historyInterface = new ChannelInterface(this.history, this);
 		this.soundPlayer = new SoundPlayer();
 		this.tts = new TTS();
-		this.programmer = new Programmer();
+		this.programmer = new Programmer(this);
 		this.setupEvents();
 		this.setupInserts();
 	}
@@ -28,6 +29,7 @@ class ChatMud {
 		this.connection.on("data", data => this.handleData(data));
 		this.input.addEventListener("keyup", event => {
 			if (event.keyCode == 13) {
+				this.tts.stopSpeech();
 				this.sendInput();
 			}
 			

@@ -7,14 +7,25 @@ class SoundPlayer {
 	constructor() {
 		this.sounds = new Array();
 		this.extension = ".ogg";
+		document.getElementById('soundVolume').onchange = function(event) {
+			console.log("Set volume to "+event.target.value+" percent");
+			Howler.volume(Number(event.target.value)/100);
+			}
 	}
 	
-	play(file, folder = "") {
+		play(file, folder = "") {
 		let mFile = this.searchSounds(file, folder);
 		if (mFile == -1) {
 			mFile = this.loadSound(file, folder);
 		}
 		mFile.sound.play();
+	}
+	
+	playChannel(name) {
+		let channels = soundops.findSoundsInFolder("channels");
+		let foundChannels = soundops.findFilenames(name, channels);
+		name = (foundChannels.length==0 ? 'global' : name);
+		this.play(name, "channels");
 	}
 	
 	playSocial(name, gender) {
