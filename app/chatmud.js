@@ -7,6 +7,7 @@ const ChannelInterface = require("./channelinterface");
 const SoundPlayer = require("./soundplayer");
 const Programmer = require("./programmer");
 const TTS = require("./tts");
+
 class ChatMud {
 	constructor(connection) {
 		console.log("Constructing handler");
