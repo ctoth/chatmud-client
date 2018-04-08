@@ -29,6 +29,10 @@ class TTS {
 	}
 	
 	speak(string) {
+		console.log(document.getElementById("speechToggle").value)
+		if(!document.getElementById("speechToggle").checked) {
+			return;
+		}
 		string = string.replace("[", " ");
 		string = string.replace("]", " ");
 	console.log("saying " + string);

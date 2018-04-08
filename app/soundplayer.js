@@ -7,6 +7,10 @@ class SoundPlayer {
 	constructor() {
 		this.sounds = new Array();
 		this.extension = ".ogg";
+		document.getElementById('soundVolume').onchange = function(event) {
+			console.log("Set volume to "+event.target.value+" percent");
+			Howler.volume(Number(event.target.value)/100);
+			}
 	}
 	
 		play(file, folder = "") {
