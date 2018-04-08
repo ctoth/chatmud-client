@@ -33,7 +33,6 @@ class MCP {
 		for (let i=0;i<s2.length;i++) {
 			s2[i] = s2[i].trim();
 		}
-		
 	
 		
 		if (command == "mcp") {
@@ -147,7 +146,9 @@ class MCP {
 	
 	handleEdit(args) {
 			let args2 = args[0].split(" ");
-		this.instance.programmer.setObject(args2[3]);
+			let verb = args2[1].split(":")[1];
+			let object = args2[4].split(":")[0];
+		this.instance.programmer.setObject(object + ":" + verb);
 		this.instance.programmer.setEnableHelper(true);
 	}
 	

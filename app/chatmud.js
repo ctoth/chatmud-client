@@ -18,7 +18,7 @@ class ChatMud {
 		this.historyInterface = new ChannelInterface(this.history, this);
 		this.soundPlayer = new SoundPlayer();
 		this.tts = new TTS();
-		this.programmer = new Programmer();
+		this.programmer = new Programmer(this);
 		this.setupEvents();
 		this.setupInserts();
 	}

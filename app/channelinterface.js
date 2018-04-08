@@ -64,10 +64,18 @@ class ChannelInterface {
 	}
 	
 	setupKeys() {
-		this.shortcuts.bind("alt+left", () => this.previousChannel());
-		this.shortcuts.bind("alt+right", () => this.nextChannel());
-		this.shortcuts.bind("alt+up", () => this.previousMessage());
-		this.shortcuts.bind("alt+down", () => this.nextMessage());
+		if (process.platform === "win32") {
+			this.shortcuts.bind("alt+left", () => this.previousChannel());
+			this.shortcuts.bind("alt+right", () => this.nextChannel());
+			this.shortcuts.bind("alt+up", () => this.previousMessage());
+			this.shortcuts.bind("alt+down", () => this.nextMessage());
+		} else {
+			this.shortcuts.bind("alt+meta+left", () => this.previousChannel());
+			this.shortcuts.bind("alt+meta+right", () => this.nextChannel());
+			this.shortcuts.bind("alt+meta+up", () => this.previousMessage());
+			this.shortcuts.bind("alt+meta+down", () => this.nextMessage());
+		}
+		
 	}
 	
 }
