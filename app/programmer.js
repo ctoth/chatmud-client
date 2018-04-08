@@ -11,6 +11,8 @@ class Programmer {
 	
 	setEnableHelper(value) {
 		this.enabled = value;
+
+		
 	}
 	
 	setCode(code) {

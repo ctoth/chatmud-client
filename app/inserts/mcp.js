@@ -63,7 +63,7 @@ class MCP {
 			case "channel_message":
 			this.handleChannelMessage(args);
 			break;
-			case "channel_message":
+			case "channel_social":
 			this.handleChannelSocial(args);
 			break;
 			case "social":
@@ -109,7 +109,7 @@ class MCP {
 		this.instance.history.addMessage(args[0], args[0]+ + ": " + args[3]);
 		this.instance.output.add(args[0]+": "+args[3]);
 		this.instance.soundPlayer.playSocial(args[2], args[5]);
-		this.instance.soundPlayer.play(args[0], "channels");
+		this.instance.soundPlayer.playChannel(args[0]);
 	}
 	
 	handleSocial(args) {

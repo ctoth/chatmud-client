@@ -6,7 +6,7 @@ class TTS {
 		this.speakQueue = new Array();
 		this.voice = "alex";
 		this.rate = 3.0;
-		this.combokeys = new Combokeys(document.documentElement);
+		this.combokeys = new Combokeys(window);
 		this.combokeys.bind("ctrl", () => this.stopSpeech());
 	
 	}

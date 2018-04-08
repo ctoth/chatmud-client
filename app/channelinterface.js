@@ -8,7 +8,7 @@ class ChannelInterface {
 		this.currentChannel = 0;
 		this.currentMessage = 0;
 		this.history = history;
-		this.shortcuts = new Combokeys(document.documentElement);
+		this.shortcuts = new Combokeys(window);
 		this.setupKeys();
 	}
 	
