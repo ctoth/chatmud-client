@@ -100,7 +100,7 @@ class MCP {
 	
 	handleChannelMessage(args) {
 		this.instance.history.addMessage(args[0], args[2]+args[3]);
-		this.instance.output.add(args[2]+args[3]);
+		this.instance.output.add(args[2]+" "+args[3]);
 		this.instance.soundPlayer.playChannel(args[0]);
 	}
 	
