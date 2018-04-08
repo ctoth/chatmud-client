@@ -9,12 +9,19 @@ class SoundPlayer {
 		this.extension = ".ogg";
 	}
 	
-	play(file, folder = "") {
+		play(file, folder = "") {
 		let mFile = this.searchSounds(file, folder);
 		if (mFile == -1) {
 			mFile = this.loadSound(file, folder);
 		}
 		mFile.sound.play();
+	}
+	
+	playChannel(name) {
+		let channels = soundops.findSoundsInFolder("channels");
+		let foundChannels = soundops.findFilenames(name, channels);
+		name = (foundChannels.length==0 ? 'global' : name);
+		this.play(name, "channels");
 	}
 	
 	playSocial(name, gender) {
