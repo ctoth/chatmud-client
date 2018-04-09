@@ -29,7 +29,8 @@ class MCP {
 		s1 = s1.slice(command.length, s1.length);
 		let key = null;
 		if (s1.includes("-|-")) {
-		key = s1.slice(s1.indexOf("-|-"), s1.length);
+		key = s1.slice(s1.indexOf("-|-")+4, s1.length);
+		key = key.trim();
 				s1 = s1.slice(0, s1.indexOf("-|-"));
 		}
 		
@@ -53,6 +54,10 @@ class MCP {
 	}
 	
 	executeMCP(command, args, key) {
+		if (key) {
+			this.checkKey(key);
+		}
+		
 		switch (command) {
 			case "authentication_key":
 			this.key = args[0];
@@ -156,6 +161,15 @@ class MCP {
 			// let object = args2[4].split(":")[0];
 		this.instance.programmer.setObject(args2[args2.length-1]);
 		this.instance.programmer.setEnableHelper(true);
+	}
+	
+	checkKey(key) {
+		console.log("Checking " + key + " agains " + this.key);
+		if (key != this.key) {
+			this.instance.soundPlayer.play("spoofer", "misc");
+			this.instance.output.add("Spoof attempt!");
+		}
+		
 	}
 	
 }

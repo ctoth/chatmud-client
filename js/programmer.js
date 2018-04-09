@@ -32,7 +32,7 @@ class Programmer {
 	handleMessage(data) {
 		const code = data.data;
 					this.sendCode(code);
-					window.removeEventListener('message', this.handleMessage.bind(this));
+					window.removeEventListener('message', this.handleMessage.bind(this), true);
 	}
 
 	sendCode(data) {
