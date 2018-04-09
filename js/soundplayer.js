@@ -7,6 +7,15 @@ class SoundPlayer {
 	constructor() {
 		this.sounds = new Array();
 		this.extension = ".ogg";
+		var audioOptsToggle=document.getElementById('audioOptsToggle');
+		var audioOpts=document.getElementById('audioOpts');
+		audioOptsToggle.onclick=function() {
+			audioOptsToggle.setAttribute('aria-expanded', (audioOptsToggle.getAttribute('aria-expanded')=='false'?'true':'false'));
+			//audioOpts.setAttribute('hidden', (audioOpts.getAttribute('hidden')=='false'?'true':'false'));
+			console.log('previously'+audioOpts.style.display)
+			audioOpts.style.display=(audioOpts.style.display=='none'?'':'none');
+			console.log('now'+audioOpts.style.display)
+		}
 		document.getElementById('soundVolume').onchange = function(event) {
 			console.log("Set volume to "+event.target.value+" percent");
 			Howler.volume(Number(event.target.value)/100);

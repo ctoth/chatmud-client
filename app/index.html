@@ -10,11 +10,12 @@
 		<h2>Output</h2>
 		<div aria-live="polite" aria-atomic=false id="cm-output"></div>
 		<h2>input</h2>
-		<input type="text" id="cm-input" name="cm-input"></input>
-		<h2>Audio Options</h2>
+		<input type="text" id="cm-input" name="cm-input"></input><br>
+		<button aria-expanded="false" id="audioOptsToggle">Audio Options</button>
+		<div id="audioOpts" style="display: none">
 		<input type="range" min="1" max="100" step="5" value="80" class="slider" id="soundVolume" aria-label="Sound Volume"> Sound Volume<br>
 		<input type="checkbox" value="on" name="Speech On" id="speechToggle" checked> Speech On<br>
-		
+	</div>
 		<h2>Speech output</h2>
 				<div id="speech" aria-live="polite"></div>
 		</div>
