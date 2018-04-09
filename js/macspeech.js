@@ -1,12 +1,9 @@
-const $ = require("nodobjc");
-
+const $ = require('nodobjc');
 
 class MacSpeech {
 	constructor() {
-		$.framework("AppKit");
-		
+		$.framework('AppKit');
 	}
-	
 }
 
 module.exports = MacSpeech;

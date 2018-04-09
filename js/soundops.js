@@ -1,25 +1,28 @@
-const sounds = require("./sounds");
+const sounds = require('./sounds');
 
 function findSoundsInFolder(path) {
-	let split = path.split("/");
+	const split = path.split('/');
 	let directory = sounds;
-	for (let string of split) {
+	for (const string of split) {
 		directory = search(string, directory);
 	}
 	return directory;
 }
 
 function search(string, object) {
-	for (let entry of object) {
-		if (entry.name == string) return entry.children;
+	for (const entry of object) {
+		if (entry.name == string) {
+			return entry.children;
+		}
 	}
-	
 }
 
 function findFilenames(string, array) {
-	let returnObj = [];
-	for (let entry of array) {
-		if (entry.name.includes(string)) returnObj.push(entry.name);
+	const returnObj = [];
+	for (const entry of array) {
+		if (entry.name.includes(string)) {
+returnObj.push(entry.name);
+		}
 	}
 	return returnObj;
 }
