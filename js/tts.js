@@ -1,5 +1,4 @@
 const say = require('say');
-const Combokeys = require('combokeys');
 
 class TTS {
 	constructor() {
@@ -7,9 +6,7 @@ class TTS {
 		this.speakQueue = new Array();
 		this.voice = 'alex';
 		this.rate = 3.0;
-		this.combokeys = new Combokeys(window);
-		require('combokeys/plugins/global-bind')(this.combokeys);
-		this.combokeys.bindGlobal('ctrl', () => this.stopSpeech());
+
 	}
 
 	stopSpeech() {

@@ -1,6 +1,5 @@
 'use strict';
 const ChannelHistory = require('./channelhistory');
-const Combokeys = require('combokeys');
 
 class ChannelInterface {
 	constructor(history, instance) {
@@ -8,9 +7,7 @@ class ChannelInterface {
 		this.currentChannel = 0;
 		this.currentMessage = 0;
 		this.history = history;
-		this.shortcuts = new Combokeys(window);
-		require('combokeys/plugins/global-bind')(this.shortcuts);
-		this.setupKeys();
+
 	}
 
 	nextChannel() {
@@ -62,19 +59,7 @@ class ChannelInterface {
 		this.instance.tts.speakImmediate(this.history.channels[this.currentChannel].messages[id]);
 	}
 
-	setupKeys() {
-		if (process.platform === 'win32') {
-			this.shortcuts.bindGlobal('alt+left', () => this.previousChannel());
-			this.shortcuts.bindGlobal('alt+right', () => this.nextChannel());
-			this.shortcuts.bindGlobal('alt+up', () => this.previousMessage());
-			this.shortcuts.bindGlobal('alt+down', () => this.nextMessage());
-		} else {
-			this.shortcuts.bindGlobal('alt+meta+left', () => this.previousChannel());
-			this.shortcuts.bindGlobal('alt+meta+right', () => this.nextChannel());
-			this.shortcuts.bindGlobal('alt+meta+up', () => this.previousMessage());
-			this.shortcuts.bindGlobal('alt+meta+down', () => this.nextMessage());
-		}
-	}
+
 }
 
 module.exports = ChannelInterface;

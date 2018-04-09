@@ -517,7 +517,6 @@ module.exports = ChannelHistory;
 },{}],10:[function(require,module,exports) {
 'use strict';
 const ChannelHistory = require('./channelhistory');
-const Combokeys = require('combokeys');
 
 class ChannelInterface {
 	constructor(history, instance) {
@@ -525,9 +524,7 @@ class ChannelInterface {
 		this.currentChannel = 0;
 		this.currentMessage = 0;
 		this.history = history;
-		this.shortcuts = new Combokeys(window);
-		require('combokeys/plugins/global-bind')(this.shortcuts);
-		this.setupKeys();
+
 	}
 
 	nextChannel() {
@@ -579,19 +576,7 @@ class ChannelInterface {
 		this.instance.tts.speakImmediate(this.history.channels[this.currentChannel].messages[id]);
 	}
 
-	setupKeys() {
-		if (process.platform === 'win32') {
-			this.shortcuts.bindGlobal('alt+left', () => this.previousChannel());
-			this.shortcuts.bindGlobal('alt+right', () => this.nextChannel());
-			this.shortcuts.bindGlobal('alt+up', () => this.previousMessage());
-			this.shortcuts.bindGlobal('alt+down', () => this.nextMessage());
-		} else {
-			this.shortcuts.bindGlobal('alt+meta+left', () => this.previousChannel());
-			this.shortcuts.bindGlobal('alt+meta+right', () => this.nextChannel());
-			this.shortcuts.bindGlobal('alt+meta+up', () => this.previousMessage());
-			this.shortcuts.bindGlobal('alt+meta+down', () => this.nextMessage());
-		}
-	}
+
 }
 
 module.exports = ChannelInterface;
@@ -761,7 +746,6 @@ module.exports = Programmer;
 
 },{}],12:[function(require,module,exports) {
 const say = require('say');
-const Combokeys = require('combokeys');
 
 class TTS {
 	constructor() {
@@ -769,9 +753,7 @@ class TTS {
 		this.speakQueue = new Array();
 		this.voice = 'alex';
 		this.rate = 3.0;
-		this.combokeys = new Combokeys(window);
-		require('combokeys/plugins/global-bind')(this.combokeys);
-		this.combokeys.bindGlobal('ctrl', () => this.stopSpeech());
+
 	}
 
 	stopSpeech() {
@@ -817,11 +799,36 @@ class TTS {
 module.exports = TTS;
 
 },{}],13:[function(require,module,exports) {
+'use strict';
+const Combokeys = require("combokeys");
 class Interface {
 	constructor(instance) {
 		this.instance = instance;
-		const audioOptsToggle = document.getElementById('audioOptsToggle');
-		const audioOpts = document.getElementById('audioOpts');
+		this.audioOptsToggle = document.getElementById('audioOptsToggle');
+		this.audioOpts = document.getElementById('audioOpts');
+		this.shortcuts = new Combokeys(window);
+		require("combokeys/plugins/global-bind")(this.shortcuts);
+		this.setupEvents();
+		this.setupKeys();
+	}
+	
+	setupKeys() {
+		if (process.platform === 'win32') {
+			this.shortcuts.bindGlobal('alt+left', () => this.instance.historyInterface.previousChannel());
+			this.shortcuts.bindGlobal('alt+right', () => this.instance.historyInterface.nextChannel());
+			this.shortcuts.bindGlobal('alt+up', () => this.instance.historyInterface.previousMessage());
+			this.shortcuts.bindGlobal('alt+down', () => this.instance.historyInterface.nextMessage());
+		} else {
+			this.shortcuts.bindGlobal('alt+meta+left', () => this.instance.historyInterface.previousChannel());
+			this.shortcuts.bindGlobal('alt+meta+right', () => this.instance.historyInterface.nextChannel());
+			this.shortcuts.bindGlobal('alt+meta+up', () => this.instance.historyInterface.previousMessage());
+			this.shortcuts.bindGlobal('alt+meta+down', () => this.instance.historyInterface.nextMessage());
+		}
+				this.shortcuts.bindGlobal('ctrl', () => this.instance.tts.stopSpeech());
+		
+	}
+	
+	setupEvents() {
 		audioOptsToggle.addEventListener('click', () => {
 			audioOptsToggle.setAttribute('aria-expanded', (audioOptsToggle.getAttribute('aria-expanded') == 'false' ? 'true' : 'false'));
 			audioOpts.style.display = (audioOpts.style.display == 'none' ? '' : 'none');
@@ -830,7 +837,10 @@ class Interface {
 			console.log('Set volume to ' + event.target.value + ' percent');
 			Howler.volume(Number(event.target.value) / 100);
 		});
+	
 	}
+	
+
 }
 
 module.exports = Interface;
