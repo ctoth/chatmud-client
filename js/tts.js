@@ -2,6 +2,7 @@ const say = require('say');
 
 class TTS {
 	constructor() {
+		this.enabled=true;
 		this.speaking = false;
 		this.speakQueue = new Array();
 		this.voice = 'alex';
@@ -25,8 +26,7 @@ class TTS {
 	}
 
 	speak(string) {
-		console.log(document.getElementById('speechToggle').value);
-		if (!document.getElementById('speechToggle').checked) {
+		if (!this.enabled) {
 			return;
 		}
 		string = string.replace('[', ' ');
@@ -47,6 +47,7 @@ class TTS {
 			this.speaking = false;
 		}
 	}
+	
 }
 
 module.exports = TTS;

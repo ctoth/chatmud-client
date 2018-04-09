@@ -24,6 +24,7 @@ class Interface {
 			this.shortcuts.bindGlobal('alt+meta+down', () => this.instance.historyInterface.nextMessage());
 		}
 				this.shortcuts.bindGlobal('ctrl', () => this.instance.tts.stopSpeech());
+				this.shortcuts.bindGlobal('f12', () => this.setSpeechEnabled(!this.instance.tts.enabled));
 		
 	}
 	
@@ -39,6 +40,10 @@ class Interface {
 	
 	}
 	
+	setSpeechEnabled(state) {
+		this.instance.tts.enabled=state;
+		this.instance.output.add("Speech "+(state ? 'enabled' : 'disabled'));
+	}
 
 }
 
