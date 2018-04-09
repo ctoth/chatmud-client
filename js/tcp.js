@@ -10,6 +10,7 @@ class TCPConnection extends EventEmitter {
 		this.port = port;
 		this.client = new net.Socket();
 		this.connection = this.client.connect(this.port, this.address, () => this.setupEvents());
+		this.data = null;
 	}
 
 	setupEvents() {
@@ -19,13 +20,24 @@ class TCPConnection extends EventEmitter {
 
 	handleData(data) {
 		console.log('TCP stream: ' + data);
+		
 		const string = data.toString();
-		const arr = string.split('\r\n');
+		this.data += string;
+		if (this.data.endsWith("\n")) {
+			this.emitData(this.data);
+			this.data = "";
+		} 
+		
+		
+	}
+
+	emitData(data) {
+		const arr = data.split('\r\n');
 		for (const i of arr) {
 		this.emit('data', i);
 		}
 	}
-
+	
 	send(string) {
 		console.log('Sending ' + string);
 		this.client.write(string + '\n');

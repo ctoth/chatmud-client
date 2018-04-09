@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./app",
     "build": "parcel build ./js/main.js -d ./app --target=electron",
-    "dev":"parcel watch ./js/main.js -d ./app/ --target=electron --no-hmr"
+    "dev": "parcel watch ./js/main.js -d ./app/ --target=electron --no-hmr"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "combokeys": "^3.0.0",
     "eventemitter3": "^3.0.1",
     "howler": "^2.0.9",
+    "pug": "^2.0.3",
     "random-int": "^1.0.0",
     "run": "^1.4.0",
     "say": "^0.14.0",
