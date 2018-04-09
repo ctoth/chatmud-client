@@ -7,11 +7,15 @@ class CMOutput {
 	}
 
 	add(string) {
-		this.instance.tts.speak(string);
-		const paragraph = document.createElement('p');
-		const text = document.createTextNode(string);
-		paragraph.appendChild(text);
-		this.domNode.appendChild(paragraph);
+		if (string != "") {
+			this.instance.tts.speak(string);
+			const paragraph = document.createElement('p');
+			const text = document.createTextNode(string);
+			paragraph.appendChild(text);
+			this.domNode.appendChild(paragraph);
+			this.instance.history.addMessage("MudOutput", string);
+		}
+		
 		this.checkScreen();
 	}
 

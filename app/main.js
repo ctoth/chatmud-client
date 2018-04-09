@@ -87,11 +87,15 @@ class CMOutput {
 	}
 
 	add(string) {
-		this.instance.tts.speak(string);
-		const paragraph = document.createElement('p');
-		const text = document.createTextNode(string);
-		paragraph.appendChild(text);
-		this.domNode.appendChild(paragraph);
+		if (string != "") {
+			this.instance.tts.speak(string);
+			const paragraph = document.createElement('p');
+			const text = document.createTextNode(string);
+			paragraph.appendChild(text);
+			this.domNode.appendChild(paragraph);
+			this.instance.history.addMessage("MudOutput", string);
+		}
+		
 		this.checkScreen();
 	}
 
@@ -650,8 +654,16 @@ class SoundPlayer {
 		if (foundSocials.length == 0) {
 			foundSocials = soundops.findFilenames(name, socials);
 		}
-		let filename = foundSocials[rng(0, foundSocials.length - 1)].toString();
-		filename = filename.slice(0, filename.length - 4);
+		let filename = null;
+		if (foundSocials.length > 0) {
+			filename = foundSocials[rng(0, foundSocials.length - 1)].toString();
+			filename = filename.slice(0, filename.length - 4);
+		}
+		
+		if (!filename) {
+			return;
+		}
+		
 		this.play(filename, 'socials');
 	}
 

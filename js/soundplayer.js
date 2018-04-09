@@ -30,8 +30,16 @@ class SoundPlayer {
 		if (foundSocials.length == 0) {
 			foundSocials = soundops.findFilenames(name, socials);
 		}
-		let filename = foundSocials[rng(0, foundSocials.length - 1)].toString();
-		filename = filename.slice(0, filename.length - 4);
+		let filename = null;
+		if (foundSocials.length > 0) {
+			filename = foundSocials[rng(0, foundSocials.length - 1)].toString();
+			filename = filename.slice(0, filename.length - 4);
+		}
+		
+		if (!filename) {
+			return;
+		}
+		
 		this.play(filename, 'socials');
 	}
 
