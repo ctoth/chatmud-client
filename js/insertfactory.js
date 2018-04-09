@@ -3,7 +3,7 @@ const webtts = require('./inserts/webtts');
 const mcp = require('./inserts/mcp');
 const triggers = require('./inserts/triggers');
 const programmerhelper = require('./inserts/programmerhelper');
-
+const notifier = require("./inserts/notifier");
 class InsertFactory {
 	static getInsert(name) {
 		switch (name) {
@@ -18,6 +18,9 @@ class InsertFactory {
 				break;
 			case 'programmerhelper':
 				return programmerhelper;
+				break;
+				case "notifier":
+				return notifier;
 				break;
 		}
 	}

@@ -9,6 +9,7 @@ class ChannelInterface {
 		this.currentMessage = 0;
 		this.history = history;
 		this.shortcuts = new Combokeys(window);
+		require('combokeys/plugins/global-bind')(this.shortcuts);
 		this.setupKeys();
 	}
 
@@ -63,15 +64,15 @@ class ChannelInterface {
 
 	setupKeys() {
 		if (process.platform === 'win32') {
-			this.shortcuts.bind('alt+left', () => this.previousChannel());
-			this.shortcuts.bind('alt+right', () => this.nextChannel());
-			this.shortcuts.bind('alt+up', () => this.previousMessage());
-			this.shortcuts.bind('alt+down', () => this.nextMessage());
+			this.shortcuts.bindGlobal('alt+left', () => this.previousChannel());
+			this.shortcuts.bindGlobal('alt+right', () => this.nextChannel());
+			this.shortcuts.bindGlobal('alt+up', () => this.previousMessage());
+			this.shortcuts.bindGlobal('alt+down', () => this.nextMessage());
 		} else {
-			this.shortcuts.bind('alt+meta+left', () => this.previousChannel());
-			this.shortcuts.bind('alt+meta+right', () => this.nextChannel());
-			this.shortcuts.bind('alt+meta+up', () => this.previousMessage());
-			this.shortcuts.bind('alt+meta+down', () => this.nextMessage());
+			this.shortcuts.bindGlobal('alt+meta+left', () => this.previousChannel());
+			this.shortcuts.bindGlobal('alt+meta+right', () => this.nextChannel());
+			this.shortcuts.bindGlobal('alt+meta+up', () => this.previousMessage());
+			this.shortcuts.bindGlobal('alt+meta+down', () => this.nextMessage());
 		}
 	}
 }

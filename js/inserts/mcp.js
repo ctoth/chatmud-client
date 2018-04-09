@@ -61,9 +61,11 @@ class MCP {
 		switch (command) {
 			case "authentication_key":
 			this.key = args[0];
+			this.instance.info.key = args[0];
 			break;
 			case "my_name":
 			this.name = args[0];
+			this.instance.info.name = args[0];
 			break;
 			case "channel_message":
 			this.handleChannelMessage(args);

@@ -8,7 +8,8 @@ class TTS {
 		this.voice = 'alex';
 		this.rate = 3.0;
 		this.combokeys = new Combokeys(window);
-		this.combokeys.bind('ctrl', () => this.stopSpeech());
+		require('combokeys/plugins/global-bind')(this.combokeys);
+		this.combokeys.bindGlobal('ctrl', () => this.stopSpeech());
 	}
 
 	stopSpeech() {
