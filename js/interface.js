@@ -1,16 +1,17 @@
 'use strict';
-const Combokeys = require("combokeys");
+const Combokeys = require('combokeys');
+
 class Interface {
 	constructor(instance) {
 		this.instance = instance;
 		this.audioOptsToggle = document.getElementById('audioOptsToggle');
 		this.audioOpts = document.getElementById('audioOpts');
 		this.shortcuts = new Combokeys(window);
-		require("combokeys/plugins/global-bind")(this.shortcuts);
+		require('combokeys/plugins/global-bind')(this.shortcuts);
 		this.setupEvents();
 		this.setupKeys();
 	}
-	
+
 	setupKeys() {
 		if (process.platform === 'win32') {
 			this.shortcuts.bindGlobal('alt+left', () => this.instance.historyInterface.previousChannel());
@@ -25,9 +26,8 @@ class Interface {
 		}
 				this.shortcuts.bindGlobal('ctrl', () => this.instance.tts.stopSpeech());
 				this.shortcuts.bindGlobal('f12', () => this.setSpeechEnabled(!this.instance.tts.enabled));
-		
 	}
-	
+
 	setupEvents() {
 		audioOptsToggle.addEventListener('click', () => {
 			audioOptsToggle.setAttribute('aria-expanded', (audioOptsToggle.getAttribute('aria-expanded') == 'false' ? 'true' : 'false'));
@@ -37,14 +37,12 @@ class Interface {
 			console.log('Set volume to ' + event.target.value + ' percent');
 			Howler.volume(Number(event.target.value) / 100);
 		});
-	
-	}
-	
-	setSpeechEnabled(state) {
-		this.instance.tts.enabled=state;
-		this.instance.output.add("Speech "+(state ? 'enabled' : 'disabled'));
 	}
 
+	setSpeechEnabled(state) {
+		this.instance.tts.enabled = state;
+		this.instance.output.add('Speech ' + (state ? 'enabled' : 'disabled'));
+	}
 }
 
 module.exports = Interface;

@@ -7,7 +7,6 @@ class ChannelInterface {
 		this.currentChannel = 0;
 		this.currentMessage = 0;
 		this.history = history;
-
 	}
 
 	nextChannel() {
@@ -58,8 +57,6 @@ class ChannelInterface {
 		console.log('Reading ' + this.history.channels[this.currentChannel].messages[id]);
 		this.instance.tts.speakImmediate(this.history.channels[this.currentChannel].messages[id]);
 	}
-
-
 }
 
 module.exports = ChannelInterface;

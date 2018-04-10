@@ -35,11 +35,11 @@ class SoundPlayer {
 			filename = foundSocials[rng(0, foundSocials.length - 1)].toString();
 			filename = filename.slice(0, filename.length - 4);
 		}
-		
+
 		if (!filename) {
 			return;
 		}
-		
+
 		this.play(filename, 'socials');
 	}
 

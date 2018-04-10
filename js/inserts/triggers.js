@@ -4,64 +4,59 @@ class Triggers {
 	constructor() {
 		this.instance = null;
 	}
-	
+
 	act(string, instance) {
 		this.instance = instance;
 		this.executeTriggers(string);
 		return string;
 	}
-	
+
 	executeTriggers(string) {
-		let matched = string.match("^Turning (off|on) channel ([a-zA-Z0-9]*)?\.");
+		let matched = string.match('^Turning (off|on) channel ([a-zA-Z0-9]*)?\.');
 		if (matched) {
 			this.instance.soundPlayer.play(matched[1]);
 		}
-		
-		matched = string.match("^I don't understand that\.$");
+
+		matched = string.match('^I don\'t understand that\.$');
 		if (matched) {
-			this.instance.soundPlayer.play("huh", "misc");
+			this.instance.soundPlayer.play('huh', 'misc');
 		}
-		
-		matched = string.match("^(\>\> Command Aborted \<\<|Invalid selection.)$");
+
+		matched = string.match('^(\>\> Command Aborted \<\<|Invalid selection.)$');
 		if (matched) {
-			this.instance.soundPlayer.play("cancel");
+			this.instance.soundPlayer.play('cancel');
 		}
-		
-		matched = string.match("(\\[(Type a line of input or `@abort' to abort the command|Type lines of input; use `\\.' to end or `@abort' to abort the command)\\.\\]|\\[Enter `yes' or `no'\\])");
+
+		matched = string.match('(\\[(Type a line of input or `@abort\' to abort the command|Type lines of input; use `\\.\' to end or `@abort\' to abort the command)\\.\\]|\\[Enter `yes\' or `no\'\\])');
 		if (matched) {
-			this.instance.soundPlayer.play("prompt");
+			this.instance.soundPlayer.play('prompt');
 		}
-		
-		matched = string.match("You click your heels three times.");
+
+		matched = string.match('You click your heels three times.');
 		if (matched) {
-			this.instance.soundPlayer.play("home", "misc");
-			
+			this.instance.soundPlayer.play('home', 'misc');
 		}
-		
-		matched = string.match("[Connections] A new high player count has been reached! * players are connected.");
+
+		matched = string.match('[Connections] A new high player count has been reached! * players are connected.');
 		if (matched) {
-			this.instance.soundPlayer.play("high%connections", "misc");
+			this.instance.soundPlayer.play('high%connections', 'misc');
 		}
-		
-		matched = string.match("[Creation] * has just connected for the first time! Please make them feel welcome.");
+
+		matched = string.match('[Creation] * has just connected for the first time! Please make them feel welcome.');
 		if (matched) {
-			this.instance.soundPlayer.play("creation");
+			this.instance.soundPlayer.play('creation');
 		}
-		
-		matched = string.match("(.*) says,(.*)");
+
+		matched = string.match('(.*) says,(.*)');
 		if (matched) {
-			this.instance.soundPlayer.play("say");
+			this.instance.soundPlayer.play('say');
 		}
-		
-		matched = string.match("^You say,*?");
+
+		matched = string.match('^You say,*?');
 		if (matched) {
-			this.instance.soundPlayer.play("say");
-			
+			this.instance.soundPlayer.play('say');
 		}
-		
-		
 	}
-	
 }
 
 module.exports = Triggers;

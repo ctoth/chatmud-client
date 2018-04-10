@@ -7,22 +7,22 @@ class CMOutput {
 	}
 
 	add(string) {
-		if (string != "") {
+		if (string != '') {
 			this.instance.tts.speak(string);
 			const paragraph = document.createElement('p');
 			const text = document.createTextNode(string);
 			paragraph.appendChild(text);
 			this.domNode.appendChild(paragraph);
-			this.instance.history.addMessage("MudOutput", string);
+			this.instance.history.addMessage('MudOutput', string);
 		}
-		
+
 		this.checkScreen();
 	}
-	
+
 	addHTML(string) {
-		
+
 	}
-	
+
 	checkScreen() {
 		if (this.domNode.childNodes.length > this.maxLines) {
 			// This.domNode.removeChild(this.domNode.firstChild);

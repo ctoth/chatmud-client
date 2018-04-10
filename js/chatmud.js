@@ -23,10 +23,10 @@ class ChatMud {
 		this.interface = new Interface(this);
 		this.programmer = new Programmer(this);
 		this.info = {
-			name:"",
-			key:""
-		}
-		
+			name: '',
+			key: ''
+		};
+
 		this.setupEvents();
 		this.setupInserts();
 	}
@@ -63,10 +63,10 @@ class ChatMud {
 		console.log('Handle enter key');
 
 		const string = this.input.value;
-		if (string == "my_name") {
-			this.output.add("Your name is set to " + this.info.name);
+		if (string == 'my_name') {
+			this.output.add('Your name is set to ' + this.info.name);
 		}
-		
+
 		this.connection.send(string);
 		this.input.value = '';
 	}

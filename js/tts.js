@@ -2,12 +2,11 @@ const say = require('say');
 
 class TTS {
 	constructor() {
-		this.enabled=true;
+		this.enabled = true;
 		this.speaking = false;
 		this.speakQueue = new Array();
 		this.voice = 'alex';
 		this.rate = 3.0;
-
 	}
 
 	stopSpeech() {
@@ -47,7 +46,6 @@ class TTS {
 			this.speaking = false;
 		}
 	}
-	
 }
 
 module.exports = TTS;

@@ -20,15 +20,13 @@ class TCPConnection extends EventEmitter {
 
 	handleData(data) {
 		console.log('TCP stream: ' + data);
-		
+
 		const string = data.toString();
 		this.data += string;
-		if (this.data.endsWith("\n")) {
+		if (this.data.endsWith('\n')) {
 			this.emitData(this.data);
-			this.data = "";
-		} 
-		
-		
+			this.data = '';
+		}
 	}
 
 	emitData(data) {
@@ -37,7 +35,7 @@ class TCPConnection extends EventEmitter {
 		this.emit('data', i);
 		}
 	}
-	
+
 	send(string) {
 		console.log('Sending ' + string);
 		this.client.write(string + '\n');
