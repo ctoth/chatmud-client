@@ -77,7 +77,7 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({5:[function(require,module,exports) {
+})({6:[function(require,module,exports) {
 'use strict';
 class CMOutput {
 	constructor(domNode, instance) {
@@ -98,7 +98,11 @@ class CMOutput {
 		
 		this.checkScreen();
 	}
-
+	
+	addHTML(string) {
+		
+	}
+	
 	checkScreen() {
 		if (this.domNode.childNodes.length > this.maxLines) {
 			// This.domNode.removeChild(this.domNode.firstChild);
@@ -108,7 +112,7 @@ class CMOutput {
 
 module.exports = CMOutput;
 
-},{}],13:[function(require,module,exports) {
+},{}],5:[function(require,module,exports) {
 module.exports = ["mcp","triggers","programmerhelper"];
 },{}],15:[function(require,module,exports) {
 'use strict';
@@ -438,7 +442,7 @@ class Notifier {
 }
 
 module.exports = Notifier;
-},{}],11:[function(require,module,exports) {
+},{}],7:[function(require,module,exports) {
 'use strict';
 const webtts = require('./inserts/webtts');
 const mcp = require('./inserts/mcp');
@@ -469,7 +473,7 @@ class InsertFactory {
 
 module.exports = InsertFactory;
 
-},{"./inserts/webtts":15,"./inserts/mcp":19,"./inserts/triggers":16,"./inserts/programmerhelper":17,"./inserts/notifier":18}],6:[function(require,module,exports) {
+},{"./inserts/webtts":15,"./inserts/mcp":19,"./inserts/triggers":16,"./inserts/programmerhelper":17,"./inserts/notifier":18}],8:[function(require,module,exports) {
 'use strict';
 class ChannelHistory {
 	constructor() {
@@ -518,7 +522,7 @@ class Channel {
 
 module.exports = ChannelHistory;
 
-},{}],12:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 'use strict';
 const ChannelHistory = require('./channelhistory');
 
@@ -585,10 +589,10 @@ class ChannelInterface {
 
 module.exports = ChannelInterface;
 
-},{"./channelhistory":6}],14:[function(require,module,exports) {
+},{"./channelhistory":8}],14:[function(require,module,exports) {
 module.exports = [{"type":"file","name":".DS_Store"},{"type":"file","name":"cancel.ogg"},{"type":"file","name":"dominion ship tell.ogg"},{"type":"file","name":"enter.ogg"},{"type":"file","name":"event.ogg"},{"type":"file","name":"leave linkdead.ogg"},{"type":"file","name":"leave.ogg"},{"type":"file","name":"off.ogg"},{"type":"file","name":"on.ogg"},{"type":"file","name":"prompt.ogg"},{"type":"file","name":"reconnected.ogg"},{"type":"file","name":"reply.ogg"},{"type":"file","name":"say.ogg"},{"type":"file","name":"tell.ogg"},{"type":"file","name":"whisper.ogg"},{"name":"admin","type":"folder","children":[{"type":"file","name":"administrators.ogg"},{"type":"file","name":"wizchange.ogg"}]},{"name":"casino","type":"folder","children":[{"type":"file","name":"slot_bet.ogg"},{"type":"file","name":"slot_lose.ogg"},{"type":"file","name":"slot_win.ogg"}]},{"name":"dragon","type":"folder","children":[{"type":"file","name":"eat.ogg"},{"type":"file","name":"flame.ogg"}]},{"name":"channels","type":"folder","children":[{"type":"file","name":".DS_Store"},{"type":"file","name":"announce.ogg"},{"type":"file","name":"botgames.ogg"},{"type":"file","name":"chat.ogg"},{"type":"file","name":"cp.ogg"},{"type":"file","name":"crazyparty.ogg"},{"type":"file","name":"creation.ogg"},{"type":"file","name":"dev.ogg"},{"type":"file","name":"games.ogg"},{"type":"file","name":"global.ogg"},{"type":"file","name":"haw.ogg"},{"type":"file","name":"im.ogg"},{"type":"file","name":"moderators.ogg"},{"type":"file","name":"newbie.ogg"},{"type":"file","name":"music.ogg"},{"type":"file","name":"news.ogg"},{"type":"file","name":"notify.ogg"},{"type":"file","name":"shout.ogg"},{"type":"file","name":"slej.ogg"},{"type":"file","name":"wily.ogg"},{"type":"file","name":"teamtalk.ogg"},{"type":"file","name":"wizards.ogg"}]},{"name":"games","type":"folder","children":[{"type":"file","name":"anagrams_end.ogg"},{"type":"file","name":"anagrams_invalid.ogg"},{"type":"file","name":"anagrams_start.ogg"},{"type":"file","name":"anagrams_valid.ogg"}]},{"name":"guns","type":"folder","children":[{"type":"file","name":"emptygun.ogg"},{"type":"file","name":"gun_drop.ogg"},{"type":"file","name":"gun_fired.ogg"},{"type":"file","name":"gun_load.ogg"},{"type":"file","name":"gun_silenced_fired.ogg"},{"type":"file","name":"gun_unload.ogg"},{"type":"file","name":"target_hit.ogg"},{"type":"file","name":"target_miss.ogg"},{"type":"file","name":"target_miss2.ogg"},{"type":"file","name":"target_miss3.ogg"},{"type":"file","name":"unwield_gun.ogg"},{"type":"file","name":"wield_gun.ogg"}]},{"name":"meow_button","type":"folder","children":[{"type":"file","name":".DS_Store"},{"type":"file","name":"meow.ogg"},{"type":"file","name":"press.ogg"},{"type":"file","name":"roll.ogg"}]},{"name":"misc","type":"folder","children":[{"type":"file","name":"high connections.ogg"},{"type":"file","name":"change.ogg"},{"type":"file","name":"home.ogg"},{"type":"file","name":"huh.ogg"},{"type":"file","name":"spoofer.ogg"},{"type":"file","name":"teleport in.ogg"},{"type":"file","name":"teleport out.ogg"}]},{"name":"pocketbubble","type":"folder","children":[{"type":"file","name":"bounce.ogg"},{"type":"file","name":"create.ogg"},{"type":"file","name":"pop.ogg"}]},{"name":"tv","type":"folder","children":[{"type":"file","name":"insult_off.ogg"},{"type":"file","name":"shot_off.ogg"},{"type":"file","name":"violent_social_off.ogg"}]},{"name":"socials","type":"folder","children":[{"type":"file","name":"Kick room.ogg"},{"type":"file","name":"Kick.ogg"},{"type":"file","name":"Kick10.ogg"},{"type":"file","name":"Kick11.ogg"},{"type":"file","name":"Kick12.ogg"},{"type":"file","name":"Kick13.ogg"},{"type":"file","name":"Kick14.ogg"},{"type":"file","name":"Kick15.ogg"},{"type":"file","name":"Kick16.ogg"},{"type":"file","name":"Kick17.ogg"},{"type":"file","name":"Kick18.ogg"},{"type":"file","name":"Kick19.ogg"},{"type":"file","name":"Kick2.ogg"},{"type":"file","name":"Kick20.ogg"},{"type":"file","name":"Kick3.ogg"},{"type":"file","name":"Kick4.ogg"},{"type":"file","name":"Kick5.ogg"},{"type":"file","name":"Kick6.ogg"},{"type":"file","name":"Kick7.ogg"},{"type":"file","name":"Kick8.ogg"},{"type":"file","name":"Kick9.ogg"},{"type":"file","name":"Kiss.ogg"},{"type":"file","name":"Poke me.ogg"},{"type":"file","name":"Punch10.ogg"},{"type":"file","name":"Punch11.ogg"},{"type":"file","name":"Punch12.ogg"},{"type":"file","name":"Punch13.ogg"},{"type":"file","name":"Punch14.ogg"},{"type":"file","name":"Punch15.ogg"},{"type":"file","name":"Punch16.ogg"},{"type":"file","name":"Punch18.ogg"},{"type":"file","name":"Punch17.ogg"},{"type":"file","name":"Punch19.ogg"},{"type":"file","name":"Punch2.ogg"},{"type":"file","name":"Punch20.ogg"},{"type":"file","name":"Punch3.ogg"},{"type":"file","name":"Punch4.ogg"},{"type":"file","name":"Punch5.ogg"},{"type":"file","name":"Punch6.ogg"},{"type":"file","name":"Punch7.ogg"},{"type":"file","name":"Punch8.ogg"},{"type":"file","name":"Punch9.ogg"},{"type":"file","name":"Slap2.ogg"},{"type":"file","name":"Slap3.ogg"},{"type":"file","name":"Slap4.ogg"},{"type":"file","name":"Slap5.ogg"},{"type":"file","name":"agree female101.ogg"},{"type":"file","name":"agree101.ogg"},{"type":"file","name":"apologize female101.ogg"},{"type":"file","name":"bark.ogg"},{"type":"file","name":"bored female101.ogg"},{"type":"file","name":"bored101.ogg"},{"type":"file","name":"brb101.ogg"},{"type":"file","name":"burp.ogg"},{"type":"file","name":"burp2.ogg"},{"type":"file","name":"cackle female.ogg"},{"type":"file","name":"cackle.ogg"},{"type":"file","name":"cheer female101.ogg"},{"type":"file","name":"chuckle female.ogg"},{"type":"file","name":"chuckle female101.ogg"},{"type":"file","name":"chuckle female102.ogg"},{"type":"file","name":"chuckle.ogg"},{"type":"file","name":"chuckle2.ogg"},{"type":"file","name":"clap.ogg"},{"type":"file","name":"coffee.ogg"},{"type":"file","name":"coke.ogg"},{"type":"file","name":"comfort female101.ogg"},{"type":"file","name":"comfort101.ogg"},{"type":"file","name":"confused female101.ogg"},{"type":"file","name":"cough female.ogg"},{"type":"file","name":"cough male.ogg"},{"type":"file","name":"cry female.ogg"},{"type":"file","name":"cry.ogg"},{"type":"file","name":"fart female.ogg"},{"type":"file","name":"fart.ogg"},{"type":"file","name":"flirt female101.ogg"},{"type":"file","name":"gasp female.ogg"},{"type":"file","name":"gasp.ogg"},{"type":"file","name":"giggle female.ogg"},{"type":"file","name":"giggle.ogg"},{"type":"file","name":"growl female.ogg"},{"type":"file","name":"growl female101.ogg"},{"type":"file","name":"growl female102.ogg"},{"type":"file","name":"growl.ogg"},{"type":"file","name":"hiss.ogg"},{"type":"file","name":"hmm female101.ogg"},{"type":"file","name":"hmm female102.ogg"},{"type":"file","name":"hmm female103.ogg"},{"type":"file","name":"hmm.ogg"},{"type":"file","name":"laugh female.ogg"},{"type":"file","name":"lol female101.ogg"},{"type":"file","name":"lol.ogg"},{"type":"file","name":"meow.ogg"},{"type":"file","name":"meow2.ogg"},{"type":"file","name":"meow3.ogg"},{"type":"file","name":"nudge me.ogg"},{"type":"file","name":"oic female101.ogg"},{"type":"file","name":"oic female102.ogg"},{"type":"file","name":"oic female103.ogg"},{"type":"file","name":"oic101.ogg"},{"type":"file","name":"okshut101.ogg"},{"type":"file","name":"okshut102.ogg"},{"type":"file","name":"paddle.ogg"},{"type":"file","name":"punch room.ogg"},{"type":"file","name":"punch.ogg"},{"type":"file","name":"purr.ogg"},{"type":"file","name":"rofl female.ogg"},{"type":"file","name":"rofl male.ogg"},{"type":"file","name":"scream female.ogg"},{"type":"file","name":"scream.ogg"},{"type":"file","name":"shove me.ogg"},{"type":"file","name":"shut101.ogg"},{"type":"file","name":"shutbuddy101.ogg"},{"type":"file","name":"sigh female.ogg"},{"type":"file","name":"sigh.ogg"},{"type":"file","name":"sit.ogg"},{"type":"file","name":"slap room.ogg"},{"type":"file","name":"slap.ogg"},{"type":"file","name":"snarl101.ogg"},{"type":"file","name":"snicker female101.ogg"},{"type":"file","name":"snicker.ogg"},{"type":"file","name":"sniff female.ogg"},{"type":"file","name":"sniff.ogg"},{"type":"file","name":"snore.ogg"},{"type":"file","name":"snort.ogg"},{"type":"file","name":"squeak.ogg"},{"type":"file","name":"stand.ogg"},{"type":"file","name":"tackle.ogg"},{"type":"file","name":"thank female101.ogg"},{"type":"file","name":"vomit.ogg"},{"type":"file","name":"yawn female.ogg"},{"type":"file","name":"yawn female101.ogg"},{"type":"file","name":"yawn male.ogg"}]},{"name":"clocks","type":"folder","children":[{"name":"bigben","type":"folder","children":[{"type":"file","name":"00.ogg"},{"type":"file","name":"15.ogg"},{"type":"file","name":"30.ogg"},{"type":"file","name":"45.ogg"},{"type":"file","name":"chime.ogg"}]},{"name":"grandfather","type":"folder","children":[{"type":"file","name":"chime.ogg"}]}]}]
 ;
-},{}],10:[function(require,module,exports) {
+},{}],13:[function(require,module,exports) {
 const sounds = require('./sounds');
 
 function findSoundsInFolder(path) {
@@ -698,7 +702,7 @@ class Sound {
 
 module.exports = SoundPlayer;
 
-},{"./soundops":10,"./sounds":14}],7:[function(require,module,exports) {
+},{"./soundops":13,"./sounds":14}],10:[function(require,module,exports) {
 'use strict';
 
 class Programmer {
@@ -756,7 +760,7 @@ class Programmer {
 
 module.exports = Programmer;
 
-},{}],8:[function(require,module,exports) {
+},{}],11:[function(require,module,exports) {
 const say = require('say');
 
 class TTS {
@@ -811,7 +815,7 @@ class TTS {
 
 module.exports = TTS;
 
-},{}],9:[function(require,module,exports) {
+},{}],12:[function(require,module,exports) {
 'use strict';
 const Combokeys = require("combokeys");
 class Interface {
@@ -863,7 +867,7 @@ class Interface {
 
 module.exports = Interface;
 
-},{}],3:[function(require,module,exports) {
+},{}],2:[function(require,module,exports) {
 'use strict';
 const CMOutput = require('./cmoutput');
 const Inserts = require('./inserts.json');
@@ -940,7 +944,7 @@ class ChatMud {
 
 module.exports = ChatMud;
 
-},{"./cmoutput":5,"./inserts.json":13,"./insertfactory":11,"./channelhistory":6,"./channelinterface":12,"./soundplayer":4,"./programmer":7,"./tts":8,"./interface":9}],2:[function(require,module,exports) {
+},{"./cmoutput":6,"./inserts.json":5,"./insertfactory":7,"./channelhistory":8,"./channelinterface":9,"./soundplayer":4,"./programmer":10,"./tts":11,"./interface":12}],3:[function(require,module,exports) {
 'use strict';
 const net = require('net');
 const EventEmitter = require('eventemitter3');
@@ -1002,5 +1006,5 @@ console.log('Creating handler...');
 const game = new ChatMud(connection);
 // });
 
-},{"./chatmud.js":3,"./tcp.js":2,"./soundplayer":4}]},{},[1])
+},{"./chatmud.js":2,"./tcp.js":3,"./soundplayer":4}]},{},[1])
 //# sourceMappingURL=/main.map

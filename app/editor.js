@@ -1,3 +1,4 @@
+const autogrow = require("textarea-autogrow");
 console.log("Running javascript");
 let code = "";
 let sender = null;
@@ -14,19 +15,13 @@ function sendCode() {
 	let sendLines = new Array();
 	let curLine = 0;
 	let tempLine = "";
+	let checkLine = "";
 	while (curLine < lines.length) {
 		tempLine += lines[curLine];
-		if (!tempLine.startsWith("//")) {
-				if (tempLine.endsWith(";")) {
-				sendLines.push(tempLine);
-				tempLine = "";
-				} else {
-					tempLine = tempLine.replace("\n", "");
-				}
-		} else {
-			sendLines.push(tempLine);
-		}
-		
+
+						sendLines.push(tempLine);
+
+		tempLine = "";
 			curLine++;
 				
 			
