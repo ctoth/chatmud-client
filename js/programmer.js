@@ -9,6 +9,7 @@ class Programmer {
 		this.window = null;
 		this.lines = new Array();
 		this.currentLine = 0;
+		this.boundMethod = null;
 	}
 
 	setEnableHelper(value) {
@@ -25,14 +26,14 @@ class Programmer {
 		setTimeout(() => {
 			this.window.postMessage(this.code);
 		}, 1000);
-
-		window.addEventListener('message', this.handleMessage.bind(this));
+		this.boundMethod = this.handleMessage.bind(this);
+		window.addEventListener('message', this.boundMethod);
 	}
 
 	handleMessage(data) {
 		const code = data.data;
 					this.sendCode(code);
-					window.removeEventListener('message', this.handleMessage.bind(this), true);
+					window.removeEventListener('message', this.boundMethod);
 	}
 
 	sendCode(data) {
