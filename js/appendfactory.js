@@ -1,16 +1,10 @@
 'use strict';
-const test = require("./appends/test");
+const appends = {
+};
 class AppendFactory {
-	
 	static getInstance(instance) {
-		switch (instance) {
-			case "test":
-				return test;
-				break;
-		}
-		
+		return appends[instance];
 	}
-	
 }
 
 module.exports = AppendFactory;

@@ -2,8 +2,8 @@
 const CMOutput = require('./cmoutput');
 const Inserts = require('./inserts.json');
 const InsertFactory = require('./insertfactory');
-const Appends = require("./appends.json");
-const AppendFactory = require("./appendfactory");
+const Appends = require('./appends.json');
+const AppendFactory = require('./appendfactory');
 const ChannelHistory = require('./channelhistory');
 const ChannelInterface = require('./channelinterface');
 const SoundPlayer = require('./soundplayer');
@@ -61,7 +61,7 @@ class ChatMud {
 			this.appends.push(instance);
 		}
 	}
-	
+
 	handleData(data) {
 			console.log('Received data: ' + data);
 			for (const insert of this.inserts) {
@@ -69,12 +69,11 @@ class ChatMud {
 			}
 
 			this.output.add(data);
-			
+
 			for (const append of this.appends) {
-				console.log("Appending");
+				console.log('Appending');
 				append.act(data, this);
 			}
-			
 	}
 
 	sendInput() {
