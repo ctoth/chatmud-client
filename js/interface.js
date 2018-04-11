@@ -10,8 +10,13 @@ class Interface {
 		require('combokeys/plugins/global-bind')(this.shortcuts);
 		this.setupEvents();
 		this.setupKeys();
+		this.setupInterface();
 	}
 
+	setupInterface() {
+
+	}
+	
 	setupKeys() {
 		if (process.platform === 'win32') {
 			this.shortcuts.bindGlobal('alt+left', () => this.instance.historyInterface.previousChannel());
