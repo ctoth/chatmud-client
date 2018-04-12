@@ -1,5 +1,5 @@
 const React = require("react");
-
+import "./ui.css";
 class MudInput extends React.Component {
 	constructor(props) {
 		super(props);
@@ -12,7 +12,7 @@ class MudInput extends React.Component {
 	
 	render() {
 		return (
-		<div>
+		<div className="input">
 		<h2>Input</h2>
 		<input type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleKey}/>
 		</div>
