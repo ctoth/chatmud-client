@@ -13,7 +13,20 @@ class MCP {
 		}
 
 		this.instance = instance;
-		this.parse(string);
+		if (string.startsWith("#$#json")) {
+			try {
+				string = string.slice(8, string.length);
+				let parsed = JSON.parse(string);
+				this.executeMCP(parsed.command, parsed.data, parsed.authentication_key);
+			} catch (error) {
+				this.instance.output.add("Error parsing MCP: " + string);
+			}
+			
+		} else {
+					this.parse(string);
+		}
+		
+
 		return '';
 	}
 
@@ -48,6 +61,7 @@ class MCP {
 	initMCP() {
 		this.instance.connection.send('#$#register_client Chatmud Official Client (Alpha)');
 		this.instance.connection.send('#$#client_supports authkeys');
+	this.instance.connection.send('#$#client_supports json');
 	}
 
 	executeMCP(command, args, key) {
