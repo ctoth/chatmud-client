@@ -1,4 +1,4 @@
-const autogrow = require("textarea-autogrow");
+
 console.log("Running javascript");
 let code = "";
 let sender = null;
