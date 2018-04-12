@@ -14,8 +14,7 @@ const Interface = require('./interface');
 class ChatMud {
 	constructor(connection) {
 		console.log('Constructing handler');
-		this.input = document.getElementById('cm-input');
-		this.output = new CMOutput(document.getElementById('cm-output'), this);
+		this.output = new CMOutput(this);
 		this.connection = connection;
 		this.inserts = new Array();
 		this.appends = new Array();
@@ -38,12 +37,7 @@ class ChatMud {
 	setupEvents() {
 		console.log('Setting events');
 		this.connection.on('data', data => this.handleData(data));
-		this.input.addEventListener('keyup', event => {
-			if (event.keyCode == 13) {
-				this.tts.stopSpeech();
-				this.sendInput();
-			}
-		});
+
 	}
 
 	setupInserts() {

@@ -1,11 +1,12 @@
 'use strict';
 const Combokeys = require('combokeys');
+const React = require("react");
+const reactDom = require("react-dom");
+const MainUI = require("./ui/main");
 
 class Interface {
 	constructor(instance) {
 		this.instance = instance;
-		this.audioOptsToggle = document.getElementById('audioOptsToggle');
-		this.audioOpts = document.getElementById('audioOpts');
 		this.shortcuts = new Combokeys(window);
 		require('combokeys/plugins/global-bind')(this.shortcuts);
 		this.setupEvents();
@@ -14,7 +15,7 @@ class Interface {
 	}
 
 	setupInterface() {
-
+		reactDom.render(<MainUI instance={this.instance}/>, document.getElementById("app"));
 	}
 	
 	setupKeys() {
@@ -34,14 +35,7 @@ class Interface {
 	}
 
 	setupEvents() {
-		audioOptsToggle.addEventListener('click', () => {
-			audioOptsToggle.setAttribute('aria-expanded', (audioOptsToggle.getAttribute('aria-expanded') == 'false' ? 'true' : 'false'));
-			audioOpts.style.display = (audioOpts.style.display == 'none' ? '' : 'none');
-		});
-		document.getElementById('soundVolume').addEventListener('change', event => {
-			console.log('Set volume to ' + event.target.value + ' percent');
-			Howler.volume(Number(event.target.value) / 100);
-		});
+
 	}
 
 	setSpeechEnabled(state) {
