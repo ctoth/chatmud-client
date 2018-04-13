@@ -1,4 +1,5 @@
 const React = require("react");
+const OutputItem = require('./outputitem')
 
 class MudOutput extends React.Component {
 	constructor(props) {
@@ -16,7 +17,7 @@ class MudOutput extends React.Component {
 		<h2>Output</h2>
 
 		{this.state.lines.map((line, index) => {
-			return <div>{line}</div>;
+			return <OutputItem text={line} />;
 		})}
 		
 		</div>
