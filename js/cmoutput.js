@@ -1,5 +1,5 @@
 'use strict';
-const EventEmitter = require("eventemitter3");
+const EventEmitter = require('eventemitter3');
 
 class CMOutput extends EventEmitter {
 	constructor(instance) {
@@ -9,19 +9,14 @@ class CMOutput extends EventEmitter {
 	}
 
 	add(string) {
-		console.log("Outputting " + string);
+		console.log('Outputting ' + string);
 		if (string != '') {
 			this.instance.tts.speak(string);
-			this.emit("MudOutput", string);
+			this.emit('MudOutput', string);
 
 			this.instance.history.addMessage('MudOutput', string);
 		}
-
 	}
-
-
-
-
 }
 
 module.exports = CMOutput;

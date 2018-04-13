@@ -1,8 +1,8 @@
 'use strict';
 const Combokeys = require('combokeys');
-const React = require("react");
-const reactDom = require("react-dom");
-const MainUI = require("./ui/main");
+const React = require('react');
+const reactDom = require('react-dom');
+const MainUI = require('./ui/main');
 
 class Interface {
 	constructor(instance) {
@@ -15,9 +15,9 @@ class Interface {
 	}
 
 	setupInterface() {
-		reactDom.render(<MainUI instance={this.instance}/>, document.getElementById("app"));
+		reactDom.render(<MainUI instance={this.instance}/>, document.getElementById('app'));
 	}
-	
+
 	setupKeys() {
 		if (process.platform === 'win32') {
 			this.shortcuts.bindGlobal('alt+left', () => this.instance.historyInterface.previousChannel());

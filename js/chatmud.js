@@ -37,7 +37,6 @@ class ChatMud {
 	setupEvents() {
 		console.log('Setting events');
 		this.connection.on('data', data => this.handleData(data));
-
 	}
 
 	setupInserts() {
