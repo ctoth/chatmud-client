@@ -1,9 +1,11 @@
+const PingUtils = require("./pingutils");
 'use strict';
 class MCP {
 	constructor() {
 		this.instance = null;
 		this.key = 0;
 		this.name = 0;
+		this.pings = new Array();
 	}
 
 	act(string, instance) {
@@ -62,6 +64,7 @@ class MCP {
 		this.instance.connection.send('#$#register_client Chatmud Official Client (Alpha)');
 		this.instance.connection.send('#$#client_supports authkeys');
 	this.instance.connection.send('#$#client_supports json');
+	this.instance.connection.send('#$#client_supports check_netlag');
 	}
 
 	executeMCP(command, args, key) {
@@ -108,6 +111,10 @@ class MCP {
 				break;
 			case 'edit':
 			this.handleEdit(args);
+				break;
+				
+				case "netlag":
+				this.handleNetLag(args);
 				break;
 			default:
 			this.handlePlay(command, args);
@@ -182,6 +189,30 @@ class MCP {
 			this.instance.output.add('Spoof attempt!');
 		}
 	}
+	
+	handleNetLag(args) {
+		if (args[0] == "ping") {
+			let newPing = new PingUtils(args[1]);
+			this.instance.connection.send("#$#netlag pong " + args[1]);
+			newPing.start();
+			this.pings.push(newPing);
+		}
+		
+		if (args[0] == "pang") {
+			let myPing = this.findPingByToken(args[1]);
+			myPing.stop();
+			
+		}
+		
+	}
+	
+	findPingByToken(token) {
+		for (let ping of this.pings) {
+			if (ping.token == token) return ping;
+		}
+		
+	}
+	
 }
 
 module.exports = MCP;
