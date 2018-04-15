@@ -14,7 +14,7 @@ class MudInput extends React.Component {
 		return (
 		<div className="input">
 		<h2>Input</h2>
-		<input type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleKey}/>
+		<input type="text" aria-label="Mud Input" aria-required="true" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleKey}/>
 		</div>
 		);
 	}
