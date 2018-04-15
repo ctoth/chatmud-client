@@ -1,5 +1,6 @@
 const React = require("react");
 const open=require('open');
+const YouTube = require('react-youtube-player').default;
 
 class OutputItem extends React.Component {
 	constructor(props) {
@@ -15,13 +16,27 @@ class OutputItem extends React.Component {
 		return split.map((item, index) => {
 			const re=this.re; //parcel doesn't let me use this.re directly for some odd reason
 			return (
-				re.test(item) ? <a href={item} onClick={(e) => this.openLink(e,item)}>{item}</a> : item
+				re.test(item) ? this.parseLink(item) : item
 			);
 		});
 	}
 	openLink(event, link) {
 		event.preventDefault();
 		open(link);
+	}
+	parseLink(item) {
+		if(item.indexOf('youtube.com/watch')!=-1) {
+			return this.parseYoutubeLink(item);
+		}
+		return (<a href={item} onClick={(e) => this.openLink(e,item)}>{item}</a>);
+	}
+	parseYoutubeLink(item) {
+		let id=item.split('v=')[1];
+		let andPosition=id.indexOf('&');
+		if(andPosition != -1) {
+		  id = id.substring(0, andPosition);
+		}
+		return <YouTube videoId={id} />;
 	}
 	render() {
 		return <div>{this.itemize(this.props.text)}</div>;
