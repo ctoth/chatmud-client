@@ -7,6 +7,7 @@ window.addEventListener("message", data => {
 	sender = data.source;
 	let area = document.getElementById("code-area");
 	area.value = data.data;
+	area.focus();
 });
 
 function sendCode() {
