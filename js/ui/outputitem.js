@@ -1,6 +1,7 @@
 const React = require("react");
 const open=require('open');
 const YouTube = require('react-youtube-player').default;
+const ResolvingLink = require('./resolvinglink');
 
 class OutputItem extends React.Component {
 	constructor(props) {
@@ -28,7 +29,7 @@ class OutputItem extends React.Component {
 		if(item.indexOf('youtube.com/watch')!=-1) {
 			return this.parseYoutubeLink(item);
 		}
-		return (<a href={item} onClick={(e) => this.openLink(e,item)}>{item}</a>);
+		return (<ResolvingLink url={item} onClick={(e) => this.openLink(e,item)}/>);
 	}
 	parseYoutubeLink(item) {
 		let id=item.split('v=')[1];
