@@ -13,7 +13,9 @@ class MainWindow extends React.Component {
 	render() {
 		return (
 			<div>
+			<div class="toolbar">
 				<ToolBar instance={this.props.instance}/>
+				</div>
 				<div className="output">
 					<MudOutput instance={this.props.instance}/>
 				</div>
