@@ -24,6 +24,8 @@
     "open": "0.0.5",
     "random-int": "^1.0.0",
     "react": "^16.3.1",
+    "react-accessible-accordion": "^2.3.1",
+    "react-accessible-modal": "^2.0.0",
     "react-dom": "^16.3.1",
     "react-soundcloud-embed": "^1.0.3",
     "react-soundcloud-widget": "^2.0.4",
