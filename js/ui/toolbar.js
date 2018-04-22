@@ -99,7 +99,7 @@ return (
 return (
 				<div>
 
-					<div class="settings-panel">
+					<div>
 						<OnlineList />
 					</div>
 
