@@ -1,15 +1,13 @@
+const Howler = require("howler");
 const React = require("react");
-// const AccessibleAccordion = require("react-accessible-accordion");
-// const Accordion = AccessibleAccordion.Accodrion;
-// const AccordionItem = AccessibleAccordion.AccordionItem;
-// const AccordionItemTitle = AccessibleAccordion.AccordionTitle;
-// const AccordionItemBody = AccessibleAccordion.AccordionItemBody;
+
 import {
 	Accordion,
 	AccordionItem,
 	AccordionItemTitle,
 	AccordionItemBody,
 } from 'react-accessible-accordion';
+
 
 class SettingsPanel extends React.Component {
 	constructor(props) {
@@ -55,6 +53,7 @@ class SettingsPanel extends React.Component {
 	
 	handleVolumeChange(event) {
 		const targetVolume = event.target.value;
+		Howler.volume = targetVolume/100;
 		this.setState({
 			volume:targetVolume
 		});

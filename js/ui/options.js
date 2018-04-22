@@ -1,6 +1,5 @@
 import "./ui.css";
 const React = require("react");
-import Modal from "react-accessible-modal";
 const SettingsPanel = require("./settingspanel");
 
 class OptionsDialog extends React.Component {
@@ -17,15 +16,19 @@ class OptionsDialog extends React.Component {
 		if (this.state.isOpened) {
 			return (
 			<div>
-			<Modal isOpen={true} label="Settings" onRequestClose={this.hideSettings}>
+			<div class="settings-button">
+			<button onClick={this.hideSettings} aria-expanded="true">Settings</button>
+			</div>
+			<div class="settings-panel">
 			<SettingsPanel />
-			</Modal>
+			</div>
+
 			</div>
 			);
 		} else {
 			return (
 			<div class="settings-button">
-			<button onClick={this.showSettings}>Settings</button>
+			<button onClick={this.showSettings} aria-expanded="false">Settings</button>
 			</div>
 			);
 		}
