@@ -1,4 +1,5 @@
-const PingUtils = require("./pingutils");
+const PingUtils = require('./pingutils');
+
 'use strict';
 class MCP {
 	constructor() {
@@ -15,19 +16,17 @@ class MCP {
 		}
 
 		this.instance = instance;
-		if (string.startsWith("#$#json")) {
+		if (string.startsWith('#$#json')) {
 			try {
 				string = string.slice(8, string.length);
-				let parsed = JSON.parse(string);
+				const parsed = JSON.parse(string);
 				this.executeMCP(parsed.command, parsed.data, parsed.authentication_key);
 			} catch (error) {
-				this.instance.output.add("Error parsing MCP: " + string);
+				this.instance.output.add('Error parsing MCP: ' + string);
 			}
-			
 		} else {
 					this.parse(string);
 		}
-		
 
 		return '';
 	}
@@ -112,8 +111,8 @@ class MCP {
 			case 'edit':
 			this.handleEdit(args);
 				break;
-				
-				case "netlag":
+
+			case 'netlag':
 				this.handleNetLag(args);
 				break;
 			default:
@@ -189,30 +188,28 @@ class MCP {
 			this.instance.output.add('Spoof attempt!');
 		}
 	}
-	
+
 	handleNetLag(args) {
-		if (args[0] == "ping") {
-			let newPing = new PingUtils(args[1]);
-			this.instance.connection.send("#$#netlag pong " + args[1]);
+		if (args[0] == 'ping') {
+			const newPing = new PingUtils(args[1]);
+			this.instance.connection.send('#$#netlag pong ' + args[1]);
 			newPing.start();
 			this.pings.push(newPing);
 		}
-		
-		if (args[0] == "pang") {
-			let myPing = this.findPingByToken(args[1]);
+
+		if (args[0] == 'pang') {
+			const myPing = this.findPingByToken(args[1]);
 			myPing.stop();
-			
 		}
-		
 	}
-	
+
 	findPingByToken(token) {
-		for (let ping of this.pings) {
-			if (ping.token == token) return ping;
+		for (const ping of this.pings) {
+			if (ping.token == token) {
+				return ping;
+			}
 		}
-		
 	}
-	
 }
 
 module.exports = MCP;
