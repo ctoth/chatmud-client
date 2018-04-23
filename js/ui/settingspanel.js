@@ -13,7 +13,7 @@ class SettingsPanel extends React.Component {
 		super(props);
 
 		this.state = {
-			volume: 1,
+			volume: Howler.volume()*100,
 			speech: true,
 			resolveLinks: true,
 			embedYoutube: true,
