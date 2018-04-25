@@ -10,15 +10,20 @@ class MudInput extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleKey = this.handleKey.bind(this);
+		this.inputRef=React.createRef();
 	}
 
 	render() {
 		return (
 			<div className="input">
 				<h2>Input</h2>
-				<input type="text" aria-label="Mud Input" aria-required="true" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleKey}/>
+				<input ref={this.inputRef} type="text" aria-label="Mud Input" aria-required="true" value={this.state.inputValue} onChange={this.handleChange} onKeyPress={this.handleKey}/>
 			</div>
 		);
+	}
+
+	componentDidMount() {
+		this.inputRef.current.focus();
 	}
 
 	handleKey(evt) {
