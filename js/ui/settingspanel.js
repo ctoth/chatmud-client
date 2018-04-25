@@ -14,7 +14,7 @@ class SettingsPanel extends React.Component {
 
 		this.state = {
 			volume: Howler.volume()*100,
-			speech: true,
+			speech: this.props.instance.tts.enabled,
 			resolveLinks: true,
 			embedYoutube: true,
 			sounds: true
@@ -42,7 +42,7 @@ class SettingsPanel extends React.Component {
 					<AccordionItemBody>
 
 						<label htmlFor="speech-checkbox">Speech enabled</label>
-						<input type="checkbox" id="speech-checkbox" onChange={this.handleSpeechStateChange} value={this.state.speech} />
+						<input type="checkbox" id="speech-checkbox" onChange={this.handleSpeechStateChange} checked={this.state.speech?true:false} />
 
 					</AccordionItemBody>
 				</AccordionItem>
