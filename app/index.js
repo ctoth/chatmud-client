@@ -4,6 +4,7 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+const Menu = electron.Menu
 
 const path = require('path')
 const url = require('url')
@@ -24,7 +25,40 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-	
+  const template = [
+    {
+      label: 'Edit',
+      submenu: [
+        {role: 'undo'},
+        {role: 'redo'},
+        {type: 'separator'},
+        {role: 'cut'},
+        {role: 'copy'},
+        {role: 'paste'},
+        {role: 'pasteandmatchstyle'},
+        {role: 'delete'},
+        {role: 'selectall'}
+      ]
+    },
+			];
+	  if (process.platform === 'darwin') {
+	    template.unshift({
+	      label: app.getName(),
+	      submenu: [
+	        {role: 'about'},
+	        {type: 'separator'},
+	        {role: 'services', submenu: []},
+	        {type: 'separator'},
+	        {role: 'hide'},
+	        {role: 'hideothers'},
+	        {role: 'unhide'},
+	        {type: 'separator'},
+	        {role: 'quit'}
+	      ]
+	    })
+				}
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
