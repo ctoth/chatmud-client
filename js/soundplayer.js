@@ -26,7 +26,7 @@ class SoundPlayer {
 
 	playSocial(name, gender) {
 		const socials = soundops.findSoundsInFolder('socials');
-		let foundSocials = soundops.findFilenames(name + ' ' + gender, socials);
+		let foundSocials = soundops.findFilenames(name + '_' + gender, socials);
 		if (foundSocials.length == 0) {
 			foundSocials = soundops.findFilenames(name, socials);
 		}
