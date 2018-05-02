@@ -10,6 +10,7 @@ const SoundPlayer = require('./soundplayer');
 const Programmer = require('./programmer');
 const TTS = require('./tts');
 const Interface = require('./interface');
+const InputHistory = require("./inputhistory");
 
 class ChatMud {
 	constructor(connection) {
@@ -20,6 +21,7 @@ class ChatMud {
 		this.appends = new Array();
 		this.history = new ChannelHistory();
 		this.historyInterface = new ChannelInterface(this.history, this);
+		this.inputHistory = new InputHistory();
 		this.soundPlayer = new SoundPlayer();
 		this.tts = new TTS();
 		this.interface = new Interface(this);
@@ -76,8 +78,17 @@ class ChatMud {
 		if (string == 'my_name') {
 			this.output.add('Your name is set to ' + this.info.name);
 		}
+		if (string == "") {
+			string = this.inputHistory.getLastEntered();
+		} else {
+			if (string != this.inputHistory.getLastEntered()) {
+				this.inputHistory.add(string);
+			}
+		}
 
 		this.connection.send(string);
+		
+		
 		this.input.value = '';
 	}
 }
