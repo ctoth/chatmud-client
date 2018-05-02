@@ -28,7 +28,16 @@ class MudInput extends React.Component {
 
 	handleKey(evt) {
 		if (evt.key == 'Enter') {
-			this.props.instance.connection.send(this.state.inputValue);
+			let value = this.state.inputValue;
+			if (value == "") {
+				value = this.props.instance.inputHistory.getLastEntered();
+			} else {
+				if (value != this.props.instance.inputHistory.getLastEntered()) {
+					this.props.instance.inputHistory.add(value);
+				}
+			}
+			
+			this.props.instance.connection.send(value);
 			this.props.instance.tts.stopSpeech();
 			this.setState({
 				inputValue: ''

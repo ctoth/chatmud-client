@@ -25,6 +25,7 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+  /**
   const template = [
     {
       label: 'Edit',
@@ -59,8 +60,9 @@ function createWindow () {
 				}
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
+  */
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

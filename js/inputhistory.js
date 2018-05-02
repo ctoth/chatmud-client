@@ -7,7 +7,7 @@ class InputHistory {
 	}
 	
 	add(string) {
-		this.strings.shift(string);
+		this.strings.unshift(string);
 	}
 	
 	getLastEntered() {

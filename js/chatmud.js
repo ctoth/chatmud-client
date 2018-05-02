@@ -78,8 +78,10 @@ class ChatMud {
 		if (string == 'my_name') {
 			this.output.add('Your name is set to ' + this.info.name);
 		}
+					this.output.add("Input history: " + JSON.stringify(this.inputHistory.strings));
 		if (string == "") {
 			string = this.inputHistory.getLastEntered();
+
 		} else {
 			if (string != this.inputHistory.getLastEntered()) {
 				this.inputHistory.add(string);
