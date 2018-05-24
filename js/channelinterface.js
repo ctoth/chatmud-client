@@ -28,7 +28,7 @@ class ChannelInterface {
 			this.currentChannel = 0;
 		}
 
-				this.instance.tts.speakImmediate(this.history.channels[this.currentChannel].name);
+		this.instance.tts.speakImmediate(this.history.channels[this.currentChannel].name);
 	}
 
 	nextMessage() {

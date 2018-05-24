@@ -30,8 +30,8 @@ class Interface {
 			this.shortcuts.bindGlobal('alt+meta+up', () => this.instance.historyInterface.previousMessage());
 			this.shortcuts.bindGlobal('alt+meta+down', () => this.instance.historyInterface.nextMessage());
 		}
-				this.shortcuts.bindGlobal('ctrl', () => this.instance.tts.stopSpeech());
-				this.shortcuts.bindGlobal('f12', () => this.setSpeechEnabled(!this.instance.tts.enabled));
+		this.shortcuts.bindGlobal('ctrl', () => this.instance.tts.stopSpeech());
+		this.shortcuts.bindGlobal('f12', () => this.setSpeechEnabled(!this.instance.tts.enabled));
 	}
 
 	setupEvents() {

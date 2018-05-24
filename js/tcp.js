@@ -32,7 +32,7 @@ class TCPConnection extends EventEmitter {
 	emitData(data) {
 		const arr = data.split('\r\n');
 		for (const i of arr) {
-		this.emit('data', i);
+			this.emit('data', i);
 		}
 	}
 

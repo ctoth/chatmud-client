@@ -10,7 +10,7 @@ const SoundPlayer = require('./soundplayer');
 const Programmer = require('./programmer');
 const TTS = require('./tts');
 const Interface = require('./interface');
-const InputHistory = require("./inputhistory");
+const InputHistory = require('./inputhistory');
 
 class ChatMud {
 	constructor(connection) {
@@ -58,17 +58,17 @@ class ChatMud {
 	}
 
 	handleData(data) {
-			console.log('Received data: ' + data);
-			for (const insert of this.inserts) {
-				data = insert.act(data, this);
-			}
+		console.log('Received data: ' + data);
+		for (const insert of this.inserts) {
+			data = insert.act(data, this);
+		}
 
-			this.output.add(data);
+		this.output.add(data);
 
-			for (const append of this.appends) {
-				console.log('Appending');
-				append.act(data, this);
-			}
+		for (const append of this.appends) {
+			console.log('Appending');
+			append.act(data, this);
+		}
 	}
 
 	sendInput() {
@@ -78,19 +78,15 @@ class ChatMud {
 		if (string == 'my_name') {
 			this.output.add('Your name is set to ' + this.info.name);
 		}
-					this.output.add("Input history: " + JSON.stringify(this.inputHistory.strings));
-		if (string == "") {
+		this.output.add('Input history: ' + JSON.stringify(this.inputHistory.strings));
+		if (string == '') {
 			string = this.inputHistory.getLastEntered();
-
-		} else {
-			if (string != this.inputHistory.getLastEntered()) {
-				this.inputHistory.add(string);
-			}
+		} else if (string != this.inputHistory.getLastEntered()) {
+			this.inputHistory.add(string);
 		}
 
 		this.connection.send(string);
-		
-		
+
 		this.input.value = '';
 	}
 }

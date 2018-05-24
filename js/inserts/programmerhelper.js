@@ -13,15 +13,15 @@ class ProgrammerHelper {
 			}
 
 			this.instance = instance;
-					console.log('Checking: ' + string);
-					if (string == '.') {
-			this.instance.programmer.setCode(this.code);
-			this.instance.programmer.open();
-			this.instance.programmer.setEnableHelper(false);
-			this.receiving = false;
-					}
-					this.code += string + '\n';
-					return '';
+			console.log('Checking: ' + string);
+			if (string == '.') {
+				this.instance.programmer.setCode(this.code);
+				this.instance.programmer.open();
+				this.instance.programmer.setEnableHelper(false);
+				this.receiving = false;
+			}
+			this.code += string + '\n';
+			return '';
 		}
 		return string;
 	}

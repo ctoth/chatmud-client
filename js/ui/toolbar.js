@@ -2,7 +2,7 @@ import './ui.css';
 
 const React = require('react');
 const SettingsPanel = require('./settingspanel');
-const OnlineList = require("./onlinelist");
+const OnlineList = require('./onlinelist');
 
 class ToolBar extends React.Component {
 	constructor(props) {
@@ -18,68 +18,67 @@ class ToolBar extends React.Component {
 	}
 
 	render() {
-					return (
-					<div>
-					{this.renderButtons()}
-					{this.renderSettings()}
-					{this.renderOnlineList()}
-					</div>
-					);
+		return (
+			<div>
+				{this.renderButtons()}
+				{this.renderSettings()}
+				{this.renderOnlineList()}
+			</div>
+		);
 	}
-	
+
 	showSettings() {
 		this.setState({
 			isSettingsOpened: true,
-			isOnlineListOpened:false
+			isOnlineListOpened: false
 		});
 	}
 
 	hideSettings() {
 		this.setState({
 			isSettingsOpened: false,
-			isOnlineListOpened:false
+			isOnlineListOpened: false
 		});
 	}
-	
-	renderButtons() {
-		let buttons = [];
 
-			if (this.state.isSettingsOpened == true) { 
-				buttons.push(<button onClick={this.hideSettings} aria-expanded="true">Settings</button>);
-			} else {
-				buttons.push(				<button onClick={this.showSettings} aria-expanded="false">Settings</button>);
-			}
-			
-		if (this.state.isOnlineListOpened) {
-									buttons.push(<button onClick={this.hideOnlineList} aria-expanded="true">Online List</button>);
+	renderButtons() {
+		const buttons = [];
+
+		if (this.state.isSettingsOpened == true) {
+			buttons.push(<button onClick={this.hideSettings} aria-expanded="true">Settings</button>);
 		} else {
-			buttons.push(				<button onClick={this.showOnlineList} aria-expanded="false">Online List</button>);
+			buttons.push(<button onClick={this.showSettings} aria-expanded="false">Settings</button>);
+		}
+
+		if (this.state.isOnlineListOpened) {
+			buttons.push(<button onClick={this.hideOnlineList} aria-expanded="true">Online List</button>);
+		} else {
+			buttons.push(<button onClick={this.showOnlineList} aria-expanded="false">Online List</button>);
 		}
 		return (
-		<div class="toolbar">
-		{buttons}
-		</div>
+			<div class="toolbar">
+				{buttons}
+			</div>
 		);
-
 	}
-	
+
 	showOnlineList() {
 		this.setState({
 			isOnlineListOpened: true,
-			isSettingsOpened:false
+			isSettingsOpened: false
 		});
 	}
 
 	hideOnlineList() {
 		this.setState({
 			isOnlineListOpened: false,
-			isSettingsOpened:false
+			isSettingsOpened: false
 		});
 	}
 
 	renderSettings() {
 		if (this.state.isSettingsOpened) {
-return (
+			return (
 				<div>
 
 					<div class="settings-panel">
@@ -88,15 +87,12 @@ return (
 
 				</div>
 			);
-		}		
-		
-
-
+		}
 	}
-	
+
 	renderOnlineList() {
 		if (this.state.isOnlineListOpened) {
-return (
+			return (
 				<div>
 
 					<div>
@@ -105,9 +101,8 @@ return (
 
 				</div>
 			);
-		}		
+		}
 	}
-	
 }
 
 module.exports = ToolBar;

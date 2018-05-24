@@ -1,6 +1,6 @@
 const {Howl, Howler} = require('howler');
-const soundops = require('./soundops');
 const rng = require('random-int');
+const soundops = require('./soundops');
 const Sounds = require('./sounds');
 
 class SoundPlayer {

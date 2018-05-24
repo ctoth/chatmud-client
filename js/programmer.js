@@ -32,8 +32,8 @@ class Programmer {
 
 	handleMessage(data) {
 		const code = data.data;
-					this.sendCode(code);
-					window.removeEventListener('message', this.boundMethod);
+		this.sendCode(code);
+		window.removeEventListener('message', this.boundMethod);
 	}
 
 	sendCode(data) {
@@ -41,11 +41,11 @@ class Programmer {
 		this.lines = lines;
 		this.instance.connection.send('@program ' + this.object);
 		for (const line of lines) {
-				this.instance.connection.send(line);
+			this.instance.connection.send(line);
 		}
-			this.instance.connection.send('.');
-			this.code = '';
-			this.enabled = false;
+		this.instance.connection.send('.');
+		this.code = '';
+		this.enabled = false;
 	}
 
 	setObject(obj) {

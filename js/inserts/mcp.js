@@ -25,7 +25,7 @@ class MCP {
 				this.instance.output.add('Error parsing MCP: ' + string);
 			}
 		} else {
-					this.parse(string);
+			this.parse(string);
 		}
 
 		return '';
@@ -62,8 +62,8 @@ class MCP {
 	initMCP() {
 		this.instance.connection.send('#$#register_client Chatmud Official Client (Alpha)');
 		this.instance.connection.send('#$#client_supports authkeys');
-	this.instance.connection.send('#$#client_supports json');
-	this.instance.connection.send('#$#client_supports check_netlag');
+		this.instance.connection.send('#$#client_supports json');
+		this.instance.connection.send('#$#client_supports check_netlag');
 	}
 
 	executeMCP(command, args, key) {
@@ -81,42 +81,42 @@ class MCP {
 				this.instance.info.name = args[0];
 				break;
 			case 'channel_message':
-			this.handleChannelMessage(args);
+				this.handleChannelMessage(args);
 				break;
 			case 'channel_social':
-			this.handleChannelSocial(args);
+				this.handleChannelSocial(args);
 				break;
 			case 'social':
-			this.handleSocial(args);
+				this.handleSocial(args);
 				break;
 
 			case 'watched_player_connect':
-			this.handlePlayerConnect(args);
+				this.handlePlayerConnect(args);
 				break;
 			case 'watched_player_reconnect':
-			this.handlePlayerReconnect(args);
+				this.handlePlayerReconnect(args);
 				break;
 			case 'watched_player_disconnect':
-			this.handlePlayerDisconnect(args);
+				this.handlePlayerDisconnect(args);
 				break;
 			case 'teleport_out':
-			this.handlePlayerTeleportOut(args);
+				this.handlePlayerTeleportOut(args);
 				break;
 			case 'teleport_in':
-			this.handlePlayerTeleportIn(args);
+				this.handlePlayerTeleportIn(args);
 				break;
 			case 'tell_message':
-			this.handleTell(args);
+				this.handleTell(args);
 				break;
 			case 'edit':
-			this.handleEdit(args);
+				this.handleEdit(args);
 				break;
 
 			case 'netlag':
 				this.handleNetLag(args);
 				break;
 			default:
-			this.handlePlay(command, args);
+				this.handlePlay(command, args);
 				break;
 		}
 	}

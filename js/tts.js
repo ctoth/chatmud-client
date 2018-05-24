@@ -21,7 +21,7 @@ class TTS {
 		if (this.speaking == true) {
 			this.stopSpeech();
 		}
-					this.speak(string);
+		this.speak(string);
 	}
 
 	speak(string) {
@@ -30,12 +30,12 @@ class TTS {
 		}
 		string = string.replace('[', ' ');
 		string = string.replace(']', ' ');
-	console.log('saying ' + string);
-	this.speakQueue.push(string);
-	if (this.speaking == false) {
-	this.handleQueue();
-	this.speaking = true;
-	}
+		console.log('saying ' + string);
+		this.speakQueue.push(string);
+		if (this.speaking == false) {
+			this.handleQueue();
+			this.speaking = true;
+		}
 	}
 
 	handleQueue() {

@@ -21,7 +21,7 @@ function findFilenames(string, array) {
 	const returnObj = [];
 	for (const entry of array) {
 		if (entry.name.includes(string)) {
-returnObj.push(entry.name);
+			returnObj.push(entry.name);
 		}
 	}
 	return returnObj;

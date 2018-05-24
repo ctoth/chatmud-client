@@ -1,6 +1,6 @@
 const React = require('react');
+const Settings = require('../settings.json');
 const OutputItem = require('./outputitem');
-const Settings = require("../settings.json");
 
 class MudOutput extends React.Component {
 	constructor(props) {

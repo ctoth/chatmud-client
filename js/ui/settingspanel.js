@@ -1,6 +1,3 @@
-const {Howler} = require('howler');
-const React = require('react');
-
 import {
 	Accordion,
 	AccordionItem,
@@ -8,12 +5,15 @@ import {
 	AccordionItemBody
 } from 'react-accessible-accordion';
 
+const {Howler} = require('howler');
+const React = require('react');
+
 class SettingsPanel extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			volume: Howler.volume()*100,
+			volume: Howler.volume() * 100,
 			speech: this.props.instance.tts.enabled,
 			resolveLinks: true,
 			embedYoutube: true,
@@ -42,7 +42,7 @@ class SettingsPanel extends React.Component {
 					<AccordionItemBody>
 
 						<label htmlFor="speech-checkbox">Speech enabled</label>
-						<input type="checkbox" id="speech-checkbox" onChange={this.handleSpeechStateChange} checked={this.state.speech?true:false} />
+						<input type="checkbox" id="speech-checkbox" onChange={this.handleSpeechStateChange} checked={Boolean(this.state.speech)} />
 
 					</AccordionItemBody>
 				</AccordionItem>

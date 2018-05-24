@@ -1,6 +1,6 @@
-const React = require('react');
-
 import './ui.css';
+
+const React = require('react');
 
 class MudInput extends React.Component {
 	constructor(props) {
@@ -10,7 +10,7 @@ class MudInput extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleKey = this.handleKey.bind(this);
-		this.inputRef=React.createRef();
+		this.inputRef = React.createRef();
 	}
 
 	render() {
@@ -29,14 +29,12 @@ class MudInput extends React.Component {
 	handleKey(evt) {
 		if (evt.key == 'Enter') {
 			let value = this.state.inputValue;
-			if (value == "") {
+			if (value == '') {
 				value = this.props.instance.inputHistory.getLastEntered();
-			} else {
-				if (value != this.props.instance.inputHistory.getLastEntered()) {
-					this.props.instance.inputHistory.add(value);
-				}
+			} else if (value != this.props.instance.inputHistory.getLastEntered()) {
+				this.props.instance.inputHistory.add(value);
 			}
-			
+
 			this.props.instance.connection.send(value);
 			this.props.instance.tts.stopSpeech();
 			this.setState({
