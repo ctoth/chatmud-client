@@ -1,6 +1,6 @@
 'use strict';
 const ChatMud = require('./chatmud.js');
-const TCPConnection = require('./tcp.js');
+const TCPConnection = require('./tls.js');
 const SoundPlayer = require('./soundplayer');
 
 // AddEventListener("DOMContentLoaded", () => {
