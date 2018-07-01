@@ -8,7 +8,8 @@ const ChannelHistory = require('./channelhistory');
 const ChannelInterface = require('./channelinterface');
 const SoundPlayer = require('./soundplayer');
 const Programmer = require('./programmer');
-const TTS = require('./tts');
+const AriaTTS = require('./ariatts');
+const MacTTS = require("./mactts.js");
 const Interface = require('./interface');
 const InputHistory = require('./inputhistory');
 
@@ -23,7 +24,14 @@ class ChatMud {
 		this.historyInterface = new ChannelInterface(this.history, this);
 		this.inputHistory = new InputHistory();
 		this.soundPlayer = new SoundPlayer();
-		this.tts = new TTS();
+		this.tts = null;
+		if (process.platform == "darwin") {
+			this.tts = new MacTTS();
+		} else {
+			this.tts = new AriaTTS();
+		}
+
+		
 		this.interface = new Interface(this);
 		this.programmer = new Programmer(this);
 		this.info = {
