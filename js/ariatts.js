@@ -15,8 +15,8 @@ class TTS {
 	}
 
 	speakImmediate(string) {
-		
-		
+		let item = document.getElementById("tts");
+		item.innerHTML = "";
 		this.speak(string);
 	}
 
@@ -29,8 +29,8 @@ class TTS {
 		console.log('saying ' + string);
         
 		let item = document.getElementById("tts");
-        item.innerHTML = "";
-        let node = document.createTextNode(string);
+        let node = document.createTextNode(string+"\n");
+		item.appendChild(document.createElement('br'));
         item.appendChild(node);
 	}
 
