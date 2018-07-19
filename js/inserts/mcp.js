@@ -1,3 +1,4 @@
+'use strict';
 const PingUtils = require('./pingutils');
 
 'use strict';
@@ -20,7 +21,7 @@ class MCP {
 			try {
 				string = string.slice(8, string.length);
 				const parsed = JSON.parse(string);
-				this.executeMCP(parsed.command, parsed.data, parsed.authentication_key);
+				this.executeMCP(parsed.command, parsed, parsed.authentication_key);
 			} catch (error) {
 				this.instance.output.add('Error parsing MCP: ' + string);
 			}
@@ -122,40 +123,43 @@ class MCP {
 	}
 
 	handleChannelMessage(args) {
-		this.instance.history.addMessage(args[0], args[2] + args[3]);
-		this.instance.output.add(args[2] + ' ' + args[3]);
-		this.instance.soundPlayer.playChannel(args[0]);
+		this.instance.history.addMessage(args.name, args.prefix + args.message);
+		this.instance.output.add(args.prefix + ' ' + args.message);
+		this.instance.soundPlayer.playChannel(args.name);
 	}
 
 	handleChannelSocial(args) {
 		console.log(JSON.stringify(args));
-		this.instance.history.addMessage(args[0], args[0] + Number(': ') + args[3]);
-		this.instance.output.add(args[0] + ': ' + args[3]);
-		this.instance.soundPlayer.playSocial(args[2], args[5]);
-		this.instance.soundPlayer.playChannel(args[0]);
+		this.instance.history.addMessage(args.name, args.name + ': ' + args.message);
+		this.instance.output.add(args.name + ': ' + args.message);
+		this.instance.soundPlayer.playSocial(args.social, args.gender);
+		this.instance.soundPlayer.playChannel(args.name);
 	}
 
 	handleSocial(args) {
-		this.instance.soundPlayer.playSocial(args[0], args[2]);
+		this.instance.soundPlayer.playSocial(args.data[0], args.data[2]);
 	}
 
 	handlePlay(command, args) {
-		this.instance.soundPlayer.play(args[0], command);
+		if (args.data) {
+			this.instance.soundPlayer.play(args.data[0], command);
+		}
+		
 	}
 
 	handlePlayerConnect(args) {
 		this.instance.soundPlayer.play('enter');
-		this.instance.output.add(args[0] + ' connected');
+		this.instance.output.add(args.data[0] + ' connected');
 	}
 
 	handlePlayerReconnect(args) {
 		this.instance.soundPlayer.play('reconnect');
-		this.instance.output.add(args[0] + ' reconnected');
+		this.instance.output.add(args.data[0] + ' reconnected');
 	}
 
 	handlePlayerDisconnect(args) {
 		this.instance.soundPlayer.play('leave');
-		this.instance.output.add(args[0] + ' disconnected');
+		this.instance.output.add(args.data[0] + ' disconnected');
 	}
 
 	handlePlayerTeleportOut(args) {
@@ -169,11 +173,11 @@ class MCP {
 	handleTell(args) {
 		console.log('Parsed tell: ' + args);
 		this.instance.soundPlayer.play('tell');
-		this.instance.output.add(args[0] + ' ' + args[1] + ' ' + args[2]);
+		this.instance.output.add(args.data[0] + ' ' + args.data[1] + ' ' + args.data[2]);
 	}
 
 	handleEdit(args) {
-		const args2 = args[0].split(' ');
+		const args2 = args.data[0].split(' ');
 		// Console.log("Split args: " + JSON.stringify(args2));
 		// let verb = args2[1].split(":")[1];
 		// let object = args2[4].split(":")[0];
@@ -190,15 +194,15 @@ class MCP {
 	}
 
 	handleNetLag(args) {
-		if (args[0] == 'ping') {
-			const newPing = new PingUtils(args[1]);
-			this.instance.connection.send('#$#netlag pong ' + args[1]);
+		if (args.data[0] == 'ping') {
+			const newPing = new PingUtils(args.data[1]);
+			this.instance.connection.send('#$#netlag pong ' + args.data[1]);
 			newPing.start();
 			this.pings.push(newPing);
 		}
 
-		if (args[0] == 'pang') {
-			const myPing = this.findPingByToken(args[1]);
+		if (args.data[0] == 'pang') {
+			const myPing = this.findPingByToken(args.data[1]);
 			myPing.stop();
 		}
 	}
