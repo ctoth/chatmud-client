@@ -132,7 +132,7 @@ class MCP {
 		console.log(JSON.stringify(args));
 		this.instance.history.addMessage(args.name, args.name + ': ' + args.message);
 		this.instance.output.add(args.name + ': ' + args.message);
-		this.instance.soundPlayer.playSocial(args.social, args.gender);
+		this.instance.soundPlayer.playSocial(args.social	, args.gender);
 		this.instance.soundPlayer.playChannel(args.name);
 	}
 
