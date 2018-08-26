@@ -5,7 +5,7 @@ const EventEmitter = require("eventemitter3");
 class Websockets extends EventEmitter {
 	constructor() {
 		super();
-		this.io = new IO("https://chatmud.com:3647");
+		this.io = new IO();
 		this.setupEvents();
 	}
 	
