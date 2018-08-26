@@ -9,7 +9,7 @@ const ChannelInterface = require('./channelinterface');
 const SoundPlayer = require('./soundplayer');
 const Programmer = require('./programmer');
 const AriaTTS = require('./ariatts');
-const MacTTS = require("./mactts.js");
+// const MacTTS = require("./mactts.js");
 const Interface = require('./interface');
 const InputHistory = require('./inputhistory');
 
@@ -25,11 +25,11 @@ class ChatMud {
 		this.inputHistory = new InputHistory();
 		this.soundPlayer = new SoundPlayer();
 		this.tts = null;
-		if (process.platform == "darwin") {
-			this.tts = new MacTTS();
-		} else {
+//		if (process.platform == "darwin") {
+//			this.tts = new MacTTS();
+//		} else {
 			this.tts = new AriaTTS();
-		}
+//		}
 
 		
 		this.interface = new Interface(this);
@@ -82,7 +82,7 @@ class ChatMud {
 	sendInput() {
 		console.log('Handle enter key');
 
-		const string = this.input.value;
+		let string = this.input.value;
 		if (string == 'my_name') {
 			this.output.add('Your name is set to ' + this.info.name);
 		}

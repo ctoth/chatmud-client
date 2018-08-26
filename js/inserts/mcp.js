@@ -154,7 +154,7 @@ class MCP {
 
 	handlePlayerReconnect(args) {
 		this.instance.soundPlayer.play('reconnect');
-		this.instance.output.add(args.data[0] + ' reconnected');
+		this.instance.output.add(args[0] + ' reconnected');
 	}
 
 	handlePlayerDisconnect(args) {

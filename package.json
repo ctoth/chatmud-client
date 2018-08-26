@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./app",
     "build": "parcel build ./js/main.js -d ./app --target=electron",
+        "build-web": "parcel build ./js/main.js -d ./app --target=browser",
     "dev": "parcel watch ./js/main.js -d ./app/ --target=electron --no-hmr"
   },
   "keywords": [],
@@ -33,6 +34,7 @@
     "react-youtube-player": "^2.0.1",
     "run": "^1.4.0",
     "say": "^0.14.0",
+    "socket.io-client": "^2.1.1",
     "start": "^5.1.0",
     "url-to-title": "^1.0.6"
   }
