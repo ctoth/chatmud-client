@@ -45,18 +45,18 @@ class ToolBar extends React.Component {
 		const buttons = [];
 
 		if (this.state.isSettingsOpened == true) {
-			buttons.push(<button onClick={this.hideSettings} aria-expanded="true">Settings</button>);
+			buttons.push(<button key="1" onClick={this.hideSettings} aria-expanded="true">Settings</button>);
 		} else {
-			buttons.push(<button onClick={this.showSettings} aria-expanded="false">Settings</button>);
+			buttons.push(<button key="2" onClick={this.showSettings} aria-expanded="false">Settings</button>);
 		}
 
 		if (this.state.isOnlineListOpened) {
-			buttons.push(<button onClick={this.hideOnlineList} aria-expanded="true">Online List</button>);
+			buttons.push(<button key="3" onClick={this.hideOnlineList} aria-expanded="true">Online List</button>);
 		} else {
-			buttons.push(<button onClick={this.showOnlineList} aria-expanded="false">Online List</button>);
+			buttons.push(<button key="5" onClick={this.showOnlineList} aria-expanded="false">Online List</button>);
 		}
 		return (
-			<div class="toolbar">
+			<div className="toolbar">
 				{buttons}
 			</div>
 		);
@@ -81,7 +81,7 @@ class ToolBar extends React.Component {
 			return (
 				<div>
 
-					<div class="settings-panel">
+					<div className="settings-panel">
 						<SettingsPanel instance={this.props.instance}/>
 					</div>
 

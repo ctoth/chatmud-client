@@ -13,7 +13,7 @@ class MainWindow extends React.Component {
 	render() {
 		return (
 			<div>
-				<div class="toolbar">
+				<div className="toolbar">
 					<ToolBar instance={this.props.instance}/>
 				</div>
 				<div className="output">

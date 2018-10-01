@@ -14,8 +14,7 @@ class MudOutput extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h2>Output</h2>
+			<div className="output-area">
 
 				{this.state.lines.map((line, index) => {
 					return <OutputItem text={line} />;
