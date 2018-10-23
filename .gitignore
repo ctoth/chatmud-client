@@ -4,3 +4,6 @@ app/main.map
 app/main.js
 .cache
 dist
+app
+app_web
+app_dev

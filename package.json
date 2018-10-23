@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./app",
-    "build": "parcel build ./js/main.js -d ./app --target=electron",
-    "build-web": "parcel build ./js/main.js -d ./app_web --target=browser",
-    "dev": "parcel watch ./js/main.js -d ./app/ --target=electron --no-hmr"
+    "build-app": "parcel build ./html/index.html -d ./app --target=electron",
+    "build-web": "parcel build ./html/index.html -d ./app_web --target=browser",
+    "dev": "parcel watch ./html/index.html -d ./app_dev/ --target=electron --no-hmr"
   },
   "keywords": [],
   "author": "",
