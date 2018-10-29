@@ -177,7 +177,8 @@ class MCP {
 	}
 
 	handleEdit(args) {
-		const args2 = args.data[0].split(' ');
+console.log(JSON.stringify(args));
+		const args2 = args[0].split(' ');
 		// Console.log("Split args: " + JSON.stringify(args2));
 		// let verb = args2[1].split(":")[1];
 		// let object = args2[4].split(":")[0];

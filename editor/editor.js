@@ -6,13 +6,19 @@ window.addEventListener("message", data => {
 	console.log("Received: " + data.message);
 	sender = data.source;
 	let area = document.getElementById("code-area");
-	area.value = data.data;
+	// area.innerHTML = data.data;
+let codeHTML = "";
+let lines = data.data.split("\n");
+for (const line of lines) {
+codeHTML = codeHTML + line + "<br>";
+}
+area.innerHTML = codeHTML;
 	area.focus();
 });
 
 function sendCode() {
-	let code = document.getElementById("code-area").value;
-	let lines = code.split("\n");
+	let code = document.getElementById("code-area").innerHTML;
+	let lines = code.split("<br>");
 	let sendLines = new Array();
 	let curLine = 0;
 	let tempLine = "";

@@ -22,7 +22,7 @@ class Programmer {
 	}
 
 	open() {
-		this.window = window.open('./editor.html');
+		this.window = window.open('editor.html');
 		setTimeout(() => {
 			this.window.postMessage(this.code);
 		}, 1000);
