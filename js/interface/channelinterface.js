@@ -1,5 +1,5 @@
 'use strict';
-const ChannelHistory = require('./channelhistory');
+const ChannelHistory = require('../history/channelhistory');
 
 class ChannelInterface {
 	constructor(history, instance) {

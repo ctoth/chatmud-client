@@ -1,3 +1,4 @@
+'use strict';
 class PingUtils {
 	constructor(token) {
 		this.token = token;

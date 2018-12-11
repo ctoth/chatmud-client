@@ -1,17 +1,17 @@
 'use strict';
-const CMOutput = require('./cmoutput');
-const Inserts = require('./inserts.json');
-const InsertFactory = require('./insertfactory');
-const Appends = require('./appends.json');
-const AppendFactory = require('./appendfactory');
-const ChannelHistory = require('./channelhistory');
-const ChannelInterface = require('./channelinterface');
-const SoundPlayer = require('./soundplayer');
-const Programmer = require('./programmer');
-const AriaTTS = require('./ariatts');
+const CMOutput = require('./interface/cmoutput');
+const Inserts = require('./inserts/inserts.json');
+const InsertFactory = require('./inserts/insertfactory');
+const Appends = require('./appends/appends.json');
+const AppendFactory = require('./appends/appendfactory');
+const ChannelHistory = require('./history/channelhistory');
+const ChannelInterface = require('./interface/channelinterface');
+const SoundPlayer = require('./sounds/soundplayer');
+const Programmer = require('./interface/programmer');
+const AriaTTS = require('./tts/ariatts');
 // const MacTTS = require("./mactts.js");
-const Interface = require('./interface');
-const InputHistory = require('./inputhistory');
+const Interface = require('./interface/interface');
+const InputHistory = require('./history/inputhistory');
 
 class ChatMud {
 	constructor(connection) {

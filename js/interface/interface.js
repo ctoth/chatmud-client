@@ -2,7 +2,7 @@
 const Combokeys = require('combokeys');
 const React = require('react');
 const reactDom = require('react-dom');
-const MainUI = require('./ui/main');
+const MainUI = require('../ui/main');
 
 class Interface {
 	constructor(instance) {

@@ -1,3 +1,4 @@
+'use strict';
 const say = require('say');
 
 class TTS {

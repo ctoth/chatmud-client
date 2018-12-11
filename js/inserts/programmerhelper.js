@@ -1,3 +1,4 @@
+'use strict';
 class ProgrammerHelper {
 	constructor() {
 		this.code = '';
