@@ -10,7 +10,7 @@ class TCPConnection extends EventEmitter {
 		this.address = address;
 		this.port = port;
 		this.client = new net.Socket();
-						this.tcp = this.client.connect(this.port, this.address);
+		this.tcp = this.client.connect(this.port, this.address);
 		this.options ={
 		socket: this.tcp,
 		

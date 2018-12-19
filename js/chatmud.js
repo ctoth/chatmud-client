@@ -1,15 +1,14 @@
 'use strict';
 const CMOutput = require('./interface/cmoutput');
 const Inserts = require('./inserts/inserts.json');
-const InsertFactory = require('./inserts/insertfactory');
+const InsertFactory = require('./factories/insertfactory');
 const Appends = require('./appends/appends.json');
-const AppendFactory = require('./appends/appendfactory');
+const AppendFactory = require('./factories/appendfactory');
 const ChannelHistory = require('./history/channelhistory');
 const ChannelInterface = require('./interface/channelinterface');
 const SoundPlayer = require('./sounds/soundplayer');
 const Programmer = require('./interface/programmer');
-const AriaTTS = require('./tts/ariatts');
-// const MacTTS = require("./mactts.js");
+const TTSFactory = require('./factories/ttsfactory');
 const Interface = require('./interface/interface');
 const InputHistory = require('./history/inputhistory');
 
@@ -24,12 +23,7 @@ class ChatMud {
 		this.historyInterface = new ChannelInterface(this.history, this);
 		this.inputHistory = new InputHistory();
 		this.soundPlayer = new SoundPlayer();
-		this.tts = null;
-//		if (process.platform == "darwin") {
-//			this.tts = new MacTTS();
-//		} else {
-			this.tts = new AriaTTS();
-//		}
+		this.tts = TTSFactory.getInstance();
 
 		
 		this.interface = new Interface(this);
