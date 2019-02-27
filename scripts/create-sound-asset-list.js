@@ -1,7 +1,10 @@
 const dt = require("./dirtree");
+const fs = require('fs');
 
-const dir = "../sounds/";
-
+const dir = '../sounds/';
 dt(dir, (err, tree) => {
-	console.log(JSON.stringify(tree));
+	fs.writeFile('../js/sounds/sounds.json', JSON.stringify(tree), (err) => {
+		if (err) throw err;
+		console.log("Wrote successfully.");
+	})
 });
