@@ -1,5 +1,5 @@
 const React = require('react');
-const open = require('open');
+const open = require('opn');
 const YouTube = require('react-youtube-player').default;
 const ResolvingLink = require('./resolvinglink');
 
