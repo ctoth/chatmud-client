@@ -30,7 +30,7 @@ var dirTreeToObj = function(dir, done) {
 				else {
 					results.push({
 						type: 'file',
-						name: path.basename(file)
+						name: path.parse(file).name
 					});
 					if (!--pending)
 						done(null, results);

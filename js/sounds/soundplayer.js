@@ -4,9 +4,9 @@ const soundops = require('./soundops');
 const Sounds = require('./sounds');
 
 class SoundPlayer {
-	constructor() {
+	constructor(extension = '.ogg') {
 		this.sounds = new Array();
-		this.extension = '.ogg';
+		this.extension = extension;
 	}
 
 	play(file, folder = '') {
@@ -60,11 +60,11 @@ class SoundPlayer {
 }
 
 class Sound {
-	constructor(folder, file) {
+	constructor(folder, file, extension = '.ogg') {
 		this.basePath = './sounds/';
 		this.file = file;
 		this.folder = folder;
-		this.extension = '.ogg';
+		this.extension = extension;
 		this.path = this.basePath + this.folder + '/' + this.file + this.extension;
 
 		console.log('Loading ' + this.path);
