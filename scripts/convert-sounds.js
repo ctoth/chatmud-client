@@ -26,7 +26,7 @@ function processNode(node, prevPath = '/') {
     console.log("Processing some node: " + node);
     node.forEach(element => {
         if (element.type === 'folder') {
-            processNode(element.children, prevPath + element.name);
+            processNode(element.children, prevPath + element.name + "/");
         } else {
 
         
