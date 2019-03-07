@@ -4,7 +4,7 @@ const EventEmitter = require('eventemitter3');
 const TLS = require("tls");
 
 class TCPConnection extends EventEmitter {
-	constructor(address = 'chatmud.com', port = 3001) {
+	constructor(address = 'chatmud.com', port = 7443) {
 		console.log('Connecting to ' + address + ' on port ' + port);
 		super();
 		this.address = address;

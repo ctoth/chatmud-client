@@ -5,10 +5,10 @@ const TLS = require('../connection/tls');
 
 class NetworkFactory {
     static getInstance() {
-        if (process.platform.electron) {
-            return TLS;
+        if (typeof process !== 'undefined') {
+return TLS;    
         } else {
-            return Websockets;
+                        return Websockets;
         }
     }
 

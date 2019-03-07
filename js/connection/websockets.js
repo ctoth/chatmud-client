@@ -5,6 +5,7 @@ const EventEmitter = require("eventemitter3");
 class Websockets extends EventEmitter {
 	constructor() {
 		super();
+		console.log('constructing websockets');
 		this.io = new IO();
 		this.setupEvents();
 	}
