@@ -3,6 +3,8 @@
 class Test {
 	constructor() {
 		this.instance = null;
+		this.meow = null;
+		this.hmm = null;
 	}
 
 	act(string, instance) {

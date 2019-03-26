@@ -9,7 +9,8 @@
     "start-dev": "electron ./app_dev",
     "build-app": "node scripts/build.js desktop",
     "build-web": "node scripts/build.js web",
-    "dev": "parcel watch ./html/index.html -d ./app_dev/ --target=electron --no-hmr",
+    "dev-app": "node scripts/dev.js desktop",
+    "dev-web": "node scripts/dev.js web",
     "pack": "electron-builder",
     "start-proxy": "node web-proxy/index"
   },
