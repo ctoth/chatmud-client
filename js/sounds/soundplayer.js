@@ -4,7 +4,7 @@ const soundops = require('./soundops');
 const Sounds = require('./sounds');
 
 class SoundPlayer {
-	constructor(extension = '.ogg') {
+	constructor(extension = '.m4a') {
 		this.sounds = new Array();
 		this.extension = extension;
 	}
@@ -60,7 +60,7 @@ class SoundPlayer {
 }
 
 class Sound {
-	constructor(folder, file, extension = '.ogg') {
+	constructor(folder, file, extension = '.m4a') {
 		this.basePath = './sounds/';
 		this.file = file;
 		this.folder = folder;

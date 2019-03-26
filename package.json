@@ -1,18 +1,19 @@
 {
   "name": "chatmud-client",
   "version": "1.0.0",
-  "description": "",
-  "main": "./app/index.js",
+  "description": "ChatMUD Official Client",
+  "main": "./app_desktop/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./app_desktop",
     "start-dev": "electron ./app_dev",
     "build-app": "parcel build ./html/index.html -d ./app_desktop --target=electron",
     "build-web": "parcel build ./html/index.html -d ./app_web --target=browser",
-    "dev": "parcel watch ./html/index.html -d ./app_dev/ --target=electron --no-hmr"
+    "dev": "parcel watch ./html/index.html -d ./app_dev/ --target=electron --no-hmr",
+    "pack": "electron-builder"
   },
   "keywords": [],
-  "author": "",
+  "author": "Talon",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
