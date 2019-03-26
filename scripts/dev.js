@@ -11,9 +11,12 @@ build(mode);
 function build(mode) {
 	const entryPoint = path.join(__dirname, '../html/index.html');
 	const options = {
-		outDir: '../app_' + mode,
-			watch: true,
-			hmr: false
+		outDir: path.join(__dirname, '../app_' + mode +'/'),
+		watch: true,
+		hmr: false,
+		minify: false,
+		sourcemaps: true,
+		target: 'browser'
 	}
 	const bundler = new parcel(entryPoint, options);
 	bundler.bundle();
@@ -22,12 +25,12 @@ function build(mode) {
 
 function copyAssets(mode) {
 	console.log('copying assets to app_'+mode);
-	fs.ensureDirSync('./app_'+mode);
-	fs.ensureDirSync('./app_'+mode+"/sounds");
-	fs.copySync('./sounds', './app_'+mode+"/sounds");
-	fs.copySync('./editor', './app_'+mode);
+	fs.ensureDirSync(path.join(__dirname, './app_'+mode);
+	fs.ensureDirSync(path.join(__dirname, '../app_'+mode+'/sounds'));
+	fs.copySync(path.join(__dirname, '../sounds'), path.join(__dirname, './app_'+mode+"/sounds"));
+	fs.copySync(path.join(__dirname, '../editor'), path.join(__dirname, '../app_'+mode));
 	if (mode === 'desktop') {
-		fs.copySync('./electron', './app_'+mode);
+		fs.copySync(path.join(__dirname, '../electron'), path.join(__dirname, './app_'+mode));
 	}
 	console.log('copied assets');
 }

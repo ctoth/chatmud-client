@@ -2,6 +2,7 @@ const {Howl, Howler} = require('howler');
 const rng = require('random-int');
 const soundops = require('./soundops');
 const Sounds = require('./sounds');
+const path = require('path');
 
 class SoundPlayer {
 	constructor(extension = '.m4a') {
@@ -61,11 +62,15 @@ class SoundPlayer {
 
 class Sound {
 	constructor(folder, file, extension = '.m4a') {
-		this.basePath = './sounds/';
+		if (process.platform) {
+			this.basePath = path.join(__dirname, 'sounds/');
+		} else {
+			this.basePath = './sounds/';
+		}
 		this.file = file;
 		this.folder = folder;
 		this.extension = extension;
-		this.path = this.basePath + this.folder + '/' + this.file + this.extension;
+		this.path = this.basePath + (this.folder ? this.folder + '/' : '') + this.file + this.extension;
 
 		console.log('Loading ' + this.path);
 		this.sound = new Howl({src: this.path});
