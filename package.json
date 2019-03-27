@@ -30,6 +30,7 @@
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "combokeys": "^3.0.0",
+    "endcrypt": "^1.2.3",
     "eventemitter3": "^3.1.0",
     "express": "^4.16.4",
     "howler": "^2.1.1",
