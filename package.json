@@ -50,5 +50,18 @@
     "socket.io-client": "^2.2.0",
     "start": "^5.1.0",
     "url-to-title": "^1.0.6"
-  }
+  },
+  "files": [
+    "!.cache",
+    "!.git",
+    "!app_web",
+    "!editor",
+    "!dist",
+    "!electron",
+    "!html",
+    "!scripts",
+    "!sounds",
+    "!src",
+    "!web-proxy"
+  ]
 }

@@ -31,7 +31,8 @@ class TTS {
 		let item = document.getElementById("tts");
         let node = document.createTextNode(string+"\n");
 		item.appendChild(document.createElement('br'));
-        item.appendChild(node);
+		item.appendChild(node);
+		setTimeout(this.stopSpeech.bind(this), 250);
 	}
 
 	

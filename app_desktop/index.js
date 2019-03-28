@@ -17,8 +17,11 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, preload: 'inelectron.js'})
+  mainWindow = new BrowserWindow({width: 800, height: 600, preload: 'inelectron.js', show: false})
 
+mainWindow.once('ready-to-show', () => {
+  mainWindow.show()
+})
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
