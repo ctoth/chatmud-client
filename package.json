@@ -25,14 +25,15 @@
     "parcel-bundler": "^1.12.3",
     "rimraf": "^2.6.3",
     "sox": "^0.1.0",
-    "sox.js": "^2.1.0"
+    "sox.js": "^2.1.0",
+    "babel-preset-react": "^6.24.1",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
   },
   "dependencies": {
-    "babel-preset-react": "^6.24.1",
     "combokeys": "^3.0.0",
     "endcrypt": "^1.2.3",
     "eventemitter3": "^3.1.0",
-    "express": "^4.16.4",
     "howler": "^2.1.1",
     "opn": "^5.4.0",
     "random-int": "^1.0.0",
@@ -46,22 +47,16 @@
     "react-youtube-player": "^2.0.1",
     "run": "^1.4.0",
     "say": "^0.14.0",
-    "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "start": "^5.1.0",
     "url-to-title": "^1.0.6"
   },
-  "files": [
-    "!.cache",
-    "!.git",
-    "!app_web",
-    "!editor",
-    "!dist",
-    "!electron",
-    "!html",
-    "!scripts",
-    "!sounds",
-    "!src",
-    "!web-proxy"
-  ]
+  "build": {
+    "productName": "ChatMud Client",
+    "appId": "com.chatmud.client",
+    "files": [
+      "app_desktop/**",
+      "!app_desktop/*.map"
+    ]
+  }
 }

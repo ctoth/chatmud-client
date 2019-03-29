@@ -15,13 +15,9 @@ async function build(mode) {
 		watch: false,
 		hmr: false,
 		minify: true,
-        sourcemaps: false,
-        publicUrl: './'
-    }
-    if (mode === 'desktop') {
-        options.target = 'electron';
-    } else {
-        options.target = 'browser';
+		sourcemaps: false,
+		target: (mode === 'desktop' ? 'electron' : 'browser'),
+		publicUrl: './',
     }
 	const bundler = new parcel(entryPoint, options);
 	bundler.bundle();
