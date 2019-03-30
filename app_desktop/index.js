@@ -28,7 +28,7 @@ mainWindow.once('ready-to-show', () => {
     protocol: 'file:',
     slashes: true
   }))
-
+/**
   const template = [
     {
       label: 'Edit',
@@ -63,7 +63,7 @@ mainWindow.once('ready-to-show', () => {
 				}
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
-
+ */
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 

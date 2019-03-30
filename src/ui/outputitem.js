@@ -10,6 +10,12 @@ class OutputItem extends React.Component {
 		this.re = /((?:http|ftp|https):\/\/(?:[\w_-]+(?:(?:\.[\w_-]+)+))(?:[\w.,@?\^=%:\/~+#-]*[\w@?\^=%\/~+#-])?)/gi;
 	}
 
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.props.text === nextProps.text) {
+			return false;
+		}
+		return true;
+	}
 	itemize(text) {
 		const split = text.split(this.re);
 		if (split.length == 1) {
