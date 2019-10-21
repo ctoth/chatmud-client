@@ -9,7 +9,6 @@ class CMOutput extends EventEmitter {
 	}
 
 	add(string) {
-		console.log('Outputting ' + string);
 		if (string != '') {
 			this.instance.tts.speak(string);
 			this.emit('MudOutput', string);

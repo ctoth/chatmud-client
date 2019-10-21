@@ -10,7 +10,6 @@ class ChannelInterface {
 	}
 
 	nextChannel() {
-		console.log('Next channel');
 		if (this.currentChannel < this.history.channels.length - 1) {
 			this.currentChannel++;
 		} else {
@@ -21,7 +20,6 @@ class ChannelInterface {
 	}
 
 	previousChannel() {
-		console.log('Previous channel');
 		if (this.currentChannel > 0) {
 			this.currentChannel--;
 		} else {
@@ -32,7 +30,6 @@ class ChannelInterface {
 	}
 
 	nextMessage() {
-		console.log('Next message');
 		if (this.currentMessage > 0) {
 			this.currentMessage--;
 		} else {
@@ -43,7 +40,6 @@ class ChannelInterface {
 	}
 
 	previousMessage() {
-		console.log('Previous message');
 		if (this.currentMessage < this.history.channels[this.currentChannel].messages.length - 1) {
 			this.currentMessage++;
 		} else {
@@ -54,7 +50,6 @@ class ChannelInterface {
 	}
 
 	readMessage(id) {
-		console.log('Reading ' + this.history.channels[this.currentChannel].messages[id]);
 		this.instance.tts.speakImmediate(this.history.channels[this.currentChannel].messages[id]);
 	}
 }

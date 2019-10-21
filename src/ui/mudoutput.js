@@ -13,26 +13,33 @@ class MudOutput extends React.Component {
 		};
 		this.addLine = this.addLine.bind(this);
 		this.props.instance.output.on('MudOutput', data => this.addLine(data));
+		this.screenBottom = null;
 	}
 
 	render() {
-		
-		
 		return (
 			<div className="output">
-			<Scroll>
-				{this.state.lines.map((item, index) => {
-					if (index > this.state.lines.length-this.state.maxLines) {
-						return item;
-					}
-				})}
-
-			</Scroll>
+				<div>
+				<div>
+					{this.state.lines.map((item, index) => {
+						if (index > this.state.lines.length-this.state.maxLines) {
+							return <div className="output-item" key={index}>{item}</div>;
+						}
+					})}
+				</div>
+				<div style={{ float:"left", clear: "both" }} ref={(el) => { this.screenBottom = el; }}>Meow</div>
+				</div>
 			</div>
 		);
 	}
 
+	scrollToBottom() {
+		console.log(`Scrolling to bottom.`);
+		this.screenBottom.scrollIntoView({behavior: 'smooth'});
+	}
+
 	addLine(line) {
+		this.scrollToBottom();
 		if (line) {
 			let lines = this.state.lines;
 			if (lines.length > this.state.maxLines) {
@@ -50,6 +57,14 @@ class MudOutput extends React.Component {
 				lines
 			});
 		}
+	}
+
+	componentDidUpdate() {
+		this.scrollToBottom();
+	}
+
+	componentDidMount() {
+		this.scrollToBottom();
 	}
 }
 

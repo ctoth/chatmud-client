@@ -16,7 +16,7 @@ class ResolvingLink extends React.Component {
 	}
 
 	render() {
-		return <a href={this.props.url} onClick={this.props.onClick}>{this.state.text}</a>;
+		return <a href={this.props.url} key={this.props.url} onClick={this.props.onClick}>{this.state.text}</a>;
 	}
 }
 

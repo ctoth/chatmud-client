@@ -11,10 +11,11 @@ const Programmer = require('./interface/programmer');
 const TTSFactory = require('./factories/ttsfactory');
 const Interface = require('./interface/interface');
 const InputHistory = require('./history/inputhistory');
+const ConfigManager = require('./config/config');
+const AutoLogin = require('./config/autologin');
 
 class ChatMud {
 	constructor(connection) {
-		console.log('Constructing handler');
 		this.output = new CMOutput(this);
 		this.connection = connection;
 		this.inserts = new Array();
@@ -25,7 +26,8 @@ class ChatMud {
 		this.soundPlayer = new SoundPlayer();
 		this.tts = TTSFactory.getInstance();
 
-		
+		this.configManager = new ConfigManager();
+		this.autoLogin = new AutoLogin(this.configManager);
 		this.interface = new Interface(this);
 		this.programmer = new Programmer(this);
 		this.info = {
@@ -36,10 +38,20 @@ class ChatMud {
 		this.setupEvents();
 		this.setupInserts();
 		this.setupAppends();
+		this.handleAutoLogin();
+	}
+
+	handleAutoLogin() {
+		setTimeout(() => {
+			const loginData = this.autoLogin.get();
+			if (loginData && loginData.username && loginData.password) {
+				alert(`Automatically logging in`);
+				this.connection.send(`connect ${loginData.username} ${loginData.password}`);
+			}
+		}, 1000);
 	}
 
 	setupEvents() {
-		console.log('Setting events');
 		this.connection.on('data', data => this.handleData(data));
 	}
 
@@ -60,7 +72,6 @@ class ChatMud {
 	}
 
 	handleData(data) {
-		console.log('Received data: ' + data);
 		for (const insert of this.inserts) {
 			data = insert.act(data, this);
 		}
@@ -68,14 +79,11 @@ class ChatMud {
 		this.output.add(data);
 
 		for (const append of this.appends) {
-			console.log('Appending');
 			append.act(data, this);
 		}
 	}
 
 	sendInput() {
-		console.log('Handle enter key');
-
 		let string = this.input.value;
 		if (string == 'my_name') {
 			this.output.add('Your name is set to ' + this.info.name);

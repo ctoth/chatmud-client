@@ -4,7 +4,6 @@ const EventEmitter = require('eventemitter3');
 
 class TCPConnection extends EventEmitter {
 	constructor(address = 'chatmud.com', port = 3000) {
-		console.log('Connecting to ' + address + ' on port ' + port);
 		super();
 		this.address = address;
 		this.port = port;
@@ -14,13 +13,10 @@ class TCPConnection extends EventEmitter {
 	}
 
 	setupEvents() {
-		console.log('Setting up tcp events');
 		this.client.on('data', data => this.handleData(data));
 	}
 
 	handleData(data) {
-		console.log('TCP stream: ' + data);
-
 		const string = data.toString();
 		this.data += string;
 		if (this.data.endsWith('\n')) {
@@ -37,7 +33,6 @@ class TCPConnection extends EventEmitter {
 	}
 
 	send(string) {
-		console.log('Sending ' + string);
 		this.client.write(string + '\n');
 	}
 }

@@ -31,7 +31,6 @@ class TTS {
 		}
 		string = string.replace('[', ' ');
 		string = string.replace(']', ' ');
-		console.log('saying ' + string);
 		this.speakQueue.push(string);
 		if (this.speaking == false) {
 			this.handleQueue();

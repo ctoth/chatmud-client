@@ -26,7 +26,6 @@ class TTS {
 		}
 		string = string.replace('[', ' ');
 		string = string.replace(']', ' ');
-		console.log('saying ' + string);
         
 		let item = document.getElementById("tts");
         let node = document.createTextNode(string+"\n");

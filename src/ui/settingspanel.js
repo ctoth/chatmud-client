@@ -22,6 +22,8 @@ class SettingsPanel extends React.Component {
 
 		this.handleVolumeChange = this.handleVolumeChange.bind(this);
 		this.handleSpeechStateChange = this.handleSpeechStateChange.bind(this);
+		this.handleUsernameChange = this.handleUsernameChange.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 	}
 
 	render() {
@@ -46,13 +48,49 @@ class SettingsPanel extends React.Component {
 
 					</AccordionItemBody>
 				</AccordionItem>
+				<AccordionItem>
+					<AccordionItemTitle><h2>Auto Login</h2></AccordionItemTitle>
+					<AccordionItemBody>
+						<div>
+							<label htmlFor="username-input">Username</label>
+							<input type="text" id="username-input" value={this.state.username} onChange={this.handleUsernameChange} />
+						</div>
+						<div>
+							<label htmlFor="password-input">Username</label>
+							<input type="password" id="password-input" value={this.state.password} onChange={this.handlePasswordChange} />
+						</div>
+					</AccordionItemBody>
+				</AccordionItem>
+
 			</Accordion>
 		);
 	}
 
+	handleUsernameChange(event) {
+		this.setState({
+			username: event.target.value
+		})
+		this.saveAutoLogin();
+	}
+
+	handlePasswordChange(event) {
+		this.setState({
+			password: event.target.value
+		})
+		this.saveAutoLogin();
+	}
+
+	saveAutoLogin() {
+		if (this.state.username && this.state.password) {
+			this.props.instance.autoLogin.set({
+				username: this.state.username,
+				password: this.state.password
+			});
+		}
+	}
+
 	handleVolumeChange(event) {
 		const targetVolume = event.target.value;
-		console.log('Target volume at ' + targetVolume / 100);
 		Howler.volume(targetVolume / 100);
 		this.setState({
 			volume: targetVolume
@@ -60,7 +98,6 @@ class SettingsPanel extends React.Component {
 	}
 
 	handleSpeechStateChange(event) {
-		console.log('Target value is at ' + event.target.checked);
 		this.props.instance.interface.setSpeechEnabled(event.target.checked);
 
 		this.setState({

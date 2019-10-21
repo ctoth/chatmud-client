@@ -18,7 +18,6 @@ class Programmer {
 
 	setCode(code) {
 		this.code = code;
-		console.log('Code: ' + this.code);
 	}
 
 	open() {
@@ -49,7 +48,6 @@ class Programmer {
 	}
 
 	setObject(obj) {
-		console.log('Object set to ' + this.object);
 		this.object = obj;
 	}
 }

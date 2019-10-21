@@ -33,13 +33,11 @@ class MCP {
 	}
 
 	parse(string) {
-		console.log('Parsing ' + string);
 		let s1 = string.slice(3, string.length);
 		s1 = s1.trim();
 		let command = s1.slice(0, s1.indexOf(' '));
 
 		command = command.trim();
-		console.log('Command: ' + command);
 		s1 = s1.slice(command.length, s1.length);
 		let key = null;
 		if (s1.includes('-|-')) {
@@ -87,6 +85,9 @@ class MCP {
 			case 'channel_social':
 				this.handleChannelSocial(args);
 				break;
+			case "channel_emote":
+				this.handleChannelEmote(args);
+				break;
 			case 'social':
 				this.handleSocial(args);
 				break;
@@ -128,8 +129,13 @@ class MCP {
 		this.instance.soundPlayer.playChannel(args.name);
 	}
 
+	handleChannelEmote(args) {
+		this.instance.history.addMessage(args.name, args.sender + args.message);
+		this.instance.output.add("[" + args.name + "] " + args.sender + ' ' + args.message);
+		this.instance.soundPlayer.playChannel(args.name);
+	}
+
 	handleChannelSocial(args) {
-		console.log(JSON.stringify(args));
 		this.instance.history.addMessage(args.name, args.name + ': ' + args.message);
 		this.instance.output.add(args.name + ': ' + args.message);
 		this.instance.soundPlayer.playSocial(args.social	, args.gender);
@@ -171,15 +177,12 @@ class MCP {
 	}
 
 	handleTell(args) {
-		console.log('Parsed tell: ' + args);
 		this.instance.soundPlayer.play('tell');
 		this.instance.output.add(args.data[0] + ' ' + args.data[1] + ' ' + args.data[2]);
 	}
 
 	handleEdit(args) {
-console.log(JSON.stringify(args));
 		const args2 = args[0].split(' ');
-		// Console.log("Split args: " + JSON.stringify(args2));
 		// let verb = args2[1].split(":")[1];
 		// let object = args2[4].split(":")[0];
 		this.instance.programmer.setObject(args2[args2.length - 1]);
@@ -187,7 +190,6 @@ console.log(JSON.stringify(args));
 	}
 
 	checkKey(key) {
-		console.log('Checking ' + key + ' agains ' + this.key);
 		if (key != this.key) {
 			this.instance.soundPlayer.play('spoofer', 'misc');
 			this.instance.output.add('Spoof attempt!');

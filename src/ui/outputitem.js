@@ -24,7 +24,7 @@ class OutputItem extends React.Component {
 		return split.map((item, index) => {
 			const re = this.re; // Parcel doesn't let me use this.re directly for some odd reason
 			return (
-				re.test(item) ? this.parseLink(item) : item
+				re.test(item) ? this.parseLink(item, index) : item
 			);
 		});
 	}
@@ -34,11 +34,11 @@ class OutputItem extends React.Component {
 		open(link);
 	}
 
-	parseLink(item) {
+	parseLink(item, key) {
 		if (item.indexOf('youtube.com/watch') != -1) {
 			return this.parseYoutubeLink(item);
 		}
-		return (<ResolvingLink url={item} onClick={e => this.openLink(e, item)}/>);
+		return (<ResolvingLink key={key} url={item} onClick={e => this.openLink(e, item)}/>);
 	}
 
 	parseYoutubeLink(item) {
@@ -47,7 +47,7 @@ class OutputItem extends React.Component {
 		if (andPosition != -1) {
 		  id = id.substring(0, andPosition);
 		}
-		return <YouTube videoId={id} />;
+		return <YouTube key={id} videoId={id} />;
 	}
 
 	render() {

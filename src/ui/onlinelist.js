@@ -44,7 +44,6 @@ class OnlineList extends React.Component {
 
 	parseData(data) {
 		for (const item in data.list) {
-			console.log('Parsing item: ' + JSON.stringify(data.list[item]));
 
 			if (data.list[item].flags && data.list[item].flags.includes('bot')) {
 				const person = {
