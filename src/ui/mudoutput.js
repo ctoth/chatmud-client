@@ -27,7 +27,7 @@ class MudOutput extends React.Component {
 						}
 					})}
 				</div>
-				<div style={{ float:"left", clear: "both" }} ref={(el) => { this.screenBottom = el; }}>Meow</div>
+				<div style={{ float:"left", clear: "both" }} ref={(el) => { this.screenBottom = el; }}></div>
 				</div>
 			</div>
 		);
