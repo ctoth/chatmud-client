@@ -7,12 +7,14 @@ const TCPConnection = require("./tcp");
 class TLSConnection extends TCPConnection {
   constructor(address = "chatmud.com", port = 7443) {
     super(address, port);
-    this.options = {
+  }
+
+  setupConnection() {
+    super.setupConnection();
+    const options = {
       socket: this.socket,
     };
-
-    this.connection = TLS.connect(this.options, () => this.setupEvents());
-    this.data = null;
+    return TLS.connect(options, () => this.setupEvents());
   }
 }
 

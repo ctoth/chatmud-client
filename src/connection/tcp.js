@@ -8,11 +8,14 @@ class TCPConnection extends Connection {
     this.address = address;
     this.port = port;
     this.socket = new net.Socket();
+    this.connection = this.setupConnection();
+    this.data = null;
+  }
 
-    this.connection = this.socket.connect(this.port, this.address, () =>
+  setupConnection() {
+    return this.socket.connect(this.port, this.address, () =>
       this.setupEvents()
     );
-    this.data = null;
   }
 
   setupEvents() {
@@ -20,7 +23,7 @@ class TCPConnection extends Connection {
   }
 
   handleData(data) {
-    const string = data.toString();
+    const string = data.toString("latin1");
     this.data += string;
     if (this.data.endsWith("\n")) {
       const processed = this.processIncoming(this.data);
@@ -30,14 +33,14 @@ class TCPConnection extends Connection {
   }
 
   emitData(data) {
-    const arr = data.split("\r\n")
+    const arr = data.split("\r\n");
     for (const i of arr) {
       this.emit("data", i);
     }
   }
 
   send(string) {
-    this.connection.write(string + "\n");
+    this.connection.write(string.toString("latin-1") + "\n");
   }
 }
 
