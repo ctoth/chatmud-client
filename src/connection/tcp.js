@@ -40,7 +40,8 @@ class TCPConnection extends Connection {
   }
 
   send(string) {
-    this.connection.write(string.toString("latin-1") + "\n");
+    const buf = Buffer.from(string + "\n", "latin1");
+    this.connection.write(buf);
   }
 }
 
