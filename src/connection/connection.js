@@ -55,13 +55,14 @@ class Connection extends EventEmitter {
   handleTelnetNegotiation(data) {
     const re = /\xFF[\xFB|\xFC|\xFD|\xFE][\x00-\xFF]/gm;
     let matches;
-    while ((matches = re.exec(data != null))) {
+    while ((matches = re.exec(data)) !== null) {
       console.log("Matches: ", matches);
       const negotiationType = matches[0][1];
       const feature = matches[0][2];
 
       if (negotiationType == WILL || negotiationType == DO) {
         if (feature == GMCP) {
+          this.send(IAC + DO + GMCP);
           // Also send what we WILL do //
           this.sendGMCP("Core.Hello", {
             Client: "ChatMud Web Client",
