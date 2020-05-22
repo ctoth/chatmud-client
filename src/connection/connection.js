@@ -85,8 +85,9 @@ class Connection extends EventEmitter {
   }
 
   sendGMCP(message_type, message) {
-    var smessage = JSON.stringify(message);
-    this.send("\xFF\xFA\xC9" + message_type + " " + smessage + "\xFF\xF0");
+    let encoded = JSON.stringify(message);
+    let sep = " ";
+    this.send(IAC + SB+ GMCP + message_type + sep + encoded + IAC + SE);
   }
 
   handleData(data) {
