@@ -35,7 +35,7 @@ class MudInput extends React.Component {
 				this.props.instance.inputHistory.add(value);
 			}
 
-			this.props.instance.connection.send(value);
+			this.props.instance.connection.send(value + "\n");
 			this.props.instance.tts.stopSpeech();
 			this.setState({
 				inputValue: ''
