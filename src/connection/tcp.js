@@ -3,19 +3,17 @@ const net = require("net");
 const Connection = require("./connection");
 
 class TCPConnection extends Connection {
-  constructor(address = "chatmud.com", port = 3000) {
+  constructor(address = "chatmud.com", port = 3000, encoding="latin1") {
     super();
     this.address = address;
     this.port = port;
     this.socket = new net.Socket();
-    this.connection = this.setupConnection();
+    this.connection = this.setupConnection(this.setupEvents);
     this.data = null;
   }
 
-  setupConnection() {
-    return this.socket.connect(this.port, this.address, () =>
-      this.setupEvents()
-    );
+  setupConnection(onComplete) {
+    return this.socket.connect(this.port, this.address, onComplete);
   }
 
   setupEvents() {
@@ -23,7 +21,7 @@ class TCPConnection extends Connection {
   }
 
   handleData(data) {
-    const string = data.toString("latin1");
+    const string = data.toString(this.encoding);
     this.data += string;
     if (this.data.endsWith("\n")) {
       const processed = this.processIncoming(this.data);
@@ -40,7 +38,7 @@ class TCPConnection extends Connection {
   }
 
   send(string) {
-    const buf = Buffer.from(string, "latin1");
+    const buf = Buffer.from(string, this.encoding);
     this.connection.write(buf);
   }
 }

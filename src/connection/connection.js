@@ -62,13 +62,7 @@ class Connection extends EventEmitter {
 
       if (negotiationType == WILL || negotiationType == DO) {
         if (feature == GMCP) {
-          this.send(IAC + DO + GMCP);
-          // Also send what we WILL do //
-          this.sendGMCP("Core.Hello", {
-            Client: "ChatMud Web Client",
-            Version: "0.1",
-          });
-          this.sendGMCP("Core.Supports.Set", SUPPORTS);
+          this.advertiseGMCP();
 
           // also send termtype here
           // IAC WILL TTYPE; IAC SB TTYPE IS XTERM-256COLOR IAC SE
@@ -84,10 +78,19 @@ class Connection extends EventEmitter {
     return data.replace(/\xFF[\xFB|\xFC|\xFD|\xFE][\x00-\xFF]/gm, "");
   }
 
+  advertiseGMCP() {
+    this.send(IAC + DO + GMCP);
+    // Also send what we WILL do //
+    this.sendGMCP("Core.Hello", {
+      Client: "ChatMud Web Client",
+      Version: "0.1",
+    });
+    this.sendGMCP("Core.Supports.Set", SUPPORTS);
+  }
   sendGMCP(message_type, message) {
     let encoded = JSON.stringify(message);
     let sep = " ";
-    this.send(IAC + SB+ GMCP + message_type + sep + encoded + IAC + SE);
+    this.send(IAC + SB + GMCP + message_type + sep + encoded + IAC + SE);
   }
 
   handleData(data) {
