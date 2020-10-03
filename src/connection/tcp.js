@@ -1,40 +1,35 @@
-'use strict';
-const net = require('net');
-const EventEmitter = require('eventemitter3');
+"use strict";
+const net = require("net");
+const Connection = require("./connection");
 
-class TCPConnection extends EventEmitter {
-	constructor(address = 'chatmud.com', port = 3000) {
-		super();
-		this.address = address;
-		this.port = port;
-		this.client = new net.Socket();
-		this.connection = this.client.connect(this.port, this.address, () => this.setupEvents());
-		this.data = null;
-	}
+class TCPConnection extends Connection {
+  constructor(address = "chatmud.com", port = 7777, encoding="latin1") {
+    super();
+    this.encoding = encoding;
+    this.address = address;
+    this.port = port;
+    this.socket = new net.Socket();
+    this.connection = this.setupConnection(()=>this.setupEvents());
+    this.data = '';
+  }
 
-	setupEvents() {
-		this.client.on('data', data => this.handleData(data));
-	}
+  setupConnection(onComplete) {
+    return this.socket.connect(this.port, this.address, onComplete);
+  }
 
-	handleData(data) {
-		const string = data.toString();
-		this.data += string;
-		if (this.data.endsWith('\n')) {
-			this.emitData(this.data);
-			this.data = '';
-		}
-	}
+  setupEvents() {
+    this.connection.on("data", (data) => this.handleTCPData(data));
+  }
 
-	emitData(data) {
-		const arr = data.split('\r\n');
-		for (const i of arr) {
-			this.emit('data', i);
-		}
-	}
+  handleTCPData(data) {
+    const string = data.toString(this.encoding);
+    this.emit('data', string);
+  }
 
-	send(string) {
-		this.client.write(string + '\n');
-	}
+  send(string) {
+    const buf = Buffer.from(string, this.encoding);
+    this.connection.write(buf);
+  }
 }
 
 module.exports = TCPConnection;
