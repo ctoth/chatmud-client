@@ -71,8 +71,7 @@ class Sound {
 		this.folder = folder;
 		this.extension = extension;
 		this.path = this.basePath + (this.folder ? this.folder + '/' : '') + this.file + this.extension;
-
-		this.sound = new Howl({src: this.path});
+		this.sound = new Howl({src: path.normalize(this.path)});
 	}
 }
 
