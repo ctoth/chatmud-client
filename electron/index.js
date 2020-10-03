@@ -17,7 +17,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, preload: 'inelectron.js', show: false})
+  mainWindow = new BrowserWindow({width: 800, height: 600, preload: 'inelectron.js', show: false, webPreferences: {nodeIntegration: true}})
 
 mainWindow.once('ready-to-show', () => {
   mainWindow.show()
