@@ -1,4 +1,3 @@
-// We have to call the GMCP constant something else because we use the name for the class.
 const {GMCP, DO, IAC, IS, SB, SE, SEND, TTYPE, WILL} = require('../constants');
 
 const Node = require('../node');

@@ -1,6 +1,6 @@
 'use strict';
 
-const EventEmitter = require('events');
+const EventEmitter = require('eventemitter3');
 
 // Todo: we may want to patch the emit function to allow events that get emitted anywhere to be subscribed to from anywhere else (e.g. bubble down unsubscribed events).
 
