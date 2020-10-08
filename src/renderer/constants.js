@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   IS: String.fromCharCode(0),
   SEND: String.fromCharCode(1),
   ECHO: String.fromCharCode(1),

@@ -39,4 +39,4 @@ class InputHistory {
 	}
 }
 
-module.exports = InputHistory;
+export default InputHistory;

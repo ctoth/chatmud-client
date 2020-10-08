@@ -1,7 +1,7 @@
-const React = require('react');
-const open = require('opn');
-const YouTube = require('react-youtube-player').default;
-const ResolvingLink = require('./resolvinglink');
+import React from 'react';
+import open from 'opn';
+import YouTube from 'react-youtube-player';
+import ResolvingLink from './resolvinglink';
 
 class OutputItem extends React.Component {
 	constructor(props) {
@@ -55,4 +55,4 @@ class OutputItem extends React.Component {
 	}
 }
 
-module.exports = OutputItem;
+export default OutputItem;

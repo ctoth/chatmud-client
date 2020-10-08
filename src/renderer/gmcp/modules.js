@@ -1,8 +1,8 @@
-const Channel = require('./modules/channel');
-const Media = require('./modules/media');
+import Channel from './modules/channel';
+import Media from './modules/media';
 
 function initializeModules(instance) {
   return [new Channel(instance), new Media(instance)];
 }
 
-module.exports=initializeModules;
+export default initializeModules;

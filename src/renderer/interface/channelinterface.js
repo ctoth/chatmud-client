@@ -1,5 +1,5 @@
 'use strict';
-const ChannelHistory = require('../history/channelhistory');
+import ChannelHistory from '../history/channelhistory';
 
 class ChannelInterface {
 	constructor(history, instance) {
@@ -54,4 +54,4 @@ class ChannelInterface {
 	}
 }
 
-module.exports = ChannelInterface;
+export default ChannelInterface;

@@ -59,4 +59,4 @@ class Triggers {
 	}
 }
 
-module.exports = Triggers;
+export default Triggers;

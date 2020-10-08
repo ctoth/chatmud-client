@@ -5,8 +5,8 @@ import {
 	AccordionItemBody
 } from 'react-accessible-accordion';
 
-const {Howler} = require('howler');
-const React = require('react');
+import {Howler} from 'howler';
+import React from 'react';
 
 class SettingsPanel extends React.Component {
 	constructor(props) {
@@ -106,4 +106,4 @@ class SettingsPanel extends React.Component {
 	}
 }
 
-module.exports = SettingsPanel;
+export default SettingsPanel;

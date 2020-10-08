@@ -28,4 +28,4 @@ class ProgrammerHelper {
 	}
 }
 
-module.exports = ProgrammerHelper;
+export default ProgrammerHelper;

@@ -1,8 +1,8 @@
 'use strict';
-const React = require('react');
-const Settings = require('../settings.json');
-const OutputItem = require('./outputitem');
-const Scroll = require('react-custom-scroll');
+import React from 'react';
+import Settings from '../settings.json';
+import OutputItem from './outputitem';
+import Scroll from 'react-custom-scroll';
 
 class MudOutput extends React.Component {
 	constructor(props) {
@@ -68,4 +68,4 @@ class MudOutput extends React.Component {
 	}
 }
 
-module.exports = MudOutput;
+export default MudOutput;

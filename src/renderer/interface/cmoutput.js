@@ -1,5 +1,5 @@
 'use strict';
-const EventEmitter = require('eventemitter3');
+import EventEmitter from 'eventemitter3';
 
 class CMOutput extends EventEmitter {
 	constructor(instance) {
@@ -18,4 +18,4 @@ class CMOutput extends EventEmitter {
 	}
 }
 
-module.exports = CMOutput;
+export default CMOutput;

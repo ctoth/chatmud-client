@@ -7,4 +7,4 @@ class AppendFactory {
 	}
 }
 
-module.exports = AppendFactory;
+export default AppendFactory;

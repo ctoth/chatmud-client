@@ -1,8 +1,8 @@
-const {Howl, Howler} = require('howler');
-const rng = require('random-int');
-const soundops = require('./soundops');
-const Sounds = require('./sounds');
-const path = require('path');
+import {Howl, Howler} from 'howler';
+import rng from 'random-int';
+import soundops from './soundops';
+import Sounds from './sounds';
+import path from 'path';
 
 class SoundPlayer {
 	constructor(extension = '.m4a') {
@@ -75,4 +75,4 @@ class Sound {
 	}
 }
 
-module.exports = SoundPlayer;
+export default SoundPlayer;

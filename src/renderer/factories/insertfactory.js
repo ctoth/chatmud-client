@@ -14,4 +14,4 @@ class InsertFactory {
 	}
 }
 
-module.exports = InsertFactory;
+export default InsertFactory;

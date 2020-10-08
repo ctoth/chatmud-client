@@ -1,5 +1,5 @@
 'use strict';
-const say = require('say');
+import say from 'say';
 
 class TTS {
 	constructor() {
@@ -48,4 +48,4 @@ class TTS {
 	}
 }
 
-module.exports = TTS;
+export default TTS;

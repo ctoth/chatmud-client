@@ -1,13 +1,13 @@
 'use strict';
-const electron = require('electron')
+import electron from 'electron';
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 const Menu = electron.Menu
 
-const path = require('path')
-const url = require('url')
+import path from 'path';
+import url from 'url';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,11 +23,12 @@ mainWindow.once('ready-to-show', () => {
   mainWindow.show()
 })
   // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, '..', 'renderer', 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  // mainWindow.loadURL(url.format({
+    // pathname: path.join(__dirname, '..', 'renderer', 'index.html'),
+    // protocol: 'file:',
+    // slashes: true
+  // }))
+  mainWindow.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
 /**
   const template = [
     {

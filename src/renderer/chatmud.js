@@ -1,24 +1,23 @@
 'use strict';
 
-const CMOutput = require('./interface/cmoutput');
-const Node = require('./node');
-const Inserts = require('./inserts/inserts.json');
-const InsertFactory = require('./factories/insertfactory');
-const Appends = require('./appends/appends.json');
-const AppendFactory = require('./factories/appendfactory');
-const ChannelHistory = require('./history/channelhistory');
-const ChannelInterface = require('./interface/channelinterface');
-const SoundPlayer = require('./sounds/soundplayer');
-const Programmer = require('./interface/programmer');
-const TTSFactory = require('./factories/ttsfactory');
-const Interface = require('./interface/interface');
-const InputHistory = require('./history/inputhistory');
-const ConfigManager = require('./config/config');
-const AutoLogin = require('./config/autologin');
-
-const Telnet = require('./connection/telnet');
-const GMCP = require('./gmcp/gmcp');
-const initializeModules = require('./gmcp/modules');
+import CMOutput from './interface/cmoutput';
+import Node from './node';
+import Inserts from './inserts/inserts.json';
+import InsertFactory from './factories/insertfactory';
+import Appends from './appends/appends.json';
+import AppendFactory from './factories/appendfactory';
+import ChannelHistory from './history/channelhistory';
+import ChannelInterface from './interface/channelinterface';
+import SoundPlayer from './sounds/soundplayer';
+import Programmer from './interface/programmer';
+import TTSFactory from './factories/ttsfactory';
+import Interface from './interface/interface.jsx';
+import InputHistory from './history/inputhistory';
+import ConfigManager from './config/config';
+import AutoLogin from './config/autologin';
+import Telnet from './connection/telnet';
+import GMCP from './gmcp/gmcp';
+import initializeModules from './gmcp/modules';
 
 class ChatMud extends Node {
 	constructor(connection) {
@@ -109,4 +108,4 @@ class ChatMud extends Node {
 	}
 }
 
-module.exports = ChatMud;
+export default ChatMud;

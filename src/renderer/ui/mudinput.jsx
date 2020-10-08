@@ -1,6 +1,6 @@
 import './ui.css';
 
-const React = require('react');
+import React from 'react';
 
 class MudInput extends React.Component {
 	constructor(props) {
@@ -50,4 +50,4 @@ class MudInput extends React.Component {
 	}
 }
 
-module.exports = MudInput;
+export default MudInput;

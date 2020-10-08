@@ -1,5 +1,5 @@
-const React = require('react');
-const urlToTitle = require('url-to-title');
+import React from 'react';
+import urlToTitle from 'url-to-title';
 
 class ResolvingLink extends React.Component {
 	constructor(props) {
@@ -20,4 +20,4 @@ class ResolvingLink extends React.Component {
 	}
 }
 
-module.exports = ResolvingLink;
+export default ResolvingLink;

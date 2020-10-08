@@ -1,6 +1,6 @@
 "use strict";
-const IO = require("socket.io-client");
-const Connection = require("./connection");
+import IO from "socket.io-client";
+import Connection from "./connection";
 
 class Websockets extends Connection {
   constructor() {
@@ -20,4 +20,4 @@ class Websockets extends Connection {
   }
 }
 
-module.exports = Websockets;
+export default Websockets;

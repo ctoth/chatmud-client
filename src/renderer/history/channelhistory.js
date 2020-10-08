@@ -39,4 +39,4 @@ class Channel {
 	}
 }
 
-module.exports = ChannelHistory;
+export default ChannelHistory;

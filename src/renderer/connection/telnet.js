@@ -1,5 +1,6 @@
-const {DO, DONT, GMCP, IAC, IS, SB, SE, TTYPE, WILL, WONT} = require('../constants')
-const Node = require('../node');
+import Constants from '../constants';
+const {DO, DONT, GMCP, IAC, IS, SB, SE, TTYPE, WILL, WONT} = Constants;
+import Node from '../node';
 
 // Todo: refactor! very haphazardly thrown together
 
@@ -56,4 +57,4 @@ class Telnet extends Node {
   }
 }
 
-module.exports = Telnet;
+export default Telnet;

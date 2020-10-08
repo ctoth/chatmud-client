@@ -1,16 +1,17 @@
 'use strict';
 
+import TLS from '../connection/tls';
+import Websockets from '../connection/websockets';
+
 class NetworkFactory {
     static getInstance() {
         if (process.platform) {
-            const TLS = require('../connection/tls');
             return TLS;
         } else {
-            const Websockets = require('../connection/websockets');
             return Websockets;
         }
     }
 
 }
 
-module.exports = NetworkFactory;
+export default NetworkFactory;

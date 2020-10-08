@@ -21,4 +21,4 @@ class AutoLogin {
     }
 }
 
-module.exports = AutoLogin;
+export default AutoLogin;

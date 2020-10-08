@@ -37,4 +37,4 @@ class TTS {
 	
 }
 
-module.exports = TTS;
+export default TTS;

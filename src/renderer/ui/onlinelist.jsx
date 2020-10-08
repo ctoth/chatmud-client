@@ -8,7 +8,7 @@ import {
 	AccordionItemBody
 } from 'react-accessible-accordion';
 
-const React = require('react');
+import React from 'react';
 
 class OnlineList extends React.Component {
 	constructor(props) {
@@ -103,4 +103,4 @@ class OnlineList extends React.Component {
 	}
 }
 
-module.exports = OnlineList;
+export default OnlineList;

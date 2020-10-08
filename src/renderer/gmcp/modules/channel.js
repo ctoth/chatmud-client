@@ -1,4 +1,4 @@
-const Module = require('./module');
+import Module from './module';
 
 class Channel extends Module {
   constructor(instance) {
@@ -11,4 +11,4 @@ class Channel extends Module {
   }
 }
 
-module.exports = Channel;
+export default Channel;

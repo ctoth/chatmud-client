@@ -1,6 +1,7 @@
-const {GMCP, DO, IAC, IS, SB, SE, SEND, TTYPE, WILL} = require('../constants');
-
-const Node = require('../node');
+import constants from '../constants';
+import Constants from '../constants';
+const {GMCP, DO, IAC, IS, SB, SE, SEND, TTYPE, WILL} = Constants;
+import Node from '../node';
 
 class Gmcp extends Node {
   constructor(instance) {
@@ -32,4 +33,4 @@ class Gmcp extends Node {
   }
 }
 
-module.exports = Gmcp;
+export default Gmcp;

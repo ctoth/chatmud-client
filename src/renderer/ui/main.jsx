@@ -1,9 +1,9 @@
 import './ui.css';
 
-const React = require('react');
-const MudInput = require('./mudinput');
-const MudOutput = require('./mudoutput');
-const ToolBar = require('./toolbar');
+import React from 'react';
+import MudInput from './mudinput';
+import MudOutput from './mudoutput';
+import ToolBar from './toolbar';
 
 class MainWindow extends React.Component {
 	constructor(props) {
@@ -27,4 +27,4 @@ class MainWindow extends React.Component {
 	}
 }
 
-module.exports = MainWindow;
+export default MainWindow;

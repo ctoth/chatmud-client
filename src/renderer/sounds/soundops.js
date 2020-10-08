@@ -1,4 +1,4 @@
-const sounds = require('./sounds');
+import sounds from './sounds';
 
 function findSoundsInFolder(path) {
 	const split = path.split('/');
@@ -27,5 +27,5 @@ function findFilenames(string, array) {
 	return returnObj;
 }
 
-module.exports.findSoundsInFolder = findSoundsInFolder;
-module.exports.findFilenames = findFilenames;
+export {findSoundsInFolder};
+export {findFilenames};

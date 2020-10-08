@@ -1,8 +1,7 @@
-const fsu = require('fs');
+import fsu from 'fs';
 const fs = fsu.promises;
-const path = require('path');
-
-const Module = require('./module');
+import path from 'path';
+import Module from './module';
 
 class Media extends Module {
   constructor(instance) {
@@ -30,4 +29,4 @@ class Media extends Module {
   }
 }
 
-module.exports = Media;
+export default Media;

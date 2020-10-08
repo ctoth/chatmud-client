@@ -1,7 +1,7 @@
 'use strict';
-const ChatMud = require('./chatmud');
-const NetworkFactory = require('./factories/networkfactory');
-const SoundPlayer = require('./sounds/soundplayer');
+import ChatMud from './chatmud';
+import NetworkFactory from './factories/networkfactory';
+import SoundPlayer from './sounds/soundplayer';
 
 
 const connection = NetworkFactory.getInstance();

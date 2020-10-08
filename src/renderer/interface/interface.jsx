@@ -1,8 +1,8 @@
 'use strict';
-const Combokeys = require('combokeys');
-const React = require('react');
-const reactDom = require('react-dom');
-const MainUI = require('../ui/main');
+import Combokeys from 'combokeys';
+import React from 'react';
+import reactDom from 'react-dom';
+import MainUI from '../ui/main';
 
 class Interface {
 	constructor(instance) {
@@ -16,6 +16,7 @@ class Interface {
 
 	setupInterface() {
 		reactDom.render(<MainUI instance={this.instance}/>, document.getElementById('app'));
+		// reactDom.render(React.createElement("MainUI", {instance: this.instance}));
 	}
 
 	setupKeys() {
@@ -44,4 +45,4 @@ class Interface {
 	}
 }
 
-module.exports = Interface;
+export default Interface;

@@ -52,4 +52,4 @@ class Programmer {
 	}
 }
 
-module.exports = Programmer;
+export default Programmer;

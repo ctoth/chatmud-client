@@ -1,4 +1,4 @@
-const $ = require('nodobjc');
+import $ from 'nodobjc';
 
 class MacSpeech {
 	constructor() {
@@ -6,4 +6,4 @@ class MacSpeech {
 	}
 }
 
-module.exports = MacSpeech;
+export default MacSpeech;

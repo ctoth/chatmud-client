@@ -14,4 +14,4 @@ class PingUtils {
 	}
 }
 
-module.exports = PingUtils;
+export default PingUtils;

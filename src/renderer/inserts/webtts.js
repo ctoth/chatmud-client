@@ -13,4 +13,4 @@ class WebTTS {
 	}
 }
 
-module.exports = WebTTS;
+export default WebTTS;

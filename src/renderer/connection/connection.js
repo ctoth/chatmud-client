@@ -1,7 +1,7 @@
 "use strict";
 
-const Node = require('../node');
+import Node from '../node';
 
 class Connection extends Node {}
 
-module.exports = Connection;
+export default Connection;

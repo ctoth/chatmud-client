@@ -1,8 +1,7 @@
 "use strict";
-const net = require("net");
-
-const TLS = require("tls");
-const TCPConnection = require("./tcp");
+import net from "net";
+import TLS from "tls";
+import TCPConnection from "./tcp";
 
 class TLSConnection extends TCPConnection {
   constructor(address = "chatmud.com", port = 7443) {
@@ -18,4 +17,4 @@ class TLSConnection extends TCPConnection {
   }
 }
 
-module.exports = TLSConnection;
+export default TLSConnection;

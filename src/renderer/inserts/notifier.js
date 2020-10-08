@@ -20,4 +20,4 @@ class Notifier {
 	}
 }
 
-module.exports = Notifier;
+export default Notifier;

@@ -1,5 +1,5 @@
 'use strict';
-const PingUtils = require('./pingutils');
+import PingUtils from './pingutils';
 
 'use strict';
 class MCP {
@@ -219,4 +219,4 @@ class MCP {
 	}
 }
 
-module.exports = MCP;
+export default MCP;

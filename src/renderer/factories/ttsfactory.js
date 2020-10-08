@@ -1,18 +1,19 @@
 'use strict';
 
+import MacTTS from '../tts/mactts';
+import AriaTTS from '../tts/ariatts';
+
 class TTSFactory {
     static getInstance() {
         switch(process.platform) {
             case 'darwin':
-                const MacTTS = require('../tts/mactts');
                 return new MacTTS();
                 break;
             default:
-                const AriaTTS = require('../tts/ariatts');
                 return new AriaTTS();
                 break;
         }
     }
 }
 
-module.exports = TTSFactory;
+export default TTSFactory;

@@ -1,6 +1,6 @@
-const {GMCP, IAC, SB, SE} = require('../../constants');
-
-const Node = require('../../node');
+import Constants from '../../constants';
+const {GMCP, IAC, SB, SE} = Constants;
+import Node from '../../node';
 
 class Module extends Node {
   constructor(instance) {
@@ -26,4 +26,4 @@ class Module extends Node {
   }
 }
 
-module.exports=Module;
+export default Module;

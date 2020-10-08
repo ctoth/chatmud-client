@@ -1,6 +1,6 @@
 "use strict";
-const net = require("net");
-const Connection = require("./connection");
+import net from "net";
+import Connection from "./connection";
 
 class TCPConnection extends Connection {
   constructor(address = "chatmud.com", port = 7777, encoding="latin1") {
@@ -32,4 +32,4 @@ class TCPConnection extends Connection {
   }
 }
 
-module.exports = TCPConnection;
+export default TCPConnection;

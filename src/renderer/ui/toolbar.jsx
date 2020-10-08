@@ -1,8 +1,8 @@
 import './ui.css';
 
-const React = require('react');
-const SettingsPanel = require('./settingspanel');
-const OnlineList = require('./onlinelist');
+import React from 'react';
+import SettingsPanel from './settingspanel';
+import OnlineList from './onlinelist';
 
 class ToolBar extends React.Component {
 	constructor(props) {
@@ -105,4 +105,4 @@ class ToolBar extends React.Component {
 	}
 }
 
-module.exports = ToolBar;
+export default ToolBar;
