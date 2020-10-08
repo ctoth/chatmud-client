@@ -24,7 +24,7 @@ mainWindow.once('ready-to-show', () => {
 })
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, '..', 'renderer', 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
