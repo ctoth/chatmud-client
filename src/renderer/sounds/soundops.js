@@ -29,3 +29,7 @@ function findFilenames(string, array) {
 
 export {findSoundsInFolder};
 export {findFilenames};
+export default {
+	findSoundsInFolder,
+	findFilenames
+};
