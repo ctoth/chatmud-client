@@ -64,6 +64,7 @@
   },
   "electronWebpack": {
     "renderer": {
+    "template": "src/renderer/index.html",
       "webpackConfig": "webpack.renderer.config.js"
     }
   }
