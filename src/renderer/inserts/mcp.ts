@@ -222,14 +222,14 @@ export class MCP extends Insert {
   }
 
   handleNetLag(arguments_) {
-    if (arguments_.data[0] == 'ping') {
+    if (arguments_.data[0] === 'ping') {
       const newPing = new PingUtils(arguments_.data[1]);
       this.instance.connection.send('#$#netlag pong ' + arguments_.data[1]);
       newPing.start();
       this.pings.push(newPing);
     }
 
-    if (arguments_.data[0] == 'pang') {
+    if (arguments_.data[0] === 'pang') {
       const myPing = this.findPingByToken(arguments_.data[1]);
       myPing.stop();
     }
@@ -237,7 +237,7 @@ export class MCP extends Insert {
 
   findPingByToken(token) {
     for (const ping of this.pings) {
-      if (ping.token == token) {
+      if (ping.token === token) {
         return ping;
       }
     }

@@ -20,7 +20,7 @@ import { Programmer } from './interface/programmer';
 import { Node } from './node';
 import { SoundPlayer } from './sounds/soundplayer';
 
-export class ChatMud extends Node {
+export class Client extends Node {
   public output: CMOutput;
   public connection: TLSConnection | Websockets;
   public telnet: Telnet;
