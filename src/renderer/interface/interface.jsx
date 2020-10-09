@@ -15,6 +15,26 @@ class Interface {
 	}
 
 	setupInterface() {
+		document.documentElement.innerHTML = `
+		<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>ChatMud Official Client</title>
+
+	</head>
+	<body>
+	<div id="app">
+
+	</div>
+		<div id="tts" aria-live="polite" aria-relevant="text"></div>
+
+	</body>
+</html>
+		`;
 		reactDom.render(<MainUI instance={this.instance}/>, document.getElementById('app'));
 		// reactDom.render(React.createElement("MainUI", {instance: this.instance}));
 	}
