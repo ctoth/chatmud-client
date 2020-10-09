@@ -13,7 +13,7 @@ class Telnet extends Node {
 
   handleData(data) {
     // Negociators
-    const re = /\u00FF[\u00FB|\u00FC|\u00FD|\u00FE][\u0000-\u00FF]/gm;
+    const re = /\u00FF[|\u00FB-\u00FE][\u0000-\u00FF]/gm;
     let matches;
     while ((matches = re.exec(data)) !== null) {
       if (matches[0][1] == WILL && matches[0][2] == GMCP) {
@@ -27,10 +27,7 @@ class Telnet extends Node {
       }
     }
 
-    data = data.replace(
-      /\u00FF[\u00FB|\u00FC|\u00FD|\u00FE][\u0000-\u00FF]/gm,
-      '',
-    );
+    data = data.replace(/\u00FF[|\u00FB-\u00FE][\u0000-\u00FF]/gm, '');
 
     // Handling TTYPE (IAC SB SEND TTYPE IAC SE)
     const ttype_re = /\u00FF\u00FA\u0018\u0001\u00FF\u00F0/;
@@ -41,12 +38,12 @@ class Telnet extends Node {
 
     // "handling" color (for regexp see https://stackoverflow.com/questions/25245716/remove-all-ansi-colors-styles-from-strings)
     data = data.replace(
-      /[\u001b\u009b][#();?[]*(?:\d{1,4}(?:;\d{0,4})*)?[\d<=>A-ORZcf-nqry]/g,
+      /[\u001B\u009B][#();?[]*(?:\d{1,4}(?:;\d{0,4})*)?[\d<=>A-ORZcf-nqry]/g,
       '',
     );
 
     // Handling GMCP subnegociation
-    const gmcp_re = /\u00FF\u00FA\u00C9(\S+)\s([^\u00FF\u00F0]+)\u00FF\u00F0/g;
+    const gmcp_re = /\u00FF\u00FA\u00C9(\S+)\s([^\u00F0\u00FF]+)\u00FF\u00F0/g;
     let gmcp_matches;
     while ((gmcp_matches = gmcp_re.exec(data)) !== null) {
       this.emit('gmcp', gmcp_matches);
