@@ -8,13 +8,15 @@ module.exports = {
     "@typescript-eslint",
     "prettier",
     "unicorn" ,
-    "import"
+    "import",
+    "json"
   ],
   extends: [
     'plugin:react/recommended',
     'standard',
     "plugin:@typescript-eslint/recommended",
     "plugin:unicorn/recommended",
+    "plugin:json/recommended",
     "plugin:prettier/recommended",
     "prettier",
     "prettier/@typescript-eslint"
