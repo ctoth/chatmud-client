@@ -1,4 +1,4 @@
-import sounds from './sounds';
+import sounds from './sounds.json';
 
 function findSoundsInFolder(path) {
   const split = path.split('/');
@@ -11,13 +11,13 @@ function findSoundsInFolder(path) {
 
 function search(string, object) {
   for (const entry of object) {
-    if (entry.name == string) {
+    if (entry.name === string) {
       return entry.children;
     }
   }
 }
 
-function findFilenames(string, array) {
+function findFilenames(string, array): string[] {
   const returnObject = [];
   for (const entry of array) {
     if (entry.name.includes(string)) {

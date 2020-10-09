@@ -1,5 +1,8 @@
-'use strict';
-class ProgrammerHelper {
+import { Insert } from './insert';
+
+export class ProgrammerHelper implements Insert {
+  code: string;
+  receiving: boolean;
   constructor() {
     this.code = '';
     this.receiving = false;
@@ -7,15 +10,15 @@ class ProgrammerHelper {
   }
 
   act(string, instance) {
-    if (instance.programmer.enabled == true) {
-      if (this.receiving == false) {
+    if (instance.programmer.enabled === true) {
+      if (this.receiving === false) {
         this.receiving = true;
         this.code = '';
       }
 
       this.instance = instance;
       console.log('Checking: ' + string);
-      if (string == '.') {
+      if (string === '.') {
         this.instance.programmer.setCode(this.code);
         this.instance.programmer.open();
         this.instance.programmer.setEnableHelper(false);
@@ -27,5 +30,3 @@ class ProgrammerHelper {
     return string;
   }
 }
-
-export default ProgrammerHelper;

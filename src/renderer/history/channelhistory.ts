@@ -1,12 +1,12 @@
-'use strict';
-class ChannelHistory {
+export class ChannelHistory {
+  channels: any[];
   constructor() {
     this.channels = [];
   }
 
   addMessage(pChannel, message) {
     let channel = this.getChannelByName(pChannel);
-    if (channel == -1) {
+    if (channel === -1) {
       channel = new Channel(pChannel);
       this.channels.push(channel);
     }
@@ -15,7 +15,7 @@ class ChannelHistory {
 
   getChannelByName(name) {
     for (const channel of this.channels) {
-      if (channel.name == name) {
+      if (channel.name === name) {
         return channel;
       }
     }
@@ -29,6 +29,8 @@ class ChannelHistory {
 }
 
 class Channel {
+  name: any;
+  messages: any[];
   constructor(name) {
     this.name = name;
     this.messages = [];
@@ -38,5 +40,3 @@ class Channel {
     this.messages.unshift(message);
   }
 }
-
-export default ChannelHistory;

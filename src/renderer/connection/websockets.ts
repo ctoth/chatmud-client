@@ -1,8 +1,8 @@
 'use strict';
 import IO from 'socket.io-client';
-import Connection from './connection';
+import { Connection } from './connection';
 
-class Websockets extends Connection {
+export class Websockets extends Connection {
   constructor() {
     super();
     this.io = new IO();
@@ -19,5 +19,3 @@ class Websockets extends Connection {
     this.io.emit('data', string + '\n');
   }
 }
-
-export default Websockets;

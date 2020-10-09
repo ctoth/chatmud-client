@@ -1,8 +1,10 @@
 import Constants from '../../constants';
-import Node from '../../node';
+import { Node } from '../../node';
 const { GMCP, IAC, SB, SE } = Constants;
 
-class Module extends Node {
+export class Module extends Node {
+  id: string;
+  isModule: boolean;
   constructor(instance) {
     super();
     this.instance = instance;
@@ -27,5 +29,3 @@ class Module extends Node {
     );
   }
 }
-
-export default Module;

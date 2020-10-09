@@ -1,16 +1,12 @@
-'use strict';
+import { TLSConnection } from '../connection/tls';
+import { Websockets } from '../connection/websockets';
 
-import TLS from '../connection/tls';
-import Websockets from '../connection/websockets';
-
-class NetworkFactory {
+export class NetworkFactory {
   static getInstance() {
     if (process.platform) {
-      return TLS;
+      return TLSConnection;
     } else {
       return Websockets;
     }
   }
 }
-
-export default NetworkFactory;

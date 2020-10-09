@@ -1,9 +1,9 @@
 import fsu from 'fs';
 import path from 'path';
-import Module from './module';
+import { Module } from './module';
 const fs = fsu.promises;
 
-class Media extends Module {
+export class Media extends Module {
   constructor(instance) {
     super(instance);
     this.id = 'Client.Media';
@@ -32,4 +32,3 @@ class Media extends Module {
   }
 }
 
-export default Media;

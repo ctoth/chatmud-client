@@ -1,5 +1,8 @@
-'use strict';
-class PingUtils {
+import { Insert } from './insert';
+
+export class PingUtils implements Insert {
+  token: any;
+  time: number;
   constructor(token) {
     this.token = token;
     this.time = 0;
@@ -10,9 +13,6 @@ class PingUtils {
   }
 
   stop() {
-    this.time = performance.now();
-    -this.time;
+    this.time = performance.now() - this.time;
   }
 }
-
-export default PingUtils;

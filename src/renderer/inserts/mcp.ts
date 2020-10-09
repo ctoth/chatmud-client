@@ -1,9 +1,12 @@
-'use strict';
-import PingUtils from './pingutils';
+import { Insert } from './insert';
+import { PingUtils } from './pingutils';
 
-('use strict');
-class MCP {
+export class MCP extends Insert {
+  key: number;
+  name: number;
+  pings: any[];
   constructor() {
+    super();
     this.instance = null;
     this.key = 0;
     this.name = 0;
@@ -51,7 +54,7 @@ class MCP {
       s2[i] = s2[i].trim();
     }
 
-    if (command == 'mcp') {
+    if (command === 'mcp') {
       this.initMCP();
     }
 
@@ -212,7 +215,7 @@ class MCP {
   }
 
   checkKey(key) {
-    if (key != this.key) {
+    if (key !== this.key) {
       this.instance.soundPlayer.play('spoofer', 'misc');
       this.instance.output.add('Spoof attempt!');
     }

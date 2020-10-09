@@ -1,6 +1,6 @@
-'use strict';
-
-class InputHistory {
+export class InputHistory {
+  strings: any[];
+  iterator: number;
   constructor() {
     this.strings = [];
     this.iterator = 0;
@@ -19,10 +19,10 @@ class InputHistory {
   }
 
   getAtIterator() {
-    return this.strings[iterator];
+    return this.strings[this.iterator];
   }
 
-  increaseIterator() {
+  increaseIterator(): number {
     this.iterator++;
     if (this.iterator > this.strings.length) {
       this.iterator = this.strings.length;
@@ -30,7 +30,7 @@ class InputHistory {
     return this.iterator;
   }
 
-  decreaseIterator() {
+  decreaseIterator(): number {
     this.iterator--;
     if (this.iterator < 0) {
       this.iterator = 0;
@@ -38,5 +38,3 @@ class InputHistory {
     return this.iterator;
   }
 }
-
-export default InputHistory;

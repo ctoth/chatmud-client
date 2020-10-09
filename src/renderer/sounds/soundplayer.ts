@@ -1,7 +1,7 @@
 import { Howl } from 'howler';
 import rng from 'random-int';
 import soundops from './soundops';
-import Sounds from './sounds';
+import Sounds from './sounds.json';
 import path from 'path';
 export class Sound {
   basePath: string;

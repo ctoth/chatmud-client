@@ -1,6 +1,7 @@
-'use strict';
+import { ConfigManager } from './config';
 
-class AutoLogin {
+export class AutoLogin {
+  configManager: ConfigManager;
   constructor(configManager) {
     this.configManager = configManager;
   }
@@ -20,5 +21,3 @@ class AutoLogin {
     this.configManager.set('autologin', JSON.stringify(data));
   }
 }
-
-export default AutoLogin;

@@ -1,10 +1,10 @@
-'use strict';
-
-class TTS {
+export class AriaTTS {
+  enabled = true;
+  speaking = false;
+  speakQueue: any[];
+  voice: string;
+  rate: number;
   constructor() {
-    this.enabled = true;
-    this.speaking = false;
-    this.speakQueue = [];
     this.voice = 'alex';
     this.rate = 3;
   }
@@ -34,5 +34,3 @@ class TTS {
     setTimeout(this.stopSpeech.bind(this), 250);
   }
 }
-
-export default TTS;

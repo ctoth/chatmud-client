@@ -1,17 +1,19 @@
-'use strict';
+import { WebTTS } from '../inserts/webtts';
+import { MCP } from '../inserts/mcp';
+import { Triggers } from '../inserts/triggers';
+import { ProgrammerHelper } from '../inserts/programmerhelper';
+import { Notifier } from '../inserts/notifier';
 
 const inserts = {
-  webtts: require('../inserts/webtts'),
-  mcp: require('../inserts/mcp'),
-  triggers: require('../inserts/triggers'),
-  programmerhelper: require('../inserts/programmerhelper'),
-  notifier: require('../inserts/notifier'),
+  webtts: WebTTS,
+  mcp: MCP,
+  triggers: Triggers,
+  programmerhelper: ProgrammerHelper,
+  notifier: Notifier,
 };
 
-class InsertFactory {
+export class InsertFactory {
   static getInsert(name) {
     return inserts[name];
   }
 }
-
-export default InsertFactory;

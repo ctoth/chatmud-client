@@ -1,10 +1,9 @@
-'use strict';
 import Combokeys from 'combokeys';
 import React from 'react';
 import reactDom from 'react-dom';
 import MainUI from '../ui/main';
 
-class Interface {
+export class Interface {
 	constructor(instance) {
 		this.instance = instance;
 		this.shortcuts = new Combokeys(window);
@@ -64,5 +63,3 @@ class Interface {
 		this.instance.output.add('Speech ' + (state ? 'enabled' : 'disabled'));
 	}
 }
-
-export default Interface;

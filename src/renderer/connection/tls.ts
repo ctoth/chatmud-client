@@ -1,9 +1,8 @@
 'use strict';
-import net from 'net';
 import TLS from 'tls';
-import TCPConnection from './tcp';
+import { TCPConnection } from './tcp';
 
-class TLSConnection extends TCPConnection {
+export class TLSConnection extends TCPConnection {
   constructor(address = 'chatmud.com', port = 7443) {
     super(address, port);
   }
@@ -16,5 +15,3 @@ class TLSConnection extends TCPConnection {
     return TLS.connect(options, () => this.setupEvents());
   }
 }
-
-export default TLSConnection;

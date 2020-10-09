@@ -1,6 +1,6 @@
-import Module from './module';
+import { Module } from './module';
 
-class Channel extends Module {
+export class Channel extends Module {
   constructor(instance) {
     super(instance);
     this.id = 'Comm.Channel';
@@ -10,5 +10,3 @@ class Channel extends Module {
     this.instance.history.addMessage(data.channel, data.text);
   }
 }
-
-export default Channel;

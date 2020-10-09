@@ -1,6 +1,4 @@
-'use strict';
-
-class Programmer {
+export class Programmer {
   constructor(instance) {
     this.instance = instance;
     this.code = '';

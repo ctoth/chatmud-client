@@ -1,9 +1,7 @@
 import $ from 'nodobjc';
 
-class MacSpeech {
+export class MacSpeech {
   constructor() {
     $.framework('AppKit');
   }
 }
-
-export default MacSpeech;

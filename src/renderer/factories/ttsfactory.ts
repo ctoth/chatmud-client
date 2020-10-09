@@ -1,9 +1,7 @@
-'use strict';
+import { MacTTS } from '../tts/mactts';
+import { AriaTTS } from '../tts/ariatts';
 
-import MacTTS from '../tts/mactts';
-import AriaTTS from '../tts/ariatts';
-
-class TTSFactory {
+export class TTSFactory {
   static getInstance() {
     switch (process.platform) {
       case 'darwin':
@@ -15,5 +13,3 @@ class TTSFactory {
     }
   }
 }
-
-export default TTSFactory;

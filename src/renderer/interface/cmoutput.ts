@@ -1,7 +1,6 @@
-'use strict';
 import EventEmitter from 'eventemitter3';
 
-class CMOutput extends EventEmitter {
+export class CMOutput extends EventEmitter {
   constructor(instance) {
     super();
     this.instance = instance;

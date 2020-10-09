@@ -4,10 +4,11 @@ import EventEmitter from 'eventemitter3';
 
 // Todo: we may want to patch the emit function to allow events that get emitted anywhere to be subscribed to from anywhere else (e.g. bubble down unsubscribed events).
 
-class Node extends EventEmitter {
+export class Node extends EventEmitter {
+  public children: Node[] = [];
+  public wanted_events: string[];
   constructor() {
     super();
-    this.children = [];
     this.wanted_events = ['Data'];
   }
 
@@ -36,5 +37,3 @@ class Node extends EventEmitter {
     this.emit('data', data);
   }
 }
-
-export default Node;

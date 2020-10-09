@@ -1,7 +1,11 @@
-'use strict';
 import say from 'say';
 
-class TTS {
+export class MacTTS {
+  enabled: boolean;
+  speaking: boolean;
+  speakQueue: any[];
+  voice: string;
+  rate: number;
   constructor() {
     this.enabled = true;
     this.speaking = false;
@@ -11,7 +15,7 @@ class TTS {
   }
 
   stopSpeech() {
-    if (this.speaking == true) {
+    if (this.speaking === true) {
       this.speaking = false;
       this.speakQueue = [];
       say.stop();
@@ -19,7 +23,7 @@ class TTS {
   }
 
   speakImmediate(string) {
-    if (this.speaking == true) {
+    if (this.speaking === true) {
       this.stopSpeech();
     }
     this.speak(string);
@@ -32,7 +36,7 @@ class TTS {
     string = string.replace('[', ' ');
     string = string.replace(']', ' ');
     this.speakQueue.push(string);
-    if (this.speaking == false) {
+    if (this.speaking === false) {
       this.handleQueue();
       this.speaking = true;
     }
@@ -41,11 +45,9 @@ class TTS {
   handleQueue() {
     if (this.speakQueue.length > 0) {
       const string = this.speakQueue.shift();
-      say.speak(string, this.voice, this.rate, error => this.handleQueue());
+      say.speak(string, this.voice, this.rate, () => this.handleQueue());
     } else {
       this.speaking = false;
     }
   }
 }
-
-export default TTS;

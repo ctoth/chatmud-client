@@ -1,6 +1,6 @@
-'use strict';
+import { Insert } from './insert';
 
-class Triggers {
+export class Triggers implements Insert {
   constructor() {
     this.instance = null;
   }
@@ -64,5 +64,3 @@ class Triggers {
     }
   }
 }
-
-export default Triggers;

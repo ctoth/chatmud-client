@@ -1,9 +1,8 @@
-import constants from '../constants';
 import Constants from '../constants';
-import Node from '../node';
-const { GMCP, DO, IAC, IS, SB, SE, SEND, TTYPE, WILL } = Constants;
+import { Node } from '../node';
+const { GMCP, DO, IAC, SB, SE, SEND, TTYPE, WILL } = Constants;
 
-class Gmcp extends Node {
+export class Gmcp extends Node {
   constructor(instance) {
     super();
     this.instance = instance;
@@ -16,7 +15,7 @@ class Gmcp extends Node {
   }
 
   handleNegociation(data) {
-    if (data == IAC + WILL + GMCP) {
+    if (data === IAC + WILL + GMCP) {
       this.instance.connection.send(IAC + DO + GMCP);
       // Why not a send gmcp function? because we don't need one for just sending two messages.
       const listeners = this.children.filter(i => i.isModule);
@@ -36,5 +35,3 @@ class Gmcp extends Node {
     }
   }
 }
-
-export default Gmcp;

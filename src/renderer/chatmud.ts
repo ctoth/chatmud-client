@@ -1,37 +1,36 @@
-'use strict';
-
-import CMOutput from './interface/cmoutput';
-import Node from './node';
-import Inserts from './inserts/inserts.json';
-import InsertFactory from './factories/insertfactory';
 import Appends from './appends/appends.json';
-import AppendFactory from './factories/appendfactory';
-import ChannelHistory from './history/channelhistory';
-import ChannelInterface from './interface/channelinterface';
-import SoundPlayer from './sounds/soundplayer';
-import Programmer from './interface/programmer';
-import TTSFactory from './factories/ttsfactory';
-import Interface from './interface/interface.jsx';
-import InputHistory from './history/inputhistory';
-import ConfigManager from './config/config';
-import AutoLogin from './config/autologin';
-import Telnet from './connection/telnet';
-import GMCP from './gmcp/gmcp';
-import initializeModules from './gmcp/modules';
-import TLSConnection from './connection/tls';
-import Websockets from './connection/websockets';
+import { AutoLogin } from './config/autologin';
+import { ConfigManager } from './config/config';
+import { Telnet } from './connection/telnet';
+import { TLSConnection } from './connection/tls';
+import { Websockets } from './connection/websockets';
+import { AppendFactory } from './factories/appendfactory';
+import { InsertFactory } from './factories/insertfactory';
+import { TTSFactory } from './factories/ttsfactory';
+import { Gmcp } from './gmcp/gmcp';
+import { initializeModules } from './gmcp/modules';
+import { ChannelHistory } from './history/channelhistory';
+import { InputHistory } from './history/inputhistory';
+import { Insert } from './inserts/insert';
+import Inserts from './inserts/inserts.json';
+import { ChannelInterface } from './interface/channelinterface';
+import { CMOutput } from './interface/cmoutput';
+import { Interface } from './interface/interface.jsx';
+import { Programmer } from './interface/programmer';
+import { Node } from './node';
+import { SoundPlayer } from './sounds/soundplayer';
 
 export class ChatMud extends Node {
   public output: CMOutput;
   public connection: TLSConnection | Websockets;
   public telnet: Telnet;
-  inserts: any[];
-  appends: any[];
+  inserts: Insert[] = [];
+  appends: any[] = [];
   public history: ChannelHistory;
   inputHistory: InputHistory;
   soundPlayer: SoundPlayer;
   tts: any;
-  gmcp: GMCP;
+  gmcp: Gmcp;
   configManager: ConfigManager;
   autoLogin: AutoLogin;
   interface: Interface;
@@ -50,7 +49,7 @@ export class ChatMud extends Node {
     this.inputHistory = new InputHistory();
     this.soundPlayer = new SoundPlayer();
     this.tts = TTSFactory.getInstance();
-    this.gmcp = new GMCP(this);
+    this.gmcp = new Gmcp(this);
     this.configManager = new ConfigManager();
     this.autoLogin = new AutoLogin(this.configManager);
     this.interface = new Interface(this);
@@ -132,4 +131,3 @@ export class ChatMud extends Node {
     this.input.value = '';
   }
 }
-

@@ -1,6 +1,6 @@
-'use strict';
+import { Insert } from './insert';
 
-class WebTTS {
+export class WebTTS implements Insert {
   constructor() {
     this.interface = null;
   }
@@ -12,5 +12,3 @@ class WebTTS {
     return string;
   }
 }
-
-export default WebTTS;

@@ -1,5 +1,4 @@
-'use strict';
-import { React, Component } from 'react';
+import React from 'react';
 import './ui.css';
 
 import {
@@ -69,6 +68,7 @@ class OnlineList extends React.Component {
       people: this.people,
     });
   }
+
   createGroup(title, people) {
     return (
       <div>
@@ -79,7 +79,7 @@ class OnlineList extends React.Component {
               {people.map((item, index) => {
                 console.log('Mapping ' + item.name);
                 return (
-                  <li>
+                  <li key={item.name}>
                     {item.name} - {item.title}
                   </li>
                 );

@@ -1,14 +1,15 @@
 import Constants from '../constants';
-import Node from '../node';
+import { Node } from '../node';
 const { DO, DONT, GMCP, IAC, IS, SB, SE, TTYPE, WILL, WONT } = Constants;
 
 // Todo: refactor! very haphazardly thrown together
 
-class Telnet extends Node {
+export class Telnet extends Node {
+  connection: any;
+  data: string;
   constructor(instance) {
     super();
     this.connection = instance.connection;
-    this.data = '';
   }
 
   handleData(data) {
@@ -16,12 +17,12 @@ class Telnet extends Node {
     const re = /\u00FF[|\u00FB-\u00FE][\u0000-\u00FF]/gm;
     let matches;
     while ((matches = re.exec(data)) !== null) {
-      if (matches[0][1] == WILL && matches[0][2] == GMCP) {
+      if (matches[0][1] === WILL && matches[0][2] === GMCP) {
         this.emit('negociation', matches[0]);
-      } else if (matches[0][1] == DO && matches[0][2] == TTYPE) {
+      } else if (matches[0][1] === DO && matches[0][2] === TTYPE) {
         this.connection.send(IAC + WILL + TTYPE);
       } else {
-        if (matches[0][1] == WILL)
+        if (matches[0][1] === WILL)
           this.connection.send(IAC + DONT + matches[0][2]);
         else this.connection.send(IAC + WONT + matches[0][2]);
       }
@@ -60,5 +61,3 @@ class Telnet extends Node {
     }
   }
 }
-
-export default Telnet;

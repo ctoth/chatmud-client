@@ -1,7 +1,3 @@
-'use strict';
+import { Node } from '../node';
 
-import Node from '../node';
-
-class Connection extends Node {}
-
-export default Connection;
+export class Connection extends Node {}

@@ -1,6 +1,6 @@
-'use strict';
+import { Insert } from './insert';
 
-class Notifier {
+export class Notifier implements Insert {
   constructor() {
     this.instance = null;
     Notification.requestPermission().then(result =>

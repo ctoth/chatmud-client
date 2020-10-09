@@ -1,7 +1,6 @@
-'use strict';
-import ChannelHistory from '../history/channelhistory';
+import { ChannelHistory } from '../history/channelhistory';
 
-class ChannelInterface {
+export class ChannelInterface {
   constructor(history, instance) {
     this.instance = instance;
     this.currentChannel = 0;
@@ -63,5 +62,3 @@ class ChannelInterface {
     );
   }
 }
-
-export default ChannelInterface;
