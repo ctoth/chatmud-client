@@ -1,7 +1,7 @@
 'use strict';
-import ChatMud from './chatmud';
+import { ChatMud } from './chatmud';
 import NetworkFactory from './factories/networkfactory';
-import SoundPlayer from './sounds/soundplayer';
 
-const connection = NetworkFactory.getInstance();
-const game = new ChatMud(new connection());
+const Connection = NetworkFactory.getInstance();
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const game = new ChatMud(new Connection());
