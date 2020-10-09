@@ -2,50 +2,50 @@
 import say from 'say';
 
 class TTS {
-	constructor() {
-		this.enabled = true;
-		this.speaking = false;
-		this.speakQueue = new Array();
-		this.voice = 'alex';
-		this.rate = 3.0;
-	}
+  constructor() {
+    this.enabled = true;
+    this.speaking = false;
+    this.speakQueue = [];
+    this.voice = 'alex';
+    this.rate = 3;
+  }
 
-	stopSpeech() {
-		if (this.speaking == true) {
-			this.speaking = false;
-			this.speakQueue = [];
-			say.stop();
-		}
-	}
+  stopSpeech() {
+    if (this.speaking == true) {
+      this.speaking = false;
+      this.speakQueue = [];
+      say.stop();
+    }
+  }
 
-	speakImmediate(string) {
-		if (this.speaking == true) {
-			this.stopSpeech();
-		}
-		this.speak(string);
-	}
+  speakImmediate(string) {
+    if (this.speaking == true) {
+      this.stopSpeech();
+    }
+    this.speak(string);
+  }
 
-	speak(string) {
-		if (!this.enabled) {
-			return;
-		}
-		string = string.replace('[', ' ');
-		string = string.replace(']', ' ');
-		this.speakQueue.push(string);
-		if (this.speaking == false) {
-			this.handleQueue();
-			this.speaking = true;
-		}
-	}
+  speak(string) {
+    if (!this.enabled) {
+      return;
+    }
+    string = string.replace('[', ' ');
+    string = string.replace(']', ' ');
+    this.speakQueue.push(string);
+    if (this.speaking == false) {
+      this.handleQueue();
+      this.speaking = true;
+    }
+  }
 
-	handleQueue() {
-		if (this.speakQueue.length > 0) {
-			const string = this.speakQueue.shift();
-			say.speak(string, this.voice, this.rate, err => this.handleQueue());
-		} else {
-			this.speaking = false;
-		}
-	}
+  handleQueue() {
+    if (this.speakQueue.length > 0) {
+      const string = this.speakQueue.shift();
+      say.speak(string, this.voice, this.rate, error => this.handleQueue());
+    } else {
+      this.speaking = false;
+    }
+  }
 }
 
 export default TTS;

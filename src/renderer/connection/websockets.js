@@ -1,6 +1,6 @@
-"use strict";
-import IO from "socket.io-client";
-import Connection from "./connection";
+'use strict';
+import IO from 'socket.io-client';
+import Connection from './connection';
 
 class Websockets extends Connection {
   constructor() {
@@ -10,13 +10,13 @@ class Websockets extends Connection {
   }
 
   setupEvents() {
-    this.io.on("data", (data) => this.handleData(data));
-    this.io.emit("data", "\n");
+    this.io.on('data', data => this.handleData(data));
+    this.io.emit('data', '\n');
   }
 
   send(string) {
     console.log(`Sending: ${string}`);
-    this.io.emit("data", string + "\n");
+    this.io.emit('data', string + '\n');
   }
 }
 

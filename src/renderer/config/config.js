@@ -1,17 +1,17 @@
 'use strict';
 
 class ConfigManager {
-    constructor() {
-        this.localStorage = window.localStorage || null;
-    }
+  constructor() {
+    this.localStorage = window.localStorage || null;
+  }
 
-    get(key) {
-        return this.localStorage.getItem(key) || null;
-    }
+  get(key) {
+    return this.localStorage.getItem(key) || null;
+  }
 
-    set(key, value) {
-        this.localStorage.setItem(key, value);
-    }
+  set(key, value) {
+    this.localStorage.setItem(key, value);
+  }
 }
 
 export default ConfigManager;

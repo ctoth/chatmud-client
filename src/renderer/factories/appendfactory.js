@@ -1,10 +1,9 @@
 'use strict';
-const appends = {
-};
+const appends = {};
 class AppendFactory {
-	static getInstance(instance) {
-		return appends[instance];
-	}
+  static getInstance(instance) {
+    return appends[instance];
+  }
 }
 
 export default AppendFactory;

@@ -25,4 +25,3 @@ export default {
   GMCP: String.fromCharCode(201),
   ESC: String.fromCharCode(27),
 };
-

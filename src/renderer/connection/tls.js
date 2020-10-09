@@ -1,10 +1,10 @@
-"use strict";
-import net from "net";
-import TLS from "tls";
-import TCPConnection from "./tcp";
+'use strict';
+import net from 'net';
+import TLS from 'tls';
+import TCPConnection from './tcp';
 
 class TLSConnection extends TCPConnection {
-  constructor(address = "chatmud.com", port = 7443) {
+  constructor(address = 'chatmud.com', port = 7443) {
     super(address, port);
   }
 

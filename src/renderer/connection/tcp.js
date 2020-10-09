@@ -1,15 +1,15 @@
-"use strict";
-import net from "net";
-import Connection from "./connection";
+'use strict';
+import net from 'net';
+import Connection from './connection';
 
 class TCPConnection extends Connection {
-  constructor(address = "chatmud.com", port = 7777, encoding="latin1") {
+  constructor(address = 'chatmud.com', port = 7777, encoding = 'latin1') {
     super();
     this.encoding = encoding;
     this.address = address;
     this.port = port;
     this.socket = new net.Socket();
-    this.connection = this.setupConnection(()=>this.setupEvents());
+    this.connection = this.setupConnection(() => this.setupEvents());
     this.data = '';
   }
 
@@ -18,7 +18,7 @@ class TCPConnection extends Connection {
   }
 
   setupEvents() {
-    this.connection.on("data", (data) => this.handleTCPData(data));
+    this.connection.on('data', data => this.handleTCPData(data));
   }
 
   handleTCPData(data) {

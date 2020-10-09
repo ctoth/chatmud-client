@@ -8,21 +8,21 @@ class Node extends EventEmitter {
   constructor() {
     super();
     this.children = [];
-    this.wanted_events = ["Data"];
+    this.wanted_events = ['Data'];
   }
 
   connect(node) {
     // this is hacky. If it doesn't work out we will probably want to go back to just making nodes subscribe to data.
     this.children.unshift(node);
     for (const i of node.wanted_events) {
-      this.on(i.toLowerCase(), node["handle"+i].bind(node));
+      this.on(i.toLowerCase(), node['handle' + i].bind(node));
     }
     return node;
   }
 
   series(...nodes) {
     // Connects all the nodes in a series, where this node is the starting point and the last node is the one that will be returned.
-    return nodes.reduce((prev, next)=>prev.connect(next), this);
+    return nodes.reduce((previous, next) => previous.connect(next), this);
   }
 
   parallel(...nodes) {
