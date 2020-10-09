@@ -1,4 +1,5 @@
 'use strict';
+import { React, Component } from 'react';
 import './ui.css';
 
 import {
@@ -8,9 +9,10 @@ import {
   AccordionItemBody,
 } from 'react-accessible-accordion';
 
-import React from 'react';
-
 class OnlineList extends React.Component {
+  state: { people: { active: any[]; idlers: any[]; bots: any[] } };
+  people: { active: any[]; bots: any[]; idlers: any[] };
+  response: any;
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +30,7 @@ class OnlineList extends React.Component {
 
     this.createGroup = this.createGroup.bind(this);
 
-    this.response = null;
+    this.response = undefined;
   }
 
   componentWillMount() {
@@ -67,7 +69,6 @@ class OnlineList extends React.Component {
       people: this.people,
     });
   }
-
   createGroup(title, people) {
     return (
       <div>
@@ -93,7 +94,7 @@ class OnlineList extends React.Component {
   render() {
     return (
       <div className="settings-panel">
-        <h1>Who's online</h1>
+        <h1>Who&apos;s online</h1>
         <Accordion>
           {this.createGroup('Active', this.state.people.active)}
           {this.createGroup('Bots', this.state.people.bots)}
