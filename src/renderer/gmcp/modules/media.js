@@ -20,7 +20,7 @@ class Media extends Module {
       console.log('succeeded!');
     } catch {
       console.log('failed!');
-      const response = await fetch(url + name, { 'mode': 'no-cors' });
+      const response = await fetch(url + name, { mode: 'no-cors' });
       const buff = await response.arrayBuffer();
       await fs.mkdir(__dirname + '/sounds/' + folder, { recursive: true });
       await fs.writeFile(__dirname + '/sounds/' + name, Buffer.from(buff));
