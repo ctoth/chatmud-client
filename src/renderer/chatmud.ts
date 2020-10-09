@@ -18,15 +18,33 @@ import AutoLogin from './config/autologin';
 import Telnet from './connection/telnet';
 import GMCP from './gmcp/gmcp';
 import initializeModules from './gmcp/modules';
+import TLSConnection from './connection/tls';
+import Websockets from './connection/websockets';
 
-class ChatMud extends Node {
-  constructor(connection) {
+export class ChatMud extends Node {
+  public output: CMOutput;
+  public connection: TLSConnection | Websockets;
+  public telnet: Telnet;
+  inserts: any[];
+  appends: any[];
+  public history: ChannelHistory;
+  inputHistory: InputHistory;
+  soundPlayer: SoundPlayer;
+  tts: any;
+  gmcp: GMCP;
+  configManager: ConfigManager;
+  autoLogin: AutoLogin;
+  interface: Interface;
+  programmer: Programmer;
+  info: { name: string; key: string };
+  historyInterface: ChannelInterface;
+  input: any;
+
+  constructor(connection: TLSConnection | Websockets) {
     super();
     this.output = new CMOutput(this);
     this.connection = connection;
     this.telnet = new Telnet(this);
-    this.inserts = [];
-    this.appends = [];
     this.history = new ChannelHistory();
     this.historyInterface = new ChannelInterface(this.history, this);
     this.inputHistory = new InputHistory();
@@ -48,7 +66,7 @@ class ChatMud extends Node {
     this.handleAutoLogin();
   }
 
-  handleAutoLogin() {
+  handleAutoLogin(): void {
     setTimeout(() => {
       const loginData = this.autoLogin.get();
       if (loginData && loginData.username && loginData.password) {
@@ -60,30 +78,30 @@ class ChatMud extends Node {
     }, 1000);
   }
 
-  setupEvents() {
+  setupEvents(): void {
     this.connection
       .connect(this.telnet)
       .parallel(this.gmcp.parallel(...initializeModules(this)))
       .connect(this);
   }
 
-  setupInserts() {
+  setupInserts(): void {
     for (const insertDef of Inserts) {
-      const insert = InsertFactory.getInsert(insertDef);
-      const instance = new insert();
+      const Insert = InsertFactory.getInsert(insertDef);
+      const instance = new Insert();
       this.inserts.push(instance);
     }
   }
 
-  setupAppends() {
+  setupAppends(): void {
     for (const appendDef of Appends) {
-      const append = AppendFactory.getInstance(appendDef);
-      const instance = new append();
+      const Append = AppendFactory.getInstance(appendDef);
+      const instance = new Append();
       this.appends.push(instance);
     }
   }
 
-  handleData(data) {
+  handleData(data): void {
     for (const insert of this.inserts) {
       data = insert.act(data, this);
     }
@@ -95,17 +113,17 @@ class ChatMud extends Node {
     }
   }
 
-  sendInput() {
-    let string = this.input.value;
-    if (string == 'my_name') {
+  sendInput(): void {
+    let string: string = this.input.value;
+    if (string === 'my_name') {
       this.output.add('Your name is set to ' + this.info.name);
     }
     this.output.add(
       'Input history: ' + JSON.stringify(this.inputHistory.strings),
     );
-    if (string == '') {
+    if (string === '') {
       string = this.inputHistory.getLastEntered();
-    } else if (string != this.inputHistory.getLastEntered()) {
+    } else if (string !== this.inputHistory.getLastEntered()) {
       this.inputHistory.add(string);
     }
 
@@ -115,4 +133,3 @@ class ChatMud extends Node {
   }
 }
 
-export default ChatMud;
