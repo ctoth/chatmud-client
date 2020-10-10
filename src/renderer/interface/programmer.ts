@@ -1,24 +1,28 @@
+import { Client } from '../client';
+
 export class Programmer {
-  constructor(instance) {
+  instance: Client;
+  code = '';
+  object = '';
+  enabled = false;
+  window: any;
+  lines: string[] = [];
+  currentLine = 0;
+  boundMethod: any;
+
+  constructor(instance: Client) {
     this.instance = instance;
-    this.code = '';
-    this.object = '';
-    this.enabled = false;
-    this.window = null;
-    this.lines = [];
-    this.currentLine = 0;
-    this.boundMethod = null;
   }
 
-  setEnableHelper(value) {
+  setEnableHelper(value): void {
     this.enabled = value;
   }
 
-  setCode(code) {
+  setCode(code): void {
     this.code = code;
   }
 
-  open() {
+  open(): void {
     this.window = window.open('editor.html');
     setTimeout(() => {
       this.window.postMessage(this.code);

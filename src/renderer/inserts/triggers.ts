@@ -1,10 +1,6 @@
 import { Insert } from './insert';
 
-export class Triggers implements Insert {
-  constructor() {
-    this.instance = null;
-  }
-
+export class Triggers extends Insert {
   act(string, instance) {
     this.instance = instance;
     this.executeTriggers(string);

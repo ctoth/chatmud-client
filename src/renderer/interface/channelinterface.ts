@@ -1,14 +1,17 @@
+import { Client } from '../client';
 import { ChannelHistory } from '../history/channelhistory';
 
 export class ChannelInterface {
-  constructor(history, instance) {
+  instance: Client;
+  currentChannel: number;
+  currentMessage: number;
+  history: ChannelHistory;
+  constructor(history: ChannelHistory, instance: Client) {
     this.instance = instance;
-    this.currentChannel = 0;
-    this.currentMessage = 0;
     this.history = history;
   }
 
-  nextChannel() {
+  nextChannel(): void {
     if (this.currentChannel < this.history.channels.length - 1) {
       this.currentChannel++;
     } else {
@@ -20,7 +23,7 @@ export class ChannelInterface {
     );
   }
 
-  previousChannel() {
+  previousChannel(): void {
     if (this.currentChannel > 0) {
       this.currentChannel--;
     } else {
@@ -32,7 +35,7 @@ export class ChannelInterface {
     );
   }
 
-  nextMessage() {
+  nextMessage(): void {
     if (this.currentMessage > 0) {
       this.currentMessage--;
     } else {
@@ -42,7 +45,7 @@ export class ChannelInterface {
     this.readMessage(this.currentMessage);
   }
 
-  previousMessage() {
+  previousMessage(): void {
     if (
       this.currentMessage <
       this.history.channels[this.currentChannel].messages.length - 1

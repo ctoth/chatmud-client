@@ -1,12 +1,14 @@
+import { Client } from '../client';
 import Constants from '../constants';
 import { Node } from '../node';
 const { GMCP, DO, IAC, SB, SE, SEND, TTYPE, WILL } = Constants;
 
 export class Gmcp extends Node {
+  instance: Client;
+  wanted_events = ['GMCP', 'Negociation'];
+
   constructor(instance) {
     super();
-    this.instance = instance;
-    this.wanted_events = ['GMCP', 'Negociation'];
   }
 
   handleGMCP(match) {

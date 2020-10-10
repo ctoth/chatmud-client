@@ -8,7 +8,7 @@ import {
   AccordionItemBody,
 } from 'react-accessible-accordion';
 
-class OnlineList extends React.Component {
+export class OnlineList extends React.Component {
   state: { people: { active: any[]; idlers: any[]; bots: any[] } };
   people: { active: any[]; bots: any[]; idlers: any[] };
   response: any;
@@ -104,5 +104,3 @@ class OnlineList extends React.Component {
     );
   }
 }
-
-export default OnlineList;

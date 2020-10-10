@@ -1,14 +1,16 @@
 import EventEmitter from 'eventemitter3';
+import { Client } from '../client';
 
 export class CMOutput extends EventEmitter {
-  constructor(instance) {
+  instance: Client;
+  maxLines = 100;
+  constructor(instance: Client) {
     super();
     this.instance = instance;
-    this.maxLines = 100;
   }
 
-  add(string) {
-    if (string != '') {
+  add(string: string): void {
+    if (string !== '') {
       this.instance.tts.speak(string);
       this.emit('MudOutput', string);
 
@@ -16,5 +18,3 @@ export class CMOutput extends EventEmitter {
     }
   }
 }
-
-export default CMOutput;

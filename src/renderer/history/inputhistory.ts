@@ -1,24 +1,24 @@
 export class InputHistory {
-  strings: any[];
+  strings: string[];
   iterator: number;
   constructor() {
     this.strings = [];
     this.iterator = 0;
   }
 
-  add(string) {
+  add(string: string): void {
     this.strings.unshift(string);
   }
 
-  getLastEntered() {
+  getLastEntered(): string {
     return this.strings[0];
   }
 
-  getAtIndex(index) {
+  getAtIndex(index: number): string {
     return this.strings[index];
   }
 
-  getAtIterator() {
+  getAtIterator(): string {
     return this.strings[this.iterator];
   }
 

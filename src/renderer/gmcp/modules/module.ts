@@ -1,3 +1,4 @@
+import { Client } from '../../client';
 import Constants from '../../constants';
 import { Node } from '../../node';
 const { GMCP, IAC, SB, SE } = Constants;
@@ -5,13 +6,8 @@ const { GMCP, IAC, SB, SE } = Constants;
 export class Module extends Node {
   id: string;
   isModule: boolean;
-  constructor(instance) {
-    super();
-    this.instance = instance;
-    this.id = '';
-    this.wanted_events = ['GMCP'];
-    this.isModule = true;
-  }
+  wanted_events = ['GMCP'];
+  instance: Client;
 
   handleGMCP(name, data) {
     const words = name.split('.');
@@ -22,7 +18,7 @@ export class Module extends Node {
     }
   }
 
-  send(verb, data) {
+  send(verb: string, data: any): void {
     // By default packages are limited to sending commands for just themselves; will change if required
     this.instance.connection.send(
       IAC + SB + GMCP + this.id + verb + ' ' + JSON.stringify(data) + IAC + SE,

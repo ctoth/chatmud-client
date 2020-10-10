@@ -100,7 +100,7 @@ export class Client extends Node {
     }
   }
 
-  handleData(data): void {
+  handleData(data: string): void {
     for (const insert of this.inserts) {
       data = insert.act(data, this);
     }

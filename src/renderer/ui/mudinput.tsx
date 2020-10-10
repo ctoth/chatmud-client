@@ -2,7 +2,7 @@ import './ui.css';
 
 import React from 'react';
 
-class MudInput extends React.Component {
+export class MudInput extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

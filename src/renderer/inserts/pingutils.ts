@@ -1,11 +1,8 @@
-import { Insert } from './insert';
-
-export class PingUtils implements Insert {
+export class PingUtils {
   token: any;
   time: number;
   constructor(token) {
     this.token = token;
-    this.time = 0;
   }
 
   start() {

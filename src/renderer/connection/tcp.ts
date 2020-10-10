@@ -2,10 +2,10 @@ import net from 'net';
 import { Connection } from './connection';
 
 export class TCPConnection extends Connection {
-  data: string;
+  data: string = '';
   encoding: string;
   address: string;
-  port: number;
+  port = 0;
   socket: net.Socket;
   connection: any;
   constructor(address = 'chatmud.com', port = 7777, encoding = 'latin1') {

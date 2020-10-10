@@ -1,10 +1,6 @@
 import { Insert } from './insert';
 
-export class WebTTS implements Insert {
-  constructor() {
-    this.interface = null;
-  }
-
+export class WebTTS extends Insert {
   act(string, instance) {
     this.instance = instance;
     console.log(document.querySelector('#speechToggle').value);

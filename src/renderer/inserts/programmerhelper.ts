@@ -1,15 +1,11 @@
+import { Client } from '../client';
 import { Insert } from './insert';
 
-export class ProgrammerHelper implements Insert {
-  code: string;
-  receiving: boolean;
-  constructor() {
-    this.code = '';
-    this.receiving = false;
-    this.instance = null;
-  }
+export class ProgrammerHelper extends Insert {
+  code = '';
+  receiving = false;
 
-  act(string, instance) {
+  act(string: string, instance: Client): string {
     if (instance.programmer.enabled === true) {
       if (this.receiving === false) {
         this.receiving = true;

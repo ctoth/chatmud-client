@@ -2,16 +2,9 @@ import { Insert } from './insert';
 import { PingUtils } from './pingutils';
 
 export class MCP extends Insert {
-  key: number;
-  name: number;
-  pings: any[];
-  constructor() {
-    super();
-    this.instance = null;
-    this.key = 0;
-    this.name = 0;
-    this.pings = [];
-  }
+  key = 0;
+  name = 0;
+  pings: any[] = [];
 
   act(string, instance) {
     string = string.toString();
