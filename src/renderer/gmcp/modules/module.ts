@@ -3,11 +3,16 @@ import Constants from '../../constants';
 import { Node } from '../../node';
 const { GMCP, IAC, SB, SE } = Constants;
 
-export class Module extends Node {
+export class GmcpModule extends Node {
   id: string;
   isModule: boolean;
-  wanted_events = ['GMCP'];
+  wantedEvents = ['GMCP'];
   instance: Client;
+
+  constructor(instance: Client) {
+    super();
+    this.instance = instance;
+  }
 
   handleGMCP(name, data) {
     const words = name.split('.');

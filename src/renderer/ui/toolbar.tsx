@@ -4,7 +4,13 @@ import React from 'react';
 import { SettingsPanel } from './settingspanel';
 import { OnlineList } from './onlinelist';
 
+interface State {
+  isSettingsOpened: boolean;
+  isOnlineListOpened: boolean;
+}
+
 export class ToolBar extends React.Component {
+  state: State;
   constructor(props) {
     super(props);
     this.state = {

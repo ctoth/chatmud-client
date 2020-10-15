@@ -1,5 +1,4 @@
 import { Client } from '../client';
-
 export class Insert {
   public instance: Client;
 

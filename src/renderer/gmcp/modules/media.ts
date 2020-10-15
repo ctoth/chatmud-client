@@ -1,19 +1,17 @@
 import fsu from 'fs';
 import path from 'path';
-import { Module } from './module';
+import { GmcpModule } from './module';
 const fs = fsu.promises;
 
-export class Media extends Module {
-  constructor(instance) {
-    super(instance);
-    this.id = 'Client.Media';
-  }
+export class Media extends GmcpModule {
+  isModule = true;
+  id = 'Client.Media';
 
   async Play(data) {
     const { name, url } = data;
-    const parsed_path = path.parse(name);
-    const folder = parsed_path.dir;
-    const file = parsed_path.base;
+    const parsedPath = path.parse(name);
+    const folder = parsedPath.dir;
+    const file = parsedPath.base;
     console.log(fs);
     try {
       await fs.access(__dirname + '/sounds/' + name, fsu.constants.F_OK);
@@ -31,4 +29,3 @@ export class Media extends Module {
     );
   }
 }
-

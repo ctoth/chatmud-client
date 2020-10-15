@@ -14,11 +14,11 @@ export class Programmer {
     this.instance = instance;
   }
 
-  setEnableHelper(value): void {
+  setEnableHelper(value: boolean): void {
     this.enabled = value;
   }
 
-  setCode(code): void {
+  setCode(code: string): void {
     this.code = code;
   }
 
@@ -31,13 +31,13 @@ export class Programmer {
     window.addEventListener('message', this.boundMethod);
   }
 
-  handleMessage(data) {
+  handleMessage(data): void {
     const code = data.data;
     this.sendCode(code);
     window.removeEventListener('message', this.boundMethod);
   }
 
-  sendCode(data) {
+  sendCode(data: string): void {
     const lines = data.split('\n');
     this.lines = lines;
     this.instance.connection.send('@program ' + this.object);
@@ -49,9 +49,7 @@ export class Programmer {
     this.enabled = false;
   }
 
-  setObject(object) {
+  setObject(object: string): void {
     this.object = object;
   }
 }
-
-export default Programmer;

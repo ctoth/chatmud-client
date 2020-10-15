@@ -1,10 +1,6 @@
 export class InputHistory {
-  strings: string[];
-  iterator: number;
-  constructor() {
-    this.strings = [];
-    this.iterator = 0;
-  }
+  strings: string[] = [];
+  iterator = 0;
 
   add(string: string): void {
     this.strings.unshift(string);

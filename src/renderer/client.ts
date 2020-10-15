@@ -15,7 +15,7 @@ import { Insert } from './inserts/insert';
 import Inserts from './inserts/inserts.json';
 import { ChannelInterface } from './interface/channelinterface';
 import { CMOutput } from './interface/cmoutput';
-import { Interface } from './interface/interface.jsx';
+import { Interface } from './interface/interface';
 import { Programmer } from './interface/programmer';
 import { Node } from './node';
 import { SoundPlayer } from './sounds/soundplayer';

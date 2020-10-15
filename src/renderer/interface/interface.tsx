@@ -1,9 +1,11 @@
 import Combokeys from 'combokeys';
 import React from 'react';
 import reactDom from 'react-dom';
+import { Client } from '../client';
 import { MainWindow } from '../ui/main';
 
 export class Interface {
+  instance: Client;
   constructor(instance) {
     this.instance = instance;
     this.shortcuts = new Combokeys(window);
@@ -77,7 +79,7 @@ export class Interface {
 
   setupEvents() {}
 
-  setSpeechEnabled(state) {
+  setSpeechEnabled(state): void {
     this.instance.tts.enabled = state;
     this.instance.output.add('Speech ' + (state ? 'enabled' : 'disabled'));
   }
