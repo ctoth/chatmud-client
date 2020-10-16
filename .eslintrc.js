@@ -33,6 +33,11 @@ module.exports = {
     'react',
     '@typescript-eslint'
   ],
+  "settings": {
+    "react": {
+      "version": "detect", // React version. "detect" automatically picks the version you have installed.
+    },
+  },
   rules: {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
