@@ -1,3 +1,5 @@
 import { Node } from '../node';
 
-export class Connection extends Node {}
+export abstract class Connection extends Node {
+  abstract send(data: string): void;
+}

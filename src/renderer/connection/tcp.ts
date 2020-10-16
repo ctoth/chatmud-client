@@ -2,7 +2,7 @@ import net from 'net';
 import { Connection } from './connection';
 
 export class TCPConnection extends Connection {
-  data: string = '';
+  data = '';
   encoding: string;
   address: string;
   port = 0;
