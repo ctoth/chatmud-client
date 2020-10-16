@@ -9,7 +9,7 @@ interface State {
   isOnlineListOpened: boolean;
 }
 
-export class ToolBar extends React.Component {
+export class ToolBar extends React.Component<State> {
   state: State;
   constructor(props) {
     super(props);

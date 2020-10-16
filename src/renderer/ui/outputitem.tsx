@@ -3,14 +3,12 @@ import open from 'opn';
 import YouTube from 'react-youtube-player';
 import { ResolvingLink } from './resolvinglink';
 
+interface Props {
+  text: string;
+}
 export class OutputItem extends React.Component {
-  re: RegExp;
-  constructor(properties) {
-    super(properties);
-    // This.re=/(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?\^=%:\/~+#-]*[\w@?\^=%\/~+#-])?/gi;
-    this.re = /((?:http|ftp|https):\/\/[\w-]+(?:\.[\w-]+)+(?:[\w#%+,./:=?@^~-]*[\w#%+/=?@^~-])?)/gi;
-  }
-
+  re = /((?:http|ftp|https):\/\/[\w-]+(?:\.[\w-]+)+(?:[\w#%+,./:=?@^~-]*[\w#%+/=?@^~-])?)/gi;
+  props: Props;
   shouldComponentUpdate(nextProperties, nextState) {
     if (this.props.text === nextProperties.text) {
       return false;

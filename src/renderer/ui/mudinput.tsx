@@ -11,7 +11,7 @@ interface State {
   inputValue: string;
 }
 
-export class MudInput extends React.Component {
+export class MudInput extends React.Component<Props, State> {
   inputRef: React.RefObject<HTMLInputElement>;
   state: State = {
     inputValue: '',

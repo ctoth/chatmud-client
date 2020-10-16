@@ -2,8 +2,17 @@ import React from 'react';
 import Settings from '../settings.json';
 import { OutputItem } from './outputitem';
 import Scroll from 'react-custom-scroll';
+import { Client } from '../client';
 
-export class MudOutput extends React.Component {
+interface Props {
+  instance: Client;
+}
+interface State {
+  lines: any[];
+  maxLines: number;
+}
+export class MudOutput extends React.Component<Props, State> {
+  screenBottom: any;
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +21,6 @@ export class MudOutput extends React.Component {
     };
     this.addLine = this.addLine.bind(this);
     this.props.instance.output.on('MudOutput', data => this.addLine(data));
-    this.screenBottom = null;
   }
 
   render() {
@@ -32,8 +40,8 @@ export class MudOutput extends React.Component {
           </div>
           <div
             style={{ float: 'left', clear: 'both' }}
-            ref={el => {
-              this.screenBottom = el;
+            ref={element => {
+              this.screenBottom = element;
             }}
           ></div>
         </div>

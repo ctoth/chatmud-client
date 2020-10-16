@@ -7,8 +7,22 @@ import {
 
 import { Howler } from 'howler';
 import React from 'react';
+import { Client } from '../client';
 
-export class SettingsPanel extends React.Component {
+interface Props {
+  instance: Client;
+}
+
+interface State {
+  volume: number;
+  speech: boolean;
+  resolveLinks: boolean;
+  embedYoutube: boolean;
+  sounds: boolean;
+  username?: string;
+  password?: string;
+}
+export class SettingsPanel extends React.Component<Props, State> {
   constructor(props) {
     super(props);
 

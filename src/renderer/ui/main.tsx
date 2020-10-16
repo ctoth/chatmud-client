@@ -4,8 +4,12 @@ import React from 'react';
 import { MudInput } from './mudinput';
 import { MudOutput } from './mudoutput';
 import { ToolBar } from './toolbar';
+import { Client } from '../client';
 
-export class MainWindow extends React.Component {
+interface Props {
+  instance: Client;
+}
+export class MainWindow extends React.Component<Props> {
   render() {
     return (
       <div>
