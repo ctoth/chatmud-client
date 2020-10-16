@@ -1,14 +1,25 @@
 import './ui.css';
 
 import React from 'react';
+import { Client } from '../client';
+
+interface Props {
+  instance: Client;
+}
+
+interface State {
+  inputValue: string;
+}
 
 export class MudInput extends React.Component {
   inputRef: React.RefObject<HTMLInputElement>;
-  constructor(props) {
+  state: State = {
+    inputValue: '',
+  };
+  props: Props;
+
+  constructor(props: Props) {
     super(props);
-    this.state = {
-      inputValue: '',
-    };
     this.handleChange = this.handleChange.bind(this);
     this.handleKey = this.handleKey.bind(this);
     this.inputRef = React.createRef();
@@ -34,12 +45,12 @@ export class MudInput extends React.Component {
     this.inputRef.current.focus();
   }
 
-  handleKey(evt) {
-    if (evt.key == 'Enter') {
+  handleKey(event_) {
+    if (event_.key === 'Enter') {
       let value = this.state.inputValue;
-      if (value == '') {
+      if (value === '') {
         value = this.props.instance.inputHistory.getLastEntered();
-      } else if (value != this.props.instance.inputHistory.getLastEntered()) {
+      } else if (value !== this.props.instance.inputHistory.getLastEntered()) {
         this.props.instance.inputHistory.add(value);
       }
 
@@ -51,9 +62,9 @@ export class MudInput extends React.Component {
     }
   }
 
-  handleChange(evt) {
+  handleChange(event_) {
     this.setState({
-      inputValue: evt.target.value,
+      inputValue: event_.target.value,
     });
   }
 }
