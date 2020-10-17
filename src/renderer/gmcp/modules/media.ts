@@ -14,14 +14,22 @@ export class Media extends GmcpModule {
     const file = parsedPath.base;
     console.log(fs);
     try {
-      await fs.access(__dirname + '/sounds/' + name, fsu.constants.F_OK);
+      await fs.access(
+        path.join(__dirname, '/sounds/', name),
+        fsu.constants.F_OK,
+      );
       console.log('succeeded!');
     } catch {
       console.log('failed!');
       const response = await fetch(url + name, { mode: 'no-cors' });
       const buff = await response.arrayBuffer();
-      await fs.mkdir(__dirname + '/sounds/' + folder, { recursive: true });
-      await fs.writeFile(__dirname + '/sounds/' + name, Buffer.from(buff));
+      await fs.mkdir(path.join(__dirname, 'sounds', folder), {
+        recursive: true,
+      });
+      await fs.writeFile(
+        path.join(__dirname, 'sounds', name),
+        Buffer.from(buff),
+      );
     }
     this.instance.soundPlayer.play(
       encodeURI(file.split('.')[0]),
