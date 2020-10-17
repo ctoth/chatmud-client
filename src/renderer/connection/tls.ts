@@ -1,4 +1,3 @@
-'use strict';
 import TLS from 'tls';
 import { TCPConnection } from './tcp';
 

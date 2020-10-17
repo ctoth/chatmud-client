@@ -7,7 +7,7 @@ export class TCPConnection extends Connection {
   address: string;
   port = 0;
   socket: net.Socket;
-  connection: any;
+  connection: net.Socket;
   constructor(address = 'chatmud.com', port = 7777, encoding = 'latin1') {
     super();
     this.encoding = encoding;
@@ -17,15 +17,15 @@ export class TCPConnection extends Connection {
     this.connection = this.setupConnection(() => this.setupEvents());
   }
 
-  setupConnection(onComplete) {
+  setupConnection(onComplete?): net.Socket {
     return this.socket.connect(this.port, this.address, onComplete);
   }
 
-  setupEvents() {
+  setupEvents(): void {
     this.connection.on('data', data => this.handleTCPData(data));
   }
 
-  handleTCPData(data) {
+  handleTCPData(data: Buffer) {
     const string = data.toString(this.encoding);
     this.emit('data', string);
   }
