@@ -3,7 +3,7 @@ import './ui.css';
 import React from 'react';
 import { Client } from '../client';
 
-interface Props {
+interface Properties {
   instance: Client;
 }
 
@@ -11,15 +11,16 @@ interface State {
   inputValue: string;
 }
 
-export class MudInput extends React.Component<Props, State> {
+export class MudInput extends React.Component<Properties, State> {
   inputRef: React.RefObject<HTMLInputElement>;
   state: State = {
     inputValue: '',
   };
-  props: Props;
 
-  constructor(props: Props) {
-    super(props);
+  props: Properties;
+
+  constructor(properties: Properties) {
+    super(properties);
     this.handleChange = this.handleChange.bind(this);
     this.handleKey = this.handleKey.bind(this);
     this.inputRef = React.createRef();

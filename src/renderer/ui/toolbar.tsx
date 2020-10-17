@@ -11,8 +11,8 @@ interface State {
 
 export class ToolBar extends React.Component<State> {
   state: State;
-  constructor(props) {
-    super(props);
+  constructor(properties) {
+    super(properties);
     this.state = {
       isSettingsOpened: false,
       isOnlineListOpened: false,

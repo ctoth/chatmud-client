@@ -9,7 +9,7 @@ import { Howler } from 'howler';
 import React from 'react';
 import { Client } from '../client';
 
-interface Props {
+interface Properties {
   instance: Client;
 }
 
@@ -22,9 +22,9 @@ interface State {
   username?: string;
   password?: string;
 }
-export class SettingsPanel extends React.Component<Props, State> {
-  constructor(props) {
-    super(props);
+export class SettingsPanel extends React.Component<Properties, State> {
+  constructor(properties) {
+    super(properties);
 
     this.state = {
       volume: Howler.volume() * 100,

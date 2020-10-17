@@ -3,12 +3,12 @@ import open from 'opn';
 import YouTube from 'react-youtube-player';
 import { ResolvingLink } from './resolvinglink';
 
-interface Props {
+interface Properties {
   text: string;
 }
 export class OutputItem extends React.Component {
   re = /((?:http|ftp|https):\/\/[\w-]+(?:\.[\w-]+)+(?:[\w#%+,./:=?@^~-]*[\w#%+/=?@^~-])?)/gi;
-  props: Props;
+  props: Properties;
   shouldComponentUpdate(nextProperties, nextState) {
     if (this.props.text === nextProperties.text) {
       return false;
@@ -40,7 +40,7 @@ export class OutputItem extends React.Component {
       <ResolvingLink
         key={key}
         url={item}
-        onClick={e => this.openLink(e, item)}
+        onClick={event => this.openLink(event, item)}
       />
     );
   }

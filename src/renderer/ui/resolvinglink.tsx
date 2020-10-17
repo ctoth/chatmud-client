@@ -1,16 +1,16 @@
 import React from 'react';
 import urlToTitle from 'url-to-title';
 
-interface Props {
+interface Properties {
   url: string;
   onClick: (event) => void;
 }
 interface State {
   text: string;
 }
-export class ResolvingLink extends React.Component<Props, State> {
-  constructor(props) {
-    super(props);
+export class ResolvingLink extends React.Component<Properties, State> {
+  constructor(properties) {
+    super(properties);
     this.state = {
       text: this.props.url,
     };

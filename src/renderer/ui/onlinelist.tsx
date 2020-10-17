@@ -12,8 +12,8 @@ export class OnlineList extends React.Component {
   state: { people: { active: any[]; idlers: any[]; bots: any[] } };
   people: { active: any[]; bots: any[]; idlers: any[] };
   response: any;
-  constructor(props) {
-    super(props);
+  constructor(properties) {
+    super(properties);
     this.state = {
       people: {
         active: [],

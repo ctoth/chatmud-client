@@ -4,17 +4,17 @@ import { OutputItem } from './outputitem';
 import Scroll from 'react-custom-scroll';
 import { Client } from '../client';
 
-interface Props {
+interface Properties {
   instance: Client;
 }
 interface State {
   lines: any[];
   maxLines: number;
 }
-export class MudOutput extends React.Component<Props, State> {
+export class MudOutput extends React.Component<Properties, State> {
   screenBottom: any;
-  constructor(props) {
-    super(props);
+  constructor(properties) {
+    super(properties);
     this.state = {
       lines: [],
       maxLines: 1000,

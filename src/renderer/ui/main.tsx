@@ -6,10 +6,10 @@ import { MudOutput } from './mudoutput';
 import { ToolBar } from './toolbar';
 import { Client } from '../client';
 
-interface Props {
+interface Properties {
   instance: Client;
 }
-export class MainWindow extends React.Component<Props> {
+export class MainWindow extends React.Component<Properties> {
   render() {
     return (
       <div>
