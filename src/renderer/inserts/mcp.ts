@@ -35,7 +35,7 @@ export class MCP extends Insert {
 
     command = command.trim();
     s1 = s1.slice(command.length, s1.length);
-    let key = null;
+    let key;
     if (s1.includes('-|-')) {
       key = s1.slice(s1.indexOf('-|-') + 4, s1.length);
       key = key.trim();
@@ -54,7 +54,7 @@ export class MCP extends Insert {
     this.executeMCP(command, s2, key);
   }
 
-  initMCP() {
+  initMCP(): void {
     this.instance.connection.send(
       '#$#register_client Chatmud Official Client (Alpha)',
     );

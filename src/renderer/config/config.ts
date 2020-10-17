@@ -4,11 +4,11 @@ export class ConfigManager {
     this.localStorage = window.localStorage || undefined;
   }
 
-  get(key) {
+  get(key: string): any {
     return this.localStorage.getItem(key) || undefined;
   }
 
-  set(key, value) {
+  set(key: string, value: any): void {
     this.localStorage.setItem(key, value);
   }
 }
