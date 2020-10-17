@@ -3,15 +3,19 @@ import './ui.css';
 import React from 'react';
 import { SettingsPanel } from './settingspanel';
 import { OnlineList } from './onlinelist';
+import { Client } from '../client';
 
+interface Properties {
+  instance: Client;
+}
 interface State {
   isSettingsOpened: boolean;
   isOnlineListOpened: boolean;
 }
 
-export class ToolBar extends React.Component<State> {
+export class ToolBar extends React.Component<Properties, State> {
   state: State;
-  constructor(properties) {
+  constructor(properties: Readonly<Properties>) {
     super(properties);
     this.state = {
       isSettingsOpened: false,
@@ -33,14 +37,14 @@ export class ToolBar extends React.Component<State> {
     );
   }
 
-  showSettings() {
+  showSettings(): void {
     this.setState({
       isSettingsOpened: true,
       isOnlineListOpened: false,
     });
   }
 
-  hideSettings() {
+  hideSettings(): void {
     this.setState({
       isSettingsOpened: false,
       isOnlineListOpened: false,
@@ -80,14 +84,14 @@ export class ToolBar extends React.Component<State> {
     return <div className="toolbar">{buttons}</div>;
   }
 
-  showOnlineList() {
+  showOnlineList(): void {
     this.setState({
       isOnlineListOpened: true,
       isSettingsOpened: false,
     });
   }
 
-  hideOnlineList() {
+  hideOnlineList(): void {
     this.setState({
       isOnlineListOpened: false,
       isSettingsOpened: false,
@@ -103,6 +107,8 @@ export class ToolBar extends React.Component<State> {
           </div>
         </div>
       );
+    } else {
+      return <div> </div>;
     }
   }
 

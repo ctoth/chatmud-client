@@ -32,7 +32,8 @@ export class OnlineList extends React.Component {
     this.response = undefined;
   }
 
-  componentWillMount() {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillMount() {
     this.getOnlineList();
   }
 
